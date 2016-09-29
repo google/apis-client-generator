@@ -28,7 +28,9 @@ setup(
              'googleapis.codegen.script_stubs:RunExpandTemplates')
             ]},
     include_package_data=True,
-    install_requires=['django<1.9',
+    # TODO(user): Any 1.8 version is OK, but django<1.9 seems to do the wrong
+    #     thing. It installs version 1.9rc1, which is not compatible.
+    install_requires=['django==1.8.12',
                       'httplib2',
                       'google-apputils',
                       'python-gflags',
