@@ -279,7 +279,6 @@ class JavaLanguageModel(language_model.LanguageModel):
       return '%s%s' % (the_api.values['name'], camel_s)
     return camel_s[0].lower() + camel_s[1:]
 
-  # pylint: disable=unused-argument
   def ToSafeClassName(self, s, the_api, parent=None):
     """Convert a name to a suitable class name in Java.
 
@@ -299,9 +298,13 @@ class JavaLanguageModel(language_model.LanguageModel):
         if ancestor.safeClassName == safe_class_name:
           safe_class_name = '%s%s' % (parent.class_name, safe_class_name)
     if safe_class_name.lower() in JavaLanguageModel.RESERVED_CLASS_NAMES:
-      # Prepend the service name
-      safe_class_name = '%s%s' % (utilities.CamelCase(the_api.values['name']),
-                                  utilities.CamelCase(s))
+      api_name = utilities.CamelCase(the_api.values['name'])
+      if utilities.CamelCase(the_api.values['canonicalName']):
+        # Use canonical name if specified.
+        api_name = utilities.CamelCase(
+            the_api.values['canonicalName']).replace(' ', '')
+      # Prepend the API name
+      safe_class_name = '%s%s' % (api_name, utilities.CamelCase(s))
     return safe_class_name
 
   def ToPropertyGetterMethodWithDelim(self, prop_name):
