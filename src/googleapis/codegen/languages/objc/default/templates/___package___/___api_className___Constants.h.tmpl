@@ -23,5 +23,6 @@
 #endif
 {% for enum in api.enums %}
 // {{enum.className}} - {{ enum.propertyName }}
-{% for element in enum.elements %}{% doc_comment_if element.description %}GTL_EXTERN NSString * const {{ element.constantName }};  // "{{ element.value }}"
+{% for element in enum.elements %}{% doc_comment_if element.description %}
+GTL_EXTERN NSString * const {{ element.constantName }};  // "{{ element.value }}"
 {% endfor %}{% endfor %}
