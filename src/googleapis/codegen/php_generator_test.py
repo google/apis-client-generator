@@ -105,7 +105,7 @@ class PHPApiTest(basetest.TestCase):
 
     php_type_to_schema = [('object', {'type': 'object'}),
                           ('string', {'type': 'string'}),
-                          ('object', {'type': 'any'}),
+                          ('array', {'type': 'any'}),
                           ('bool', {'type': 'boolean'}),
                           ('int', {'type': 'integer'}),
 

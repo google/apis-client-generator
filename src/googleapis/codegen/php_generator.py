@@ -30,12 +30,14 @@ __author__ = 'chirags@google.com (Chirag Shah)'
 
 import collections
 import json
+import operator
 
 from googleapis.codegen import api
 from googleapis.codegen import api_library_generator
 from googleapis.codegen import data_types
 from googleapis.codegen import language_model
 from googleapis.codegen import utilities
+from googleapis.codegen.schema import Schema
 
 
 class PHPGenerator(api_library_generator.ApiLibraryGenerator):
@@ -122,7 +124,41 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
 
     if isinstance(prop.data_type, data_types.MapDataType):
       prop.SetTemplateValue('dataType', 'map')
+
+    if not prop.member_name_is_json_name:
+      schema.SetTemplateValue('has_gapi', True)
+
+    #  add the prop name
+    prop_names = schema.values.get('propNames', [])
+    prop_names.append(prop.memberName)
+    schema.SetTemplateValue('propNames', prop_names)
+
     self._SetTypeHint(prop)
+
+  def _GenerateLibrarySource(self, the_api, source_package_writer):
+    """Default operations to generate the package.
+
+    Do all the default operations for generating a package.
+    1. Walk the template tree to generate the source.
+    2. Add in per-language additions to the source
+    3. Optionally copy in dependencies
+    4. (Side effect) Closes the source_package_writer.
+
+    Args:
+      the_api: (Api) The Api instance we are writing a libary for.
+      source_package_writer: (LibraryPackage) source output package.
+    """
+    list_replacements = {
+        '___models_': ['model', the_api.ModelClasses()],
+        '___resources_': ['resource', the_api.ResourceClasses()],
+        '___topLevelModels_': ['model', the_api.TopLevelModelClasses()],
+        }
+    self.WalkTemplateTree('templates', self._path_replacements,
+                          list_replacements,
+                          self._top_level_defines, source_package_writer)
+    # Call back to the language specific generator to give it a chance to emit
+    # special case elements.
+    self.GenerateExtraSourceOutput(source_package_writer)
 
   def _ToMethodName(self, method, resource):
     """Convert a wire format name into a suitable PHP variable name."""
@@ -152,7 +188,7 @@ class PhpLanguageModel(language_model.LanguageModel):
   language = 'php'
 
   _SCHEMA_TYPE_TO_PHP_TYPE = {
-      'any': 'object',
+      'any': 'array',
       'boolean': 'bool',
       'integer': 'int',
       'long': 'string',  # PHP doesn't support long integers.
@@ -171,13 +207,13 @@ class PhpLanguageModel(language_model.LanguageModel):
       'abstract', 'and', 'array', 'as', 'break', 'call', 'callable',
       'case', 'catch', 'cfunction', 'class', 'clone',
       'const', 'continue', 'declare', 'default', 'do',
-      'else', 'elseif', 'enddeclare', 'endfor', 'endforeach',
+      'else', 'elseif', 'empty', 'enddeclare', 'endfor', 'endforeach',
       'endif', 'endswitch', 'endwhile', 'extends', 'final',
       'finally', 'for', 'foreach', 'function', 'global', 'goto',
       'if', 'implements', 'interface', 'instanceof', 'list',
-      'namespace', 'new', 'old_function', 'or', 'private',
-      'protected', 'public', 'static', 'switch', 'throw', 'trait',
-      'try', 'unset', 'use', 'var', 'while', 'xor', 'yield',
+      'namespace', 'new', 'old_function', 'or', 'parent', 'private',
+      'protected', 'public', 'return', 'static', 'switch', 'throw',
+      'trait', 'try', 'unset', 'use', 'var', 'while', 'xor', 'yield',
       ))
 
   PHP_TYPES = frozenset((
@@ -262,6 +298,38 @@ class PHPApi(api.Api):
       return utilities.CamelCase(self.values['name']) + utilities.CamelCase(s)
     return utilities.CamelCase(s)
 
+  def ModelClasses(self):
+    """Return all the model classes."""
+    ret = set(
+        s for s in self._schemas.itervalues()
+        if isinstance(s, Schema))
+    return sorted(ret, key=operator.attrgetter('class_name'))
+
+  def ResourceClasses(self, resources=None):
+    """Return all the resource classes."""
+    if resources is None:
+      resources = self.values['resources']
+
+    all_resources = sorted(resources,
+                           key=lambda resource: resource.values['className'])
+
+    for resource in resources:
+      all_resources.extend(self.ResourceClasses(resource.values['resources']))
+
+    return all_resources
+
+  def _BuildResourceDefinitions(self):
+    """Loop over the resources in the discovery doc and build definitions."""
+    self._resources = []
+    def_dict = self.values.get('resources') or {}
+    for name in sorted(def_dict):
+      method_dict = def_dict[name].get('methods', {})
+      for n in method_dict:
+        # make sure all parameters are of type dict (and not list)
+        if not method_dict[n].get('parameters'):
+          method_dict[n]['parameters'] = {}
+      resource = api.Resource(self, name, def_dict[name], parent=self)
+      self._resources.append(resource)
 
 # Properties that should be stripped when serializing parts of the
 # discovery document.
