@@ -91,6 +91,17 @@
 namespace Google.Apis.KitchSink.v1.Data
 {    
 
+    /// <summary>Enum type definition.</summary>
+    public class Enum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enum type name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Geometry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -1034,6 +1045,10 @@ namespace Google.Apis.KitchSink.v1
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
+                /// <summary>Enum</summary>
+                [Google.Apis.Util.RequestParameterAttribute("enum", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object Enum { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1080,6 +1095,15 @@ namespace Google.Apis.KitchSink.v1
                         "start-index", new Google.Apis.Discovery.Parameter
                         {
                             Name = "start-index",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "enum", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "enum",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

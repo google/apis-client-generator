@@ -76,9 +76,9 @@
     "PDF"
    ],
    "enumDescriptions": [
-    "",
-    "",
-    ""
+    "Doc comment for DOWNLOAD.",
+    "Doc comment for THUMBNAIL.",
+    "Doc comment for PDF."
    ]
   },
   "Profile": {
@@ -658,6 +658,17 @@
      "default": "moderator#voteList"
     }
    }
+  },
+  "Enum": {
+   "id": "Enum",
+   "description": "Enum type definition.",
+   "type": "object",
+   "properties": {
+    "name": {
+     "description": "Enum type name.",
+     "type": "string"
+    }
+   }
   }
  },
  "resources": {
@@ -706,6 +717,16 @@
          "type": "integer",
          "minimum": "0",
          "maximum": "4294967295"
+        },
+        "enum": {
+         "description": "Enum",
+         "type": "object",
+         "properties": {
+          "enum": {
+           "$ref": "Enum",
+           "description": "enum"
+          }
+         }
         }
        },
        "response": {

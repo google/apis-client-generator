@@ -24,6 +24,44 @@ Content for level 2.
 // Path: 1/x.txt.
 Content for level 1.
 === end: ./src/1/x.txt
+=== begin: ./src/com/google/kitch_sink/Enum.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Enum { model.description }} <p> Your explanation here.
+ */
+class Enum extends SomeBaseModelClass {
+
+  // Enum type name.
+  // JSON name: "name"
+  str _name;
+
+  // Getters and setters might go here
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Enum.xxx
 === begin: ./src/com/google/kitch_sink/GeometryCollection.xxx
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not
 // use this file except in compliance with the License. You may obtain a copy of
@@ -401,10 +439,12 @@ class Global extends SomeRootClass {
 
          Minimum: 0.
          Maximum: 4294967295.
+         * [enum] Enum
          */
         Future<SeriesList> list({
-                long max_results, str q, long start_index
+                long max_results, str q, long start_index, object enum
                 }) {
+          // do something different with queryParameters
           // do something different with queryParameters
           // do something different with queryParameters
           // do something different with queryParameters
@@ -1380,6 +1420,26 @@ class Alt {
 
 
 // Models in the top level
+
+
+
+"""Schema .Enum { model.description }} <p> Your explanation here.
+# 
+class Enum extends SomeBaseModelClass {
+
+  // Enum type name.
+  // JSON name: 'name'
+  str _name;
+
+  // Getters and setters might go here
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+
+}
 
 
 
