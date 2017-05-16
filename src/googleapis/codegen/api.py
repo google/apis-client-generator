@@ -87,7 +87,7 @@ class Api(template_objects.CodeObject):
     self._validator.ValidateApiName(name)
     if name != 'freebase':
       self._validator.ValidateApiVersion(self.values['version'])
-    canonical_name = self.values.get('canonicalName', name)
+    canonical_name = self.values.get('canonicalName') or name
     if not self.values.get('canonicalName'):
       self.values['canonicalName'] = canonical_name
     self._class_name = self.ToClassName(canonical_name, self)

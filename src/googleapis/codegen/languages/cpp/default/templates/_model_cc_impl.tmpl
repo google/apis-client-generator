@@ -17,3 +17,16 @@
 // Standard destructor.
 {{ current_model.packageRelativeClassName }}::~{{ current_model.className }}() {
 }
+{% if not api.monolithicSourceName and current_model.properties %}
+// Properties.
+{% for property in current_model.properties %}{% if property.useSplitAccessor %}
+const {{ property.codeType }} {{ current_model.packageRelativeClassName }}::{{ property.getterName }}() const {
+   const Json::Value& storage = Storage({% literal property.wireName %});
+   return {{ api.client_namespace }}::JsonValueToCppValueHelper<{{ property.codeType }} >(storage);
+}
+
+{{ property.codeType }} {{ current_model.packageRelativeClassName }}::mutable_{{ property.wireName }}() {
+  Json::Value* storage = MutableStorage({% literal property.wireName %});
+  return {{ api.client_namespace }}::JsonValueToMutableCppValueHelper<{{ property.codeType }} >(storage);
+}
+{% endif %}{% endfor %}{% endif %}
