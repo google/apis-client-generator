@@ -277,6 +277,8 @@ Geometry::Geometry(Json::Value* storage)
 // Standard destructor.
 Geometry::~Geometry() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/geometry.cc
 === begin: ./google/kitch_sink_api/geometry_collection.cc
@@ -335,6 +337,18 @@ GeometryCollection::GeometryCollection(Json::Value* storage)
 
 // Standard destructor.
 GeometryCollection::~GeometryCollection() {
+}
+
+// Properties.
+
+const googleapis_client::JsonCppArray<Geometry > GeometryCollection::get_geometries() const {
+   const Json::Value& storage = Storage("geometries");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<Geometry > >(storage);
+}
+
+googleapis_client::JsonCppArray<Geometry > GeometryCollection::mutable_geometries() {
+  Json::Value* storage = MutableStorage("geometries");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<Geometry > >(storage);
 }
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/geometry_collection.cc
@@ -634,6 +648,8 @@ GeometryPolygon::GeometryPolygon(Json::Value* storage)
 // Standard destructor.
 GeometryPolygon::~GeometryPolygon() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/geometry_polygon.cc
 === begin: ./google/kitch_sink_api/geometry_polygon.h
@@ -814,6 +830,8 @@ GeometryReference::GeometryReference(Json::Value* storage)
 // Standard destructor.
 GeometryReference::~GeometryReference() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/geometry_reference.cc
 === begin: ./google/kitch_sink_api/geometry_reference.h
@@ -7502,6 +7520,8 @@ LatLong::LatLong(Json::Value* storage)
 // Standard destructor.
 LatLong::~LatLong() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/lat_long.cc
 === begin: ./google/kitch_sink_api/lat_long.h
@@ -7898,6 +7918,18 @@ Profile::ProfileAttribution::ProfileAttribution(Json::Value* storage)
 Profile::ProfileAttribution::~ProfileAttribution() {
 }
 
+// Properties.
+
+const LatLong Profile::ProfileAttribution::get_geo() const {
+   const Json::Value& storage = Storage("geo");
+   return googleapis_client::JsonValueToCppValueHelper<LatLong >(storage);
+}
+
+LatLong Profile::ProfileAttribution::mutable_geo() {
+  Json::Value* storage = MutableStorage("geo");
+  return googleapis_client::JsonValueToMutableCppValueHelper<LatLong >(storage);
+}
+
 // Object factory method (static).
 Profile::ProfileId* Profile::ProfileId::New() {
   return new googleapis_client::JsonCppCapsule<ProfileId>;
@@ -7916,6 +7948,8 @@ Profile::ProfileId::ProfileId(Json::Value* storage)
 // Standard destructor.
 Profile::ProfileId::~ProfileId() {
 }
+
+// Properties.
 // Object factory method (static).
 Profile* Profile::New() {
   return new googleapis_client::JsonCppCapsule<Profile>;
@@ -7934,6 +7968,8 @@ Profile::Profile(Json::Value* storage)
 // Standard destructor.
 Profile::~Profile() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/profile.cc
 === begin: ./google/kitch_sink_api/profile.h
@@ -8440,6 +8476,8 @@ Rule::RuleSubmissions::RuleSubmissions(Json::Value* storage)
 // Standard destructor.
 Rule::RuleSubmissions::~RuleSubmissions() {
 }
+
+// Properties.
 // Object factory method (static).
 Rule* Rule::New() {
   return new googleapis_client::JsonCppCapsule<Rule>;
@@ -8458,6 +8496,8 @@ Rule::Rule(Json::Value* storage)
 // Standard destructor.
 Rule::~Rule() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/rule.cc
 === begin: ./google/kitch_sink_api/rule.h
@@ -8755,6 +8795,8 @@ Series::SeriesCounters::SeriesCountersCounters::SeriesCountersCounters(Json::Val
 // Standard destructor.
 Series::SeriesCounters::SeriesCountersCounters::~SeriesCountersCounters() {
 }
+
+// Properties.
 // Object factory method (static).
 Series::SeriesCounters* Series::SeriesCounters::New() {
   return new googleapis_client::JsonCppCapsule<SeriesCounters>;
@@ -8774,6 +8816,8 @@ Series::SeriesCounters::SeriesCounters(Json::Value* storage)
 Series::SeriesCounters::~SeriesCounters() {
 }
 
+// Properties.
+
 // Object factory method (static).
 Series::SeriesId* Series::SeriesId::New() {
   return new googleapis_client::JsonCppCapsule<SeriesId>;
@@ -8792,6 +8836,8 @@ Series::SeriesId::SeriesId(Json::Value* storage)
 // Standard destructor.
 Series::SeriesId::~SeriesId() {
 }
+
+// Properties.
 // Object factory method (static).
 Series* Series::New() {
   return new googleapis_client::JsonCppCapsule<Series>;
@@ -8810,6 +8856,8 @@ Series::Series(Json::Value* storage)
 // Standard destructor.
 Series::~Series() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/series.cc
 === begin: ./google/kitch_sink_api/series.h
@@ -9712,6 +9760,18 @@ SeriesList::SeriesList(Json::Value* storage)
 // Standard destructor.
 SeriesList::~SeriesList() {
 }
+
+// Properties.
+
+const googleapis_client::JsonCppArray<Series > SeriesList::get_items() const {
+   const Json::Value& storage = Storage("items");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<Series > >(storage);
+}
+
+googleapis_client::JsonCppArray<Series > SeriesList::mutable_items() {
+  Json::Value* storage = MutableStorage("items");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<Series > >(storage);
+}
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/series_list.cc
 === begin: ./google/kitch_sink_api/series_list.h
@@ -9929,6 +9989,8 @@ Submission::SubmissionAttribution::SubmissionAttribution(Json::Value* storage)
 Submission::SubmissionAttribution::~SubmissionAttribution() {
 }
 
+// Properties.
+
 // Object factory method (static).
 Submission::SubmissionCounters* Submission::SubmissionCounters::New() {
   return new googleapis_client::JsonCppCapsule<SubmissionCounters>;
@@ -9947,6 +10009,8 @@ Submission::SubmissionCounters::SubmissionCounters(Json::Value* storage)
 // Standard destructor.
 Submission::SubmissionCounters::~SubmissionCounters() {
 }
+
+// Properties.
 
 // Object factory method (static).
 Submission::SubmissionId* Submission::SubmissionId::New() {
@@ -9967,6 +10031,8 @@ Submission::SubmissionId::SubmissionId(Json::Value* storage)
 Submission::SubmissionId::~SubmissionId() {
 }
 
+// Properties.
+
 // Object factory method (static).
 Submission::SubmissionParentSubmissionId* Submission::SubmissionParentSubmissionId::New() {
   return new googleapis_client::JsonCppCapsule<SubmissionParentSubmissionId>;
@@ -9985,6 +10051,8 @@ Submission::SubmissionParentSubmissionId::SubmissionParentSubmissionId(Json::Val
 // Standard destructor.
 Submission::SubmissionParentSubmissionId::~SubmissionParentSubmissionId() {
 }
+
+// Properties.
 // Object factory method (static).
 Submission* Submission::New() {
   return new googleapis_client::JsonCppCapsule<Submission>;
@@ -10002,6 +10070,38 @@ Submission::Submission(Json::Value* storage)
 
 // Standard destructor.
 Submission::~Submission() {
+}
+
+// Properties.
+
+const googleapis_client::JsonCppArray<LatLong > Submission::get_geo() const {
+   const Json::Value& storage = Storage("geo");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<LatLong > >(storage);
+}
+
+googleapis_client::JsonCppArray<LatLong > Submission::mutable_geo() {
+  Json::Value* storage = MutableStorage("geo");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<LatLong > >(storage);
+}
+
+const googleapis_client::JsonCppArray<ModeratorTopicsResourcePartial > Submission::get_topics() const {
+   const Json::Value& storage = Storage("topics");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<ModeratorTopicsResourcePartial > >(storage);
+}
+
+googleapis_client::JsonCppArray<ModeratorTopicsResourcePartial > Submission::mutable_topics() {
+  Json::Value* storage = MutableStorage("topics");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<ModeratorTopicsResourcePartial > >(storage);
+}
+
+const googleapis_client::JsonCppAssociativeArray<Translation > Submission::get_translations() const {
+   const Json::Value& storage = Storage("translations");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppAssociativeArray<Translation > >(storage);
+}
+
+googleapis_client::JsonCppAssociativeArray<Translation > Submission::mutable_translations() {
+  Json::Value* storage = MutableStorage("translations");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppAssociativeArray<Translation > >(storage);
 }
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/submission.cc
@@ -11078,6 +11178,18 @@ SubmissionList::SubmissionList(Json::Value* storage)
 // Standard destructor.
 SubmissionList::~SubmissionList() {
 }
+
+// Properties.
+
+const googleapis_client::JsonCppArray<Submission > SubmissionList::get_items() const {
+   const Json::Value& storage = Storage("items");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<Submission > >(storage);
+}
+
+googleapis_client::JsonCppArray<Submission > SubmissionList::mutable_items() {
+  Json::Value* storage = MutableStorage("items");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<Submission > >(storage);
+}
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/submission_list.cc
 === begin: ./google/kitch_sink_api/submission_list.h
@@ -11292,6 +11404,8 @@ Tag::TagId::TagId(Json::Value* storage)
 // Standard destructor.
 Tag::TagId::~TagId() {
 }
+
+// Properties.
 // Object factory method (static).
 Tag* Tag::New() {
   return new googleapis_client::JsonCppCapsule<Tag>;
@@ -11309,6 +11423,18 @@ Tag::Tag(Json::Value* storage)
 
 // Standard destructor.
 Tag::~Tag() {
+}
+
+// Properties.
+
+const Geometry Tag::get_geometry() const {
+   const Json::Value& storage = Storage("geometry");
+   return googleapis_client::JsonValueToCppValueHelper<Geometry >(storage);
+}
+
+Geometry Tag::mutable_geometry() {
+  Json::Value* storage = MutableStorage("geometry");
+  return googleapis_client::JsonValueToMutableCppValueHelper<Geometry >(storage);
 }
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/tag.cc
@@ -11887,6 +12013,8 @@ Topic2::Topic2Counters::Topic2Counters(Json::Value* storage)
 Topic2::Topic2Counters::~Topic2Counters() {
 }
 
+// Properties.
+
 // Object factory method (static).
 Topic2::Topic2Id* Topic2::Topic2Id::New() {
   return new googleapis_client::JsonCppCapsule<Topic2Id>;
@@ -11905,6 +12033,8 @@ Topic2::Topic2Id::Topic2Id(Json::Value* storage)
 // Standard destructor.
 Topic2::Topic2Id::~Topic2Id() {
 }
+
+// Properties.
 // Object factory method (static).
 Topic2* Topic2::New() {
   return new googleapis_client::JsonCppCapsule<Topic2>;
@@ -11922,6 +12052,28 @@ Topic2::Topic2(Json::Value* storage)
 
 // Standard destructor.
 Topic2::~Topic2() {
+}
+
+// Properties.
+
+const Submission Topic2::get_featured_submission() const {
+   const Json::Value& storage = Storage("featuredSubmission");
+   return googleapis_client::JsonValueToCppValueHelper<Submission >(storage);
+}
+
+Submission Topic2::mutable_featuredSubmission() {
+  Json::Value* storage = MutableStorage("featuredSubmission");
+  return googleapis_client::JsonValueToMutableCppValueHelper<Submission >(storage);
+}
+
+const googleapis_client::JsonCppArray<Rule > Topic2::get_rules() const {
+   const Json::Value& storage = Storage("rules");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<Rule > >(storage);
+}
+
+googleapis_client::JsonCppArray<Rule > Topic2::mutable_rules() {
+  Json::Value* storage = MutableStorage("rules");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<Rule > >(storage);
 }
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/topic2.cc
@@ -12701,6 +12853,8 @@ Topic::TopicCounters::TopicCounters(Json::Value* storage)
 Topic::TopicCounters::~TopicCounters() {
 }
 
+// Properties.
+
 // Object factory method (static).
 Topic::TopicId* Topic::TopicId::New() {
   return new googleapis_client::JsonCppCapsule<TopicId>;
@@ -12719,6 +12873,8 @@ Topic::TopicId::TopicId(Json::Value* storage)
 // Standard destructor.
 Topic::TopicId::~TopicId() {
 }
+
+// Properties.
 
 
 // Object factory method (static).
@@ -12740,6 +12896,8 @@ Topic::TopicRules::TopicRulesSubmissions::TopicRulesSubmissions(Json::Value* sto
 Topic::TopicRules::TopicRulesSubmissions::~TopicRulesSubmissions() {
 }
 
+// Properties.
+
 // Object factory method (static).
 Topic::TopicRules::TopicRulesVotes* Topic::TopicRules::TopicRulesVotes::New() {
   return new googleapis_client::JsonCppCapsule<TopicRulesVotes>;
@@ -12758,6 +12916,8 @@ Topic::TopicRules::TopicRulesVotes::TopicRulesVotes(Json::Value* storage)
 // Standard destructor.
 Topic::TopicRules::TopicRulesVotes::~TopicRulesVotes() {
 }
+
+// Properties.
 // Object factory method (static).
 Topic::TopicRules* Topic::TopicRules::New() {
   return new googleapis_client::JsonCppCapsule<TopicRules>;
@@ -12776,6 +12936,8 @@ Topic::TopicRules::TopicRules(Json::Value* storage)
 // Standard destructor.
 Topic::TopicRules::~TopicRules() {
 }
+
+// Properties.
 // Object factory method (static).
 Topic* Topic::New() {
   return new googleapis_client::JsonCppCapsule<Topic>;
@@ -12794,6 +12956,8 @@ Topic::Topic(Json::Value* storage)
 // Standard destructor.
 Topic::~Topic() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/topic.cc
 === begin: ./google/kitch_sink_api/topic.h
@@ -13884,6 +14048,18 @@ TopicList::TopicList(Json::Value* storage)
 // Standard destructor.
 TopicList::~TopicList() {
 }
+
+// Properties.
+
+const googleapis_client::JsonCppArray<Topic > TopicList::get_items() const {
+   const Json::Value& storage = Storage("items");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<Topic > >(storage);
+}
+
+googleapis_client::JsonCppArray<Topic > TopicList::mutable_items() {
+  Json::Value* storage = MutableStorage("items");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<Topic > >(storage);
+}
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/topic_list.cc
 === begin: ./google/kitch_sink_api/topic_list.h
@@ -14094,6 +14270,8 @@ Translation::Translation(Json::Value* storage)
 // Standard destructor.
 Translation::~Translation() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/translation.cc
 === begin: ./google/kitch_sink_api/translation.h
@@ -14327,6 +14505,8 @@ Vote::Vote(Json::Value* storage)
 // Standard destructor.
 Vote::~Vote() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/vote.cc
 === begin: ./google/kitch_sink_api/vote.h
@@ -14655,6 +14835,18 @@ VoteList::VoteList(Json::Value* storage)
 
 // Standard destructor.
 VoteList::~VoteList() {
+}
+
+// Properties.
+
+const googleapis_client::JsonCppArray<Vote > VoteList::get_items() const {
+   const Json::Value& storage = Storage("items");
+   return googleapis_client::JsonValueToCppValueHelper<googleapis_client::JsonCppArray<Vote > >(storage);
+}
+
+googleapis_client::JsonCppArray<Vote > VoteList::mutable_items() {
+  Json::Value* storage = MutableStorage("items");
+  return googleapis_client::JsonValueToMutableCppValueHelper<googleapis_client::JsonCppArray<Vote > >(storage);
 }
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/vote_list.cc
