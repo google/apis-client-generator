@@ -29,22 +29,16 @@ _GENERATORS_BY_LANGUAGE = {
     'dart': dart_generator.DartGenerator,
     'gwt': gwt_generator.GwtGenerator,
     'java': java_generator.Java14Generator,
+    # TODO(user): Consider cleaning up all the old java/*/features.json files
+    # to use 'java' as the generator. It seems right to keep the ability to
+    # have different version stamp styles so we can support old code
+    # generators, but this feature is of dubious value.
+    'java1_15': java_generator.Java14Generator,
     'objc': objc_generator.ObjCGenerator,
     'php': php_generator.PHPGenerator,
     'python': python_generator.PythonGenerator,
     'sample': sample_generator.SampleGenerator,
     }
-
-
-_ALL_GENERATORS = {
-    'java1_12': java_generator.Java12Generator,
-    'java1_13': java_generator.Java12Generator,
-    'java1_14': java_generator.Java14Generator,
-    'java1_15': java_generator.Java14Generator,
-}
-
-
-_ALL_GENERATORS.update(_GENERATORS_BY_LANGUAGE)
 
 
 def GetGeneratorByLanguage(language_or_generator):
@@ -62,7 +56,7 @@ def GetGeneratorByLanguage(language_or_generator):
   """
 
   try:
-    return _ALL_GENERATORS[language_or_generator]
+    return _GENERATORS_BY_LANGUAGE[language_or_generator]
   except KeyError:
     raise ValueError('Unsupported language: %s' % language_or_generator)
 
