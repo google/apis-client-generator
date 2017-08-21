@@ -544,6 +544,9 @@
     },
     "updated": {
      "type": "string"
+    },
+    "nextPageToken": {
+     "type": "string"
     }
    }
   },
@@ -622,6 +625,9 @@
     "kind": {
      "type": "string",
      "default": "buzz#albumsFeed"
+    },
+    "nextPageToken": {
+     "type": "string"
     }
    }
   },
@@ -853,6 +859,9 @@
     },
     "updated": {
      "type": "string"
+    },
+    "nextPageToken": {
+     "type": "string"
     }
    }
   },
@@ -1063,6 +1072,9 @@
        }
       }
      }
+    },
+    "nextPageToken": {
+     "type": "string"
     }
    }
   },
@@ -1104,6 +1116,9 @@
     },
     "totalResults": {
      "type": "any"
+    },
+    "nextPageToken": {
+     "type": "string"
     }
    }
   },
@@ -1553,6 +1568,9 @@
     "kind": {
      "type": "string",
      "default": "buzz#photosFeed"
+    },
+    "pageToken": {
+     "type": "string"
     }
    }
   },
@@ -1603,6 +1621,9 @@
      "type": "any"
     },
     "updated": {
+     "type": "string"
+    },
+    "nextPageToken": {
      "type": "string"
     }
    }
@@ -1664,6 +1685,15 @@
     "",
     ""
    ]
+  },
+  "PageTokenBody": {
+   "id": "PageTokenBody",
+   "type": "object",
+   "properties": {
+    "pageToken": {
+     "type": "string"
+    }
+   }
   }
  },
  "methods": {
@@ -1813,7 +1843,7 @@
        "repeated": true,
        "location": "query"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -1991,7 +2021,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -2092,7 +2122,7 @@
     "track": {
      "path": "activities/track",
      "rpcMethod": "chili.activities.track",
-     "httpMethod": "GET",
+     "httpMethod": "POST",
      "description": "Get real-time activity tracking information",
      "parameters": {
       "alt": {
@@ -2112,11 +2142,6 @@
       "bbox": {
        "location": "query",
        "description": "Bounding box to use in a geographic location query.",
-       "type": "string"
-      },
-      "c": {
-       "location": "query",
-       "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
@@ -2157,6 +2182,9 @@
        "description": "Radius to use in a geographic location query.",
        "type": "string"
       }
+     },
+     "request": {
+      "$ref": "PageTokenBody"
      },
      "response": {
       "$ref": "ActivityFeed"
@@ -2223,6 +2251,11 @@
        "location": "path",
        "required": true,
        "description": "ID of the user whose post to update.",
+       "type": "string"
+      },
+      "pageToken": {
+       "location": "query",
+       "description": "A continuation token that allows pagination.",
        "type": "string"
       }
      },
@@ -2417,7 +2450,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -2693,7 +2726,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -2887,7 +2920,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -2964,7 +2997,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -3023,7 +3056,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -3100,7 +3133,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -3346,7 +3379,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -3622,7 +3655,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "nextPageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
@@ -3670,7 +3703,7 @@
        ],
        "default": "atom"
       },
-      "c": {
+      "pageToken": {
        "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"

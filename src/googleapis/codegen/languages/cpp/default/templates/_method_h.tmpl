@@ -51,7 +51,7 @@ The standard constructor takes all the required method parameters.
     const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %},
     const {{ method.requestType.packageRelativeClassName }}* _metadata_{% else %},
     const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %}{% endif %}{% if method.mediaUpload %},
-    const StringPiece& _media_content_type_,
+    const char* _media_content_type_,
     {{ api.client_namespace }}::DataReader* _media_content_reader_{% endif %});
 
 {% doc_comment noblock %}
@@ -70,7 +70,7 @@ This is a helper function used to resolve templated variables in the URI.
 @param[in, out] target The string to append the value to.
 {% enddoc_comment %}
 virtual {{ api.status_type }} AppendVariable(
-      const StringPiece& variable_name,
+      const string& variable_name,
       const {{ api.client_namespace }}::UriTemplateConfig& config,
       string* target);
 {% if method.queryParameters %}
@@ -132,7 +132,7 @@ void set_use_media_download(bool use) {
   DISALLOW_COPY_AND_ASSIGN({{ method.className }});
 {% endfilter %}
 };
-{% if method.isPageable %}
+{% if method.isPagingStyleStandard %}
 typedef {{ api.client_namespace }}::ServiceRequestPager<
             {{ method.className }},
             {{ method.responseType.className }}>

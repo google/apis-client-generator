@@ -37,8 +37,8 @@ Returns a string denoting the type of this data object.
 
 @return <code>{{ api.module.name }}::{{ current_model.className }}</code>
 {% enddoc_comment %}
-const StringPiece GetTypeName() const {
-  return StringPiece("{{ api.module.name }}::{{ current_model.className }}");
+const char* GetTypeName() const {
+  return "{{ api.module.name }}::{{ current_model.className }}";
 }
 {% for property in current_model.properties %}
 {% doc_comment noblock %}

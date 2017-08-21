@@ -33,7 +33,7 @@ class {{ api.className }}BaseRequest
       const {{ api.client_namespace }}::ClientService* service,
       {{ api.client_namespace }}::AuthorizationCredential* credential,
       {{ api.client_namespace }}::HttpRequest::HttpMethod method,
-      const StringPiece& uri_template);
+      const string& uri_template);
 
   /**
    * Standard destructor.
@@ -52,7 +52,7 @@ class {{ api.className }}BaseRequest
    * @param[in, out] target The string to append the value to.
    */
   virtual {{ api.status_type }} AppendVariable(
-      const StringPiece& variable_name,
+      const string& variable_name,
       const {{ api.client_namespace }}::UriTemplateConfig& config,
       string* target);
 

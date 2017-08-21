@@ -53,6 +53,8 @@ _RECOGNIZED_GOOGLE_DOMAINS = (
     'googleplex.com'
 )
 
+# Recognized names of request and response fields used for paging.
+_PAGE_TOKEN_NAMES = ('pageToken', 'nextPageToken')
 
 _LOGGER = logging.getLogger('codegen')
 
@@ -759,12 +761,28 @@ class Method(template_objects.CodeObject):
 
   def _InitPageable(self, api):
     response_type = self.values.get('responseType')
-    if (response_type != api.void_type
-        and self.FindCodeObjectWithWireName(
-            response_type.values.get('properties'), 'nextPageToken')
-        and self.FindCodeObjectWithWireName(
-            self.optional_parameters, 'pageToken')):
-      self.SetTemplateValue('isPageable', True)
+    if response_type == api.void_type:
+      return
+    next_page_token_name = self.FindPageToken(
+        response_type.values.get('properties'))
+    if not next_page_token_name:
+      return
+    is_page_token_parameter = True
+    page_token_name = self.FindPageToken(self.optional_parameters)
+    if not page_token_name:
+      # page token may be field of request body instead of query parameter
+      is_page_token_parameter = False
+      request_type = self.values.get('requestType')
+      if request_type:
+        page_token_name = self.FindPageToken(
+            request_type.values.get('properties'))
+    if not page_token_name:
+      return
+    self.SetTemplateValue('isPageable', True)
+    self.SetTemplateValue('isPagingStyleStandard',
+                          (is_page_token_parameter and
+                           page_token_name == 'pageToken' and
+                           next_page_token_name == 'nextPageToken'))
 
   def _SetUploadTemplateValues(self, upload_protocol, protocol_dict):
     """Sets upload specific template values.
@@ -820,6 +838,21 @@ class Method(template_objects.CodeObject):
     if not things: return None
     for e in things:
       if e.values['wireName'] == wire_name: return e
+    return None
+
+  @staticmethod
+  def FindPageToken(things):
+    """Looks for an element with a wireName like a page token.
+
+    Args:
+      things: (array of DataType) List of parameters or properties to search.
+
+    Returns:
+      None or page token name found.
+    """
+    for token_name in _PAGE_TOKEN_NAMES:
+      if Method.FindCodeObjectWithWireName(things, token_name):
+        return token_name
     return None
 
   #

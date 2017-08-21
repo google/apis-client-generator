@@ -36,10 +36,10 @@ this is NULL then do not upload any media and ignore _media_content_type_.{% end
     const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %},
     const {{ method.requestType.packageRelativeClassName }}* _metadata_{% else %},
     const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %}{% endif %}{% if method.mediaUpload %},
-    const StringPiece& _media_content_type_,
+    const char* _media_content_type_,
     {{ api.client_namespace }}::DataReader* _media_content_reader_{% endif %}) const;
 
-{% if method.isPageable %}{% doc_comment noblock %}
+{% if method.isPagingStyleStandard %}{% doc_comment noblock %}
 Creates a pager for iterating over incremental result pages.{% if method.deprecated %}
 @deprecated{% endif %}
 @param[in] _credential_  NULL credentials will not authorize the request.{% for p in method.requiredParameters %}

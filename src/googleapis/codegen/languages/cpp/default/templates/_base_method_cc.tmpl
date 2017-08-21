@@ -2,7 +2,7 @@
       const {{ api.client_namespace }}::ClientService* service,
       {{ api.client_namespace }}::AuthorizationCredential* credential,
       {{ api.client_namespace }}::HttpRequest::HttpMethod method,
-      const StringPiece& uri_template){% indent 2 %}
+      const string& uri_template){% indent 2 %}
 : {{ api.client_namespace }}::ClientServiceRequest(
       service, credential, method, uri_template){% call_template _declare_method_attributes_cc parameters=api.parameters %}{% endindent %} {
 }
@@ -12,7 +12,7 @@
 
 {% filter noblanklines %}
 {{ api.status_type }} {{ api.className }}BaseRequest::AppendVariable(
-    const StringPiece& variable_name,
+    const string& variable_name,
     const {{ api.client_namespace }}::UriTemplateConfig& config,
     string* target) {
 {% for p in api.parameters %}

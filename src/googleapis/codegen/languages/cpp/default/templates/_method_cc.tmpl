@@ -72,7 +72,7 @@ const {{ api.client_namespace }}::MediaUploadSpec
     {% end_parameter %}
   {% endif %}
   {% if method.mediaUpload %}
-    {% parameter %}const StringPiece& _media_content_type_{% end_parameter %}
+    {% parameter %}const char* _media_content_type_{% end_parameter %}
     {% parameter %}{{ api.client_namespace }}::DataReader* _media_content_reader_{% end_parameter %}
   {% endif %}
   {% end_parameter_list %}){% endindent %}
@@ -100,7 +100,7 @@ const {{ api.client_namespace }}::MediaUploadSpec
     }
 {% endif %}
     uploader->set_media_content_reader(
-        _media_content_type_.as_string(), _media_content_reader_);
+        _media_content_type_, _media_content_reader_);
     ResetMediaUploader(uploader);
 {% if method.requestType %}
   } else {
@@ -131,7 +131,7 @@ const {{ api.client_namespace }}::MediaUploadSpec
 {% endfilter %}
 {% filter noblanklines %}
 {% if method.parameters %}{{ api.status_type }} {{ method.className }}::AppendVariable(
-        const StringPiece& variable_name,
+        const string& variable_name,
         const {{ api.client_namespace }}::UriTemplateConfig& config,
         string* target) {
 {% for p in method.requiredParameters %}

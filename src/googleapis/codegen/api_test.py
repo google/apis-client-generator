@@ -148,6 +148,41 @@ class ApiTest(basetest.TestCase):
     tests_executed += 1
     self.assertEquals(7, tests_executed)
 
+  def testPageable(self):
+    """Make sure pageable methods are identified correctly."""
+    api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
+
+    # non-pageable method
+    count = api.MethodByName('chili.activities.count')
+    self.assertIsNone(count.values.get('isPageable'))
+    self.assertIsNone(count.values.get('isPagingStyleStandard'))
+
+    # non-pageable method with request page token
+    update = api.MethodByName('chili.activities.update')
+    self.assertIsNone(update.values.get('isPageable'))
+    self.assertIsNone(update.values.get('isPagingStyleStandard'))
+
+    # non-pageable method with response page token
+    list_related = api.MethodByName('chili.related.list')
+    self.assertIsNone(list_related.values.get('isPageable'))
+    self.assertIsNone(list_related.values.get('isPagingStyleStandard'))
+
+    # pageable method with common page token names
+    list_activities = api.MethodByName('chili.activities.list')
+    self.assertEquals(list_activities.values.get('isPageable'), True)
+    self.assertEquals(list_activities.values.get('isPagingStyleStandard'),
+                      True)
+
+    # pageable method with uncommon page token names
+    list_by_album = api.MethodByName('chili.photos.listByAlbum')
+    self.assertEquals(list_by_album.values.get('isPageable'), True)
+    self.assertEquals(list_by_album.values.get('isPagingStyleStandard'), False)
+
+    # pageable method with page token in request body
+    track = api.MethodByName('chili.activities.track')
+    self.assertEquals(track.values.get('isPageable'), True)
+    self.assertEquals(track.values.get('isPagingStyleStandard'), False)
+
   def testSchemaLoadingAsString(self):
     """Test for the "schema as strings" representation."""
     api = self.ApiFromDiscoveryDoc('foo.v1.json')

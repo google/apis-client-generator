@@ -341,6 +341,34 @@ class CppLanguageModelTest(basetest.TestCase):
         '<dt>B\n<dd>description B.\n</dl>\n %s' % blurb)
 
 
+  def testVersionPackage(self):
+    gen = cpp_generator.CppGenerator(
+        discovery={
+            'name': 'dummy',
+            'version': 'v1',
+            'resources': {},
+            'schemas': {
+                'Bar': {
+                    'id': 'Bar',
+                    'type': 'object',
+                    'properties': {
+                        'n32': {
+                            'type': 'integer',
+                            'format': 'int32',
+                            },
+                        'un64': {
+                            'type': 'integer',
+                            'format': 'uint64',
+                            },
+                        }
+                    }
+                }
+            },
+        options={'version_package': True})
+    gen.AnnotateApiForLanguage(gen.api)
+    self.assertEquals('google/dummy_api_v1', gen.api.module.path)
+    self.assertEquals('google_dummy_api_v1', gen.api.module.name)
+
   def testReservedWords(self):
     gen = cpp_generator.CppGenerator({
         'name': 'dummy',

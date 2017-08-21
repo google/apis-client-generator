@@ -50,7 +50,7 @@
   {% endif %}{% endif %}
   {% if method.mediaUpload %}
     {% parameter %}
-      const StringPiece& _media_content_type_
+      const char* _media_content_type_
     {% end_parameter %}
     {% parameter %}
       {{ api.client_namespace }}::DataReader* _media_content_reader_
@@ -77,7 +77,7 @@
   {% end_parameter_list %});
 }
 
-{% if method.isPageable %}
+{% if method.isPagingStyleStandard %}
 {{ method.className }}Pager* {{ method.parent.packageRelativeClassName }}::New{{ method.undecoratedClassName }}Pager({% parameter_list %}
   {% parameter %}
     {{ api.client_namespace }}::AuthorizationCredential* _credential_
@@ -90,7 +90,7 @@
       const {{ method.requestType.packageRelativeClassName }}& _metadata_
     {% end_parameter %}
     {% parameter %}
-      const StringPiece& _media_content_type_,
+      const char* _media_content_type_,
     {% end_parameter %}
     {% parameter %}
       {{ api.client_namespace }}::DataReader* _media_reader_
