@@ -35,6 +35,11 @@ class {{ api.ownerName }}_Service_{{ api.className }}_{{ model.className }} {% i
  {% endif %}
 {% endfilter %}{% for property in model.properties %}
 {% filter noblanklines %}
+{% if property.typeHint %}
+  /**
+   * @param {{ property.typeHint }}
+   */
+{% endif %}
   {% if property.type == "array" or property.dataType == "map" or not property.typeHint %}
   public function {{ property.setterName }}(${{ property.memberName }})
   {% else %}
@@ -44,6 +49,11 @@ class {{ api.ownerName }}_Service_{{ api.className }}_{{ model.className }} {% i
     $this->{{ property.memberName }} = ${{ property.memberName }};
   }
 
+{% if property.typeHint %}
+  /**
+   * @return {{ property.typeHint }}
+   */
+{% endif %}
   public function {{ property.getterName }}()
   {
     return $this->{{ property.memberName }};
