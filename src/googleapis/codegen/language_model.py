@@ -115,6 +115,7 @@ class LanguageModel(object):
   setter_policy = NamingPolicy()
   unset_policy = NamingPolicy()  # clear the element in the object
   has_policy = NamingPolicy()  # is the element set in the object?
+  enum_policy = NamingPolicy()  # What would the element be called if an enum?
 
   # The list of reserved words in this language. ToXxxName methods must never
   # return one of these.
@@ -151,6 +152,7 @@ class LanguageModel(object):
         'parameter_name': self.parameter_name_policy,
         'setter': self.setter_policy,
         'unset': self.unset_policy,
+        'enum': self.enum_policy,
         }
 
   def _Integer(self, data_value):
@@ -239,6 +241,20 @@ class LanguageModel(object):
     raise NotImplementedError(
         'Subclasses of LanguageModel must implement GetCodeTypeFromDictionary')
     # COV_NF_END
+
+  def GetPrimitiveTypeFromDictionary(self, unused_json_schema):
+    """Convert a json schema primitive type into a language primitive.
+
+    Subclasses should override as appropriate. This should be the primitive
+    form of the result from GetCodeTypeFromDictionary(), or None if no primitive
+    exists.
+
+    Args:
+      unused_json_schema: (dict) The defintion dictionary for this type
+    Returns:
+      A name suitable for use as a class in the generator's target language.
+    """
+    return None
 
   def ArrayOf(self, variable, type_name):
     """Produce the string declaring an array of a data type.

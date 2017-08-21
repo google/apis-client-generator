@@ -454,6 +454,12 @@ class Property(template_objects.CodeObject):
     return self._data_type.safe_code_type
 
   @property
+  def primitive_data_type(self):
+    if self._language_model:
+      self._data_type.SetLanguageModel(self._language_model)
+    return self._data_type.primitive_data_type
+
+  @property
   def data_type(self):
     return self._data_type
 

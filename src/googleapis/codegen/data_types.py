@@ -84,6 +84,11 @@ class DataType(template_objects.CodeObject):
     return self.safeClassName or self.code_type
 
   @property
+  def primitive_data_type(self):
+    """Returns the language specific primitive representing this datatype."""
+    return None
+
+  @property
   def class_name(self):
     return self.GetTemplateValue('className')
 
@@ -154,6 +159,14 @@ class PrimitiveDataType(DataType):
   def safe_code_type(self):
     """Returns the safe code type representing this datatype."""
     return self.code_type
+
+  @property
+  def primitive_data_type(self):
+    """Returns the language specific type representing this datatype."""
+    if self.language_model:
+      s = self.language_model.GetPrimitiveTypeFromDictionary(self._def_dict)
+      return s
+    return None
 
   @property
   def json_format(self):
@@ -500,6 +513,11 @@ class Enum(PrimitiveDataType):
       return self.ValidateAndSanitizeComment(self.StripHTML(desc))
     pairs = zip(names, values, map(FixDescription, descriptions))
     self.SetTemplateValue('pairs', pairs)
+
+  @property
+  def enum_name(self):
+    return self.language_model.ApplyPolicy('enum', self,
+                                           self.values['wireName'])
 
 
 def CreatePrimitiveDataType(def_dict, api, wire_name, parent=None):
