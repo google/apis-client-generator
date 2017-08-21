@@ -1,24 +1,18 @@
 #!/usr/bin/python2.7
 """Setup script for Google APIs Client Generator."""
 
-from ez_setup import use_setuptools
-use_setuptools()
-
-from setuptools import find_packages  # pylint:disable=g-import-not-at-top
-from setuptools import setup
+import setuptools
 
 
-setup(
+setuptools.setup(
     name='google-apis-client-generator',
-    version='1.4.2',
+    version='1.4.3',
     description='Google Apis Client Generator',
     long_description=open('README').read(),
-    author='Tony Aiuto',
-    author_email='aiuto@google.com',
-    maintainer='Jacob Smullyan',
-    maintainer_email='smulloni@google.com',
+    author='Google Inc.',
+    author_email='opensource-apis-client-generator@google.com',
     url='https://github.com/google/apis-client-generator/',
-    packages=find_packages('src'),
+    packages=setuptools.find_packages('src'),
     package_dir={'': 'src'},
     entry_points={
         'console_scripts': [
@@ -28,11 +22,9 @@ setup(
              'googleapis.codegen.script_stubs:RunExpandTemplates')
             ]},
     include_package_data=True,
-    # TODO(user): Any 1.8 version is OK, but django<1.9 seems to do the wrong
-    #     thing. It installs version 1.9rc1, which is not compatible.
-    install_requires=['django==1.8.12',
-                      'httplib2',
-                      'google-apputils',
-                      'python-gflags',
-                      'google-api-python-client'],
+    install_requires=['django>=1.4.0, <1.9.0dev',
+                      'httplib2>=0.9.2, <2.0.0dev',
+                      'google-apputils>=0.4.2, <2.0.0dev',
+                      'python-gflags>=2.0, <4.0.0dev',
+                      'google-api-python-client>=1.0.0, <2.0.0dev'],
     zip_safe=False)
