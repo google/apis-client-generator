@@ -278,6 +278,13 @@ class PhpLanguageModel(language_model.LanguageModel):
 class PHPApi(api.Api):
   """An Api with PHP annotations."""
 
+  def __init__(self, discovery_doc, language=None):
+    super(PHPApi, self).__init__(discovery_doc, language)
+    # We've been advised by the open source office that the correct legal thing
+    # to do is to hard-code a copyright date. Generated clients should always
+    # display the year 2014, even if they are generated in subsequent years.
+    self.SetTemplateValue('copyright', 'Copyright 2014 Google Inc.\n')
+
   # pylint: disable=unused-argument
   # The parameter element_type is deliberately unused since PHP doesn't
   # support nested classes.
