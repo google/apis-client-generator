@@ -52,6 +52,14 @@ public class {{ api.className }} extends com.google.api.client.googleapis.servic
   public static final String DEFAULT_SERVICE_PATH = "{{ api.servicePath }}";
 
   /**
+   * The default encoded batch path of the service. This is determined when the library is
+   * generated and normally should not be changed.
+   *
+   * @since 1.23
+   */
+  public static final String DEFAULT_BATCH_PATH = "{{ api.batchPath }}";
+
+  /**
    * The default encoded base URL of the service. This is determined when the library is generated
    * and normally should not be changed.
    */
@@ -152,6 +160,7 @@ public class {{ api.className }} extends com.google.api.client.googleapis.servic
           httpRequestInitializer,
           {% if api.dataWrapper %}true{% else %}false{% endif %});
 {% endfilter %}
+      setBatchPath(DEFAULT_BATCH_PATH);
     }
 
     /** Builds a new instance of {@link {{ api.className }}}. */
@@ -168,6 +177,11 @@ public class {{ api.className }} extends com.google.api.client.googleapis.servic
     @Override
     public Builder setServicePath(String servicePath) {
       return (Builder) super.setServicePath(servicePath);
+    }
+
+    @Override
+    public Builder setBatchPath(String batchPath) {
+      return (Builder) super.setBatchPath(batchPath);
     }
 
     @Override

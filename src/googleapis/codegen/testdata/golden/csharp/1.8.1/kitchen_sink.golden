@@ -260,7 +260,7 @@ namespace Google.Apis.KitchSink.v1.Data
             public virtual System.Nullable<int> MinusVotes { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("none_votes")]
-            public virtual System.Nullable<int> NoneVotes { get; set; } 
+            public virtual System.Nullable<ulong> NoneVotes { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("plus_votes")]
             public virtual System.Nullable<int> PlusVotes { get; set; } 

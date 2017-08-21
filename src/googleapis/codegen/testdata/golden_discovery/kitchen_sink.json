@@ -133,7 +133,9 @@
        "type": "integer"
       },
       "none_votes": {
-       "type": "integer"
+       "note": "uint64 is sent as a string in JSON, but languages should make an integral type when possible.",
+       "type": "string",
+       "format": "uint64"
       },
       "plus_votes": {
        "type": "integer"

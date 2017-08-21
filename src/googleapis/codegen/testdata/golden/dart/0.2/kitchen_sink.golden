@@ -2292,7 +2292,7 @@ class SeriesCounters {
 
   core.int minusVotes;
 
-  core.int noneVotes;
+  core.String noneVotes;
 
   core.int plusVotes;
 

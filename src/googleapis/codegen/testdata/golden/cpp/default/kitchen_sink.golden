@@ -94,6 +94,8 @@ Enum::Enum(Json::Value* storage)
 // Standard destructor.
 Enum::~Enum() {
 }
+
+// Properties.
 }  // namespace google_kitch_sink_api
 === end: ./google/kitch_sink_api/enum.cc
 === begin: ./google/kitch_sink_api/enum.h
@@ -1082,9 +1084,9 @@ class GeometryReference : public googleapis_client::JsonCppData {
 
 namespace google_kitch_sink_api {
 
-const char KitchSinkService::googleapis_API_NAME[] = {"kitch_sink"};
+const char KitchSinkService::googleapis_API_NAME[] = { "kitch_sink" };
 
-const char KitchSinkService::googleapis_API_VERSION[] = {"v1"};
+const char KitchSinkService::googleapis_API_VERSION[] = { "v1" };
 
 const char KitchSinkService::googleapis_API_GENERATOR[] = {
   "google-apis-code-generator 1.5.1 / 0.1.5"};
@@ -9187,17 +9189,17 @@ class Series : public googleapis_client::JsonCppData {
     /**
      * Get the value of the '<code>none_votes</code>' attribute.
      */
-    int32 get_none_votes() const {
+    uint64 get_none_votes() const {
       const Json::Value& storage = Storage("none_votes");
-      return googleapis_client::JsonValueToCppValueHelper<int32 >(storage);
+      return googleapis_client::JsonValueToCppValueHelper<uint64 >(storage);
     }
 
     /**
      * Change the '<code>none_votes</code>' attribute.
      * @param[in] value The new value.
      */
-    void set_none_votes(int32 value) {
-      googleapis_client::SetJsonValueFromCppValueHelper<int32 >(
+    void set_none_votes(uint64 value) {
+      googleapis_client::SetJsonValueFromCppValueHelper<uint64 >(
         value, MutableStorage("none_votes"));
     }
 

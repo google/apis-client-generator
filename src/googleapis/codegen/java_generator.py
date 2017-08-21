@@ -102,43 +102,17 @@ class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
         element.SetTemplateValue(template_value, True)
 
 
-class Java12Generator(BaseJavaGenerator):
-  """A Java generator for language version 1.12 and 1.13."""
-
-
 class Java14Generator(BaseJavaGenerator):
   """A Java generator for language version 1.14 and higher."""
 
   @classmethod
   def _GetDefaultLanguageModel(cls, options=None):
-    return Java14LanguageModel(options=options)
+    return JavaLanguageModel(options=options)
 
-  def AnnotateParameter(self, unused_method, parameter):
-    """Annotate a Parameter with Java specific elements."""
-    self._HandleJsonString(parameter)
 
-  def AnnotateProperty(self, unused_api, prop, unused_schema):
-    """Annotate a Property with Java specific elements."""
-    self._HandleJsonString(prop)
-
-  def _HandleJsonString(self, element):
-    """Handles imports for the specified element.
-
-    Args:
-      element: (Property|Parameter) The property we want to set the import for.
-    """
-    # For collections, we have to get the imports for the first non-collection
-    # up the base_type chain.
-    data_type = element.data_type
-    json_type = data_type.json_type
-    while json_type == 'array' or json_type == 'map':
-      data_type = data_type._base_type  # pylint: disable=protected-access
-      json_type = data_type.json_type
-    json_format = data_type.values.get('format')
-
-    if json_type == 'string' and (json_format == 'int64'
-                                  or json_format == 'uint64'):
-      element.SetTemplateValue('requiresJsonString', True)
+def _SimpleType(class_name, primative_type=None):
+  """Type definition for classes with no primitives or special imports."""
+  return (class_name, ImportDefinition([class_name]), primative_type)
 
 
 class JavaLanguageModel(language_model.LanguageModel):
@@ -153,6 +127,8 @@ class JavaLanguageModel(language_model.LanguageModel):
       language_model.UPPER_CAMEL_CASE, 'get{name}')
   setter_policy = language_model.NamingPolicy(
       language_model.UPPER_CAMEL_CASE, 'set{name}')
+  has_policy = language_model.NamingPolicy(
+      language_model.UPPER_CAMEL_CASE, 'has{name}')
   array_of_policy = language_model.NamingPolicy(
       format_string='java.util.List<{name}>')
   map_of_policy = language_model.NamingPolicy(
@@ -160,34 +136,53 @@ class JavaLanguageModel(language_model.LanguageModel):
   constant_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_UNCAMEL_CASE,
       separator='_')
+  enum_policy = language_model.NamingPolicy(
+      language_model.UPPER_CAMEL_CASE,
+      format_string='{name}Values')
 
   # Dictionary of json type and format to its corresponding data type and
   # import definition. The first import in the imports list is the primary
   # import.
-  TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS = {
-      ('boolean', None): ('Boolean', ImportDefinition(['java.lang.Boolean'])),
-      ('any', None): ('Object', ImportDefinition(['java.lang.Object'])),
-      ('integer', 'int16'): ('Short', ImportDefinition(['java.lang.Short'])),
-      ('integer', 'int32'): ('Integer',
-                             ImportDefinition(['java.lang.Integer'])),
+  _TYPE_BOOLEAN = _SimpleType('java.lang.Boolean', primative_type='boolean')
+  _TYPE_DOUBLE = _SimpleType('java.lang.Double', primative_type='double')
+  _TYPE_FLOAT = _SimpleType('java.lang.Float', primative_type='float')
+  _TYPE_INTEGER = _SimpleType('java.lang.Integer', primative_type='int')
+  _TYPE_LONG = _SimpleType('java.lang.Long', primative_type='long')
+  _TYPE_SHORT = _SimpleType('java.lang.Short', primative_type='short')
+  _TYPE_DATETIME = ('com.google.api.client.util.DateTime',
+                    ImportDefinition(['com.google.api.client.util.DateTime']),
+                    None)
+  _TYPE_STRING = _SimpleType('java.lang.String')
+
+  _TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS = {
+      ('any', None): _SimpleType('java.lang.Object'),
+      ('boolean', None): _TYPE_BOOLEAN,
+      ('integer', None): _TYPE_INTEGER,
+      ('integer', 'int16'): _TYPE_SHORT,
+      ('integer', 'int32'): _TYPE_INTEGER,
       # We prefer Long here over UnsignedInteger because Long has built-in
       # support for autoboxing in Java.
-      ('integer', 'uint32'): ('Long', ImportDefinition(['java.lang.Long'])),
-      ('number', 'double'): ('Double', ImportDefinition(['java.lang.Double'])),
-      ('number', 'float'): ('Float', ImportDefinition(['java.lang.Float'])),
-      ('object', None): ('Object', ImportDefinition(['java.lang.Object'])),
-      ('string', None): ('String', ImportDefinition(['java.lang.String'])),
-      ('string', 'byte'): ('String', ImportDefinition(['java.lang.String'])),
-      ('string', 'date'): ('DateTime', ImportDefinition(
-          ['com.google.api.client.util.DateTime'])),
-      ('string', 'date-time'): ('DateTime', ImportDefinition(
-          ['com.google.api.client.util.DateTime'])),
-      ('string', 'int64'): ('Long', ImportDefinition(
-          ['java.lang.Long', _JSON_STRING_IMPORT],
-          [_JSON_STRING_TEMPLATE_VALUE])),
-      ('string', 'uint64'): ('UnsignedLong', ImportDefinition(
-          ['com.google.common.primitives.UnsignedLong', _JSON_STRING_IMPORT],
-          [_JSON_STRING_TEMPLATE_VALUE])),
+      ('integer', 'uint32'): _TYPE_LONG,
+      # TODO(user): Switch to java.lang.Number in a separate CL.
+      # ('number', None): _SimpleType('java.lang.Number'),
+      ('number', None): ('Number', ImportDefinition(), None),
+      ('number', 'double'): _TYPE_DOUBLE,
+      ('number', 'float'): _TYPE_FLOAT,
+      ('object', None): _SimpleType('java.lang.Object'),
+      ('string', None): _TYPE_STRING,
+      ('string', 'byte'): _TYPE_STRING,
+      ('string', 'date'): _TYPE_DATETIME,
+      ('string', 'date-time'): _TYPE_DATETIME,
+      ('string', 'int64'): ('java.lang.Long',
+                            ImportDefinition(
+                                ['java.lang.Long', _JSON_STRING_IMPORT],
+                                [_JSON_STRING_TEMPLATE_VALUE]),
+                            'long'),
+      ('string', 'uint64'): ('java.math.BigInteger',
+                             ImportDefinition(
+                                 ['java.math.BigInteger', _JSON_STRING_IMPORT],
+                                 [_JSON_STRING_TEMPLATE_VALUE]),
+                             None),
       }
 
   _JAVA_KEYWORDS = [
@@ -218,7 +213,7 @@ class JavaLanguageModel(language_model.LanguageModel):
 
   def __init__(self, options=None):
     super(JavaLanguageModel, self).__init__(class_name_delimiter='.')
-    self._type_map = JavaLanguageModel.TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS
+    self._type_map = JavaLanguageModel._TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS
 
     self._SUPPORTED_TYPES['boolean'] = self._Boolean
     self._SUPPORTED_TYPES['integer'] = self._Int
@@ -232,10 +227,10 @@ class JavaLanguageModel(language_model.LanguageModel):
     """Convert provided int to language specific literal."""
     # Available types can be found in class variables
     code_types = {
-        'Short': '%s',
-        'Integer': '%s',
-        'Long': '%sL',
-        }
+        'java.lang.Short': '%s',
+        'java.lang.Integer': '%s',
+        'java.lang.Long': '%sL',
+    }
     try:
       return code_types[data_value.code_type] % long(data_value.value)
     except KeyError:
@@ -248,6 +243,33 @@ class JavaLanguageModel(language_model.LanguageModel):
   def type_map(self):
     return self._type_map
 
+  def _GetTypeInfo(self, def_dict):
+    """Returns a tuple of type information for a json schema data dict.
+
+    For the dictionary containing {type, [format]}, return the tuple of the form
+      (Java class name, ImportDefinition, Java primitive data type)
+    describing the appropriate Java data type.
+
+    Args:
+      def_dict: (dict) JSON schema data definition.
+    Returns:
+      tuple of (class name, ImportDefinition, primitive data type).
+    """
+    json_type = def_dict.get('type', 'string')
+    json_format = def_dict.get('format')
+    result = self.type_map.get((json_type, json_format))
+    if result:
+      return result
+
+    # TODO(user): Uncomment this and update golden files.
+    # result = self.type_map.get((json_type, None))
+    # if result:
+    #   return result
+    #
+    # raise ValueError('Unknown type: %s format: %s' % (json_type, json_format))
+
+    return (utilities.CamelCase(json_type), None, None)
+
   def GetCodeTypeFromDictionary(self, def_dict):
     """Convert a json schema type to a suitable Java type name.
 
@@ -258,18 +280,19 @@ class JavaLanguageModel(language_model.LanguageModel):
     Returns:
       A name suitable for use as a class in the generator's target language.
     """
-    json_type = def_dict.get('type', 'string')
-    json_format = def_dict.get('format')
+    return self._GetTypeInfo(def_dict)[0]
 
-    datatype_and_imports = self._type_map.get((json_type, json_format))
-    if datatype_and_imports:
-      # If there is an entry in the type format to datatype and imports
-      # dictionary set it as the native format.
-      native_format = datatype_and_imports[0]
-    else:
-      # Could not find it in the dictionary, set it to the json type.
-      native_format = utilities.CamelCase(json_type)
-    return native_format
+  def GetPrimitiveTypeFromDictionary(self, def_dict):
+    """Convert a json schema type to a suitable Java primitive name or None.
+
+    Overrides the default.
+
+    Args:
+      def_dict: (dict) A dictionary describing Json schema for this Property.
+    Returns:
+      A name suitable for use as a primitive in the generator's target language.
+    """
+    return self._GetTypeInfo(def_dict)[2]
 
   def ToMemberName(self, s, the_api):
     """CamelCase a wire format name into a suitable Java variable name."""
@@ -332,69 +355,6 @@ class JavaLanguageModel(language_model.LanguageModel):
   def DefaultContainerPathForOwner(self, module):
     """Overrides the default."""
     return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
-
-
-class Java14LanguageModel(JavaLanguageModel):
-  """A LanguageModel tuned for Java (version 1.14 and higher)."""
-
-  # TODO(user): lift up this implementation into JavaLanguageModel
-
-  # Dictionary of json type and format to its corresponding data type.
-  TYPE_FORMAT_TO_DATATYPE = {
-      ('boolean', None): 'java.lang.Boolean',
-      ('any', None): 'java.lang.Object',
-      ('integer', 'int16'): 'java.lang.Short',
-      ('integer', 'int32'): 'java.lang.Integer',
-      ('integer', 'uint32'): 'java.lang.Long',
-      ('number', 'double'): 'java.lang.Double',
-      ('number', 'float'): 'java.lang.Float',
-      ('object', None): 'java.lang.Object',
-      ('string', None): 'java.lang.String',
-      ('string', 'byte'): 'java.lang.String',
-      ('string', 'date'): 'com.google.api.client.util.DateTime',
-      ('string', 'date-time'): 'com.google.api.client.util.DateTime',
-      ('string', 'int64'): 'java.lang.Long',
-      ('string', 'uint64'): 'java.math.BigInteger',
-      }
-
-  def _Int(self, data_value):
-    """Convert provided int to language specific literal."""
-    # Available types can be found in class variables
-    code_types = {
-        'java.lang.Short': '%s',
-        'java.lang.Integer': '%s',
-        'java.lang.Long': '%sL',
-        }
-    try:
-      return code_types[data_value.code_type] % long(data_value.value)
-    except KeyError:
-      raise ValueError(
-          ('Provided DataValue (%s) does not present an appropriate Java '
-           'annotated code type (%s).') %
-          (data_value.value, data_value.code_type))
-
-  def GetCodeTypeFromDictionary(self, def_dict):
-    """Convert a json schema type to a suitable Java type name.
-
-    Overrides the default.
-
-    Args:
-      def_dict: (dict) A dictionary describing Json schema for this Property.
-    Returns:
-      A name suitable for use as a class in the generator's target language.
-    """
-    json_type = def_dict.get('type', 'string')
-    json_format = def_dict.get('format')
-
-    datatype = (self.TYPE_FORMAT_TO_DATATYPE.get((json_type, json_format)))
-    if datatype:
-      # If there is an entry in the type format to datatype
-      # dictionary set it as the native format.
-      native_format = datatype
-    else:
-      # Could not find it in the dictionary, set it to the json type.
-      native_format = utilities.CamelCase(json_type)
-    return native_format
 
 
 class JavaApi(api.Api):

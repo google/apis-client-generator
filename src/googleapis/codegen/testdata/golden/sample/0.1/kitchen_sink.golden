@@ -1950,7 +1950,7 @@ class Series extends SomeBaseModelClass {
 
     //
     // JSON name: 'none_votes'
-    long _none_votes;
+    str _none_votes;
 
     //
     // JSON name: 'plus_votes'
@@ -1989,10 +1989,10 @@ class Series extends SomeBaseModelClass {
     void setMinus_votes(long v) {
       _minus_votes = v;
     }
-    long getNone_votes() {
+    str getNone_votes() {
       return _none_votes;
     }
-    void setNone_votes(long v) {
+    void setNone_votes(str v) {
       _none_votes = v;
     }
     long getPlus_votes() {
@@ -2080,7 +2080,7 @@ class SeriesCounters extends SomeBaseModelClass {
 
   // 
   // JSON name: 'none_votes'
-  long _none_votes;
+  str _none_votes;
 
   // 
   // JSON name: 'plus_votes'
@@ -2119,10 +2119,10 @@ class SeriesCounters extends SomeBaseModelClass {
   void setMinus_votes(long v) {
     _minus_votes = v;
   }
-  long getNone_votes() {
+  str getNone_votes() {
     return _none_votes;
   }
-  void setNone_votes(long v) {
+  void setNone_votes(str v) {
     _none_votes = v;
   }
   long getPlus_votes() {
@@ -4222,7 +4222,7 @@ class Series extends SomeBaseModelClass {
 
     //
     // JSON name: "none_votes"
-    long _none_votes;
+    str _none_votes;
 
     //
     // JSON name: "plus_votes"
@@ -4261,10 +4261,10 @@ class Series extends SomeBaseModelClass {
     void setMinus_votes(long v) {
       _minus_votes = v;
     }
-    long getNone_votes() {
+    str getNone_votes() {
       return _none_votes;
     }
-    void setNone_votes(long v) {
+    void setNone_votes(str v) {
       _none_votes = v;
     }
     long getPlus_votes() {

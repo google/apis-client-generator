@@ -67,6 +67,14 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
   public static final String DEFAULT_SERVICE_PATH = "sink/v1/";
 
   /**
+   * The default encoded batch path of the service. This is determined when the library is
+   * generated and normally should not be changed.
+   *
+   * @since 1.23
+   */
+  public static final String DEFAULT_BATCH_PATH = "";
+
+  /**
    * The default encoded base URL of the service. This is determined when the library is generated
    * and normally should not be changed.
    */
@@ -328,18 +336,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** Maximum number of results to return. */
         @com.google.api.client.util.Key("max-results")
-        private Integer maxResults;
+        private java.lang.Integer maxResults;
 
         /** Maximum number of results to return.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getMaxResults() {
+        public java.lang.Integer getMaxResults() {
           return maxResults;
         }
 
         /** Maximum number of results to return. */
-        public List setMaxResults(Integer maxResults) {
+        public List setMaxResults(java.lang.Integer maxResults) {
           this.maxResults = maxResults;
           return this;
         }
@@ -362,18 +370,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** Index of the first result to be retrieved. */
         @com.google.api.client.util.Key("start-index")
-        private Integer startIndex;
+        private java.lang.Integer startIndex;
 
         /** Index of the first result to be retrieved.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getStartIndex() {
+        public java.lang.Integer getStartIndex() {
           return startIndex;
         }
 
         /** Index of the first result to be retrieved. */
-        public List setStartIndex(Integer startIndex) {
+        public List setStartIndex(java.lang.Integer startIndex) {
           this.startIndex = startIndex;
           return this;
         }
@@ -812,7 +820,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Submission}
      * @return the request
      */
-    public Insert insert(Integer seriesId, Integer topicId, Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content) throws java.io.IOException {
+    public Insert insert(java.lang.Integer seriesId, java.lang.Integer topicId, java.lang.Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content) throws java.io.IOException {
       Insert result = new Insert(seriesId, topicId, parentSubmissionId, content);
       initialize(result);
       return result;
@@ -843,7 +851,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @return the request
      * @throws java.io.IOException if the initialization of the request fails
      */
-    public Insert insert(Integer seriesId, Integer topicId, Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content, com.google.api.client.http.AbstractInputStreamContent mediaContent) throws java.io.IOException {
+    public Insert insert(java.lang.Integer seriesId, java.lang.Integer topicId, java.lang.Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content, com.google.api.client.http.AbstractInputStreamContent mediaContent) throws java.io.IOException {
       Insert result = new Insert(seriesId, topicId, parentSubmissionId, content, mediaContent);
       initialize(result);
       return result;
@@ -877,7 +885,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Submission}
        * @since 1.13
        */
-      protected Insert(Integer seriesId, Integer topicId, Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content) {
+      protected Insert(java.lang.Integer seriesId, java.lang.Integer topicId, java.lang.Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content) {
         super(KitchSink.this, "POST", REST_PATH, content, com.google.api.services.kitch_sink.model.Submission.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
@@ -911,7 +919,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param mediaContent The media HTTP content or {@code null} if none.
        * @since 1.13
        */
-      protected Insert(Integer seriesId, Integer topicId, Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content, com.google.api.client.http.AbstractInputStreamContent mediaContent) {
+      protected Insert(java.lang.Integer seriesId, java.lang.Integer topicId, java.lang.Integer parentSubmissionId, com.google.api.services.kitch_sink.model.Submission content, com.google.api.client.http.AbstractInputStreamContent mediaContent) {
         super(KitchSink.this, "POST", "/upload/" + getServicePath() + REST_PATH, content, com.google.api.services.kitch_sink.model.Submission.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
@@ -936,54 +944,54 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Insert setSeriesId(Integer seriesId) {
+      public Insert setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Topic within the Series. */
       @com.google.api.client.util.Key
-      private Integer topicId;
+      private java.lang.Integer topicId;
 
       /** The decimal ID of the Topic within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getTopicId() {
+      public java.lang.Integer getTopicId() {
         return topicId;
       }
 
       /** The decimal ID of the Topic within the Series. */
-      public Insert setTopicId(Integer topicId) {
+      public Insert setTopicId(java.lang.Integer topicId) {
         this.topicId = topicId;
         return this;
       }
 
       /** The decimal ID of the parent Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer parentSubmissionId;
+      private java.lang.Integer parentSubmissionId;
 
       /** The decimal ID of the parent Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getParentSubmissionId() {
+      public java.lang.Integer getParentSubmissionId() {
         return parentSubmissionId;
       }
 
       /** The decimal ID of the parent Submission within the Series. */
-      public Insert setParentSubmissionId(Integer parentSubmissionId) {
+      public Insert setParentSubmissionId(java.lang.Integer parentSubmissionId) {
         this.parentSubmissionId = parentSubmissionId;
         return this;
       }
@@ -1026,7 +1034,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public List list(Integer seriesId, Integer submissionId) throws java.io.IOException {
+    public List list(java.lang.Integer seriesId, java.lang.Integer submissionId) throws java.io.IOException {
       List result = new List(seriesId, submissionId);
       initialize(result);
       return result;
@@ -1055,7 +1063,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected List(Integer seriesId, Integer submissionId) {
+      protected List(java.lang.Integer seriesId, java.lang.Integer submissionId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.SubmissionList.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -1088,36 +1096,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public List setSeriesId(Integer seriesId) {
+      public List setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public List setSubmissionId(Integer submissionId) {
+      public List setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -1188,18 +1196,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** Index of the first result to be retrieved. */
       @com.google.api.client.util.Key("start-index")
-      private Integer startIndex;
+      private java.lang.Integer startIndex;
 
       /** Index of the first result to be retrieved.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getStartIndex() {
+      public java.lang.Integer getStartIndex() {
         return startIndex;
       }
 
       /** Index of the first result to be retrieved. */
-      public List setStartIndex(Integer startIndex) {
+      public List setStartIndex(java.lang.Integer startIndex) {
         this.startIndex = startIndex;
         return this;
       }
@@ -1245,7 +1253,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public Get get(Integer seriesId) throws java.io.IOException {
+    public Get get(java.lang.Integer seriesId) throws java.io.IOException {
       Get result = new Get(seriesId);
       initialize(result);
       return result;
@@ -1270,7 +1278,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected Get(Integer seriesId) {
+      protected Get(java.lang.Integer seriesId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.Series.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
       }
@@ -1302,18 +1310,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Get setSeriesId(Integer seriesId) {
+      public Get setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
@@ -1490,18 +1498,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** Maximum number of results to return. */
       @com.google.api.client.util.Key("max-results")
-      private Integer maxResults;
+      private java.lang.Integer maxResults;
 
       /** Maximum number of results to return.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getMaxResults() {
+      public java.lang.Integer getMaxResults() {
         return maxResults;
       }
 
       /** Maximum number of results to return. */
-      public List setMaxResults(Integer maxResults) {
+      public List setMaxResults(java.lang.Integer maxResults) {
         this.maxResults = maxResults;
         return this;
       }
@@ -1524,18 +1532,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** Index of the first result to be retrieved. */
       @com.google.api.client.util.Key("start-index")
-      private Integer startIndex;
+      private java.lang.Integer startIndex;
 
       /** Index of the first result to be retrieved.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getStartIndex() {
+      public java.lang.Integer getStartIndex() {
         return startIndex;
       }
 
       /** Index of the first result to be retrieved. */
-      public List setStartIndex(Integer startIndex) {
+      public List setStartIndex(java.lang.Integer startIndex) {
         this.startIndex = startIndex;
         return this;
       }
@@ -1559,7 +1567,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Series}
      * @return the request
      */
-    public Update update(Integer seriesId, com.google.api.services.kitch_sink.model.Series content) throws java.io.IOException {
+    public Update update(java.lang.Integer seriesId, com.google.api.services.kitch_sink.model.Series content) throws java.io.IOException {
       Update result = new Update(seriesId, content);
       initialize(result);
       return result;
@@ -1586,7 +1594,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Series}
        * @since 1.13
        */
-      protected Update(Integer seriesId, com.google.api.services.kitch_sink.model.Series content) {
+      protected Update(java.lang.Integer seriesId, com.google.api.services.kitch_sink.model.Series content) {
         super(KitchSink.this, "PUT", REST_PATH, content, com.google.api.services.kitch_sink.model.Series.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
       }
@@ -1608,18 +1616,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Update setSeriesId(Integer seriesId) {
+      public Update setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
@@ -1664,7 +1672,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param q Search query - a required query parameter.
        * @return the request
        */
-      public List list(Integer seriesId, java.lang.String q) throws java.io.IOException {
+      public List list(java.lang.Integer seriesId, java.lang.String q) throws java.io.IOException {
         List result = new List(seriesId, q);
         initialize(result);
         return result;
@@ -1690,7 +1698,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
          * @param q Search query - a required query parameter.
          * @since 1.13
          */
-        protected List(Integer seriesId, java.lang.String q) {
+        protected List(java.lang.Integer seriesId, java.lang.String q) {
           super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.SeriesList.class);
           this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
           this.q = com.google.api.client.util.Preconditions.checkNotNull(q, "Required parameter q must be specified.");
@@ -1723,18 +1731,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** The decimal ID of the Series. */
         @com.google.api.client.util.Key
-        private Integer seriesId;
+        private java.lang.Integer seriesId;
 
         /** The decimal ID of the Series.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getSeriesId() {
+        public java.lang.Integer getSeriesId() {
           return seriesId;
         }
 
         /** The decimal ID of the Series. */
-        public List setSeriesId(Integer seriesId) {
+        public List setSeriesId(java.lang.Integer seriesId) {
           this.seriesId = seriesId;
           return this;
         }
@@ -1773,18 +1781,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** Maximum number of results to return. */
         @com.google.api.client.util.Key("max-results")
-        private Integer maxResults;
+        private java.lang.Integer maxResults;
 
         /** Maximum number of results to return.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getMaxResults() {
+        public java.lang.Integer getMaxResults() {
           return maxResults;
         }
 
         /** Maximum number of results to return. */
-        public List setMaxResults(Integer maxResults) {
+        public List setMaxResults(java.lang.Integer maxResults) {
           this.maxResults = maxResults;
           return this;
         }
@@ -1823,18 +1831,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** Index of the first result to be retrieved. */
         @com.google.api.client.util.Key("start-index")
-        private Integer startIndex;
+        private java.lang.Integer startIndex;
 
         /** Index of the first result to be retrieved.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getStartIndex() {
+        public java.lang.Integer getStartIndex() {
           return startIndex;
         }
 
         /** Index of the first result to be retrieved. */
-        public List setStartIndex(Integer startIndex) {
+        public List setStartIndex(java.lang.Integer startIndex) {
           this.startIndex = startIndex;
           return this;
         }
@@ -1879,7 +1887,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       [maximum: 4294967295]
        * @return the request
        */
-      public List list(Integer seriesId) throws java.io.IOException {
+      public List list(java.lang.Integer seriesId) throws java.io.IOException {
         List result = new List(seriesId);
         initialize(result);
         return result;
@@ -1904,7 +1912,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       [maximum: 4294967295]
          * @since 1.13
          */
-        protected List(Integer seriesId) {
+        protected List(java.lang.Integer seriesId) {
           super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.SubmissionList.class);
           this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         }
@@ -1936,18 +1944,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** The decimal ID of the Series. */
         @com.google.api.client.util.Key
-        private Integer seriesId;
+        private java.lang.Integer seriesId;
 
         /** The decimal ID of the Series.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getSeriesId() {
+        public java.lang.Integer getSeriesId() {
           return seriesId;
         }
 
         /** The decimal ID of the Series. */
-        public List setSeriesId(Integer seriesId) {
+        public List setSeriesId(java.lang.Integer seriesId) {
           this.seriesId = seriesId;
           return this;
         }
@@ -2034,18 +2042,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** Index of the first result to be retrieved. */
         @com.google.api.client.util.Key("start-index")
-        private Integer startIndex;
+        private java.lang.Integer startIndex;
 
         /** Index of the first result to be retrieved.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getStartIndex() {
+        public java.lang.Integer getStartIndex() {
           return startIndex;
         }
 
         /** Index of the first result to be retrieved. */
-        public List setStartIndex(Integer startIndex) {
+        public List setStartIndex(java.lang.Integer startIndex) {
           this.startIndex = startIndex;
           return this;
         }
@@ -2095,7 +2103,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public Get get(Integer seriesId, Integer submissionId) throws java.io.IOException {
+    public Get get(java.lang.Integer seriesId, java.lang.Integer submissionId) throws java.io.IOException {
       Get result = new Get(seriesId, submissionId);
       initialize(result);
       return result;
@@ -2123,7 +2131,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected Get(Integer seriesId, Integer submissionId) {
+      protected Get(java.lang.Integer seriesId, java.lang.Integer submissionId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.Submission.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -2156,36 +2164,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Get setSeriesId(Integer seriesId) {
+      public Get setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public Get setSubmissionId(Integer submissionId) {
+      public Get setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -2228,7 +2236,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Submission}
      * @return the request
      */
-    public Insert insert(Integer seriesId, Integer topicId, com.google.api.services.kitch_sink.model.Submission content) throws java.io.IOException {
+    public Insert insert(java.lang.Integer seriesId, java.lang.Integer topicId, com.google.api.services.kitch_sink.model.Submission content) throws java.io.IOException {
       Insert result = new Insert(seriesId, topicId, content);
       initialize(result);
       return result;
@@ -2258,7 +2266,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Submission}
        * @since 1.13
        */
-      protected Insert(Integer seriesId, Integer topicId, com.google.api.services.kitch_sink.model.Submission content) {
+      protected Insert(java.lang.Integer seriesId, java.lang.Integer topicId, com.google.api.services.kitch_sink.model.Submission content) {
         super(KitchSink.this, "POST", REST_PATH, content, com.google.api.services.kitch_sink.model.Submission.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
@@ -2281,36 +2289,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Insert setSeriesId(Integer seriesId) {
+      public Insert setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Topic within the Series. */
       @com.google.api.client.util.Key
-      private Integer topicId;
+      private java.lang.Integer topicId;
 
       /** The decimal ID of the Topic within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getTopicId() {
+      public java.lang.Integer getTopicId() {
         return topicId;
       }
 
       /** The decimal ID of the Topic within the Series. */
-      public Insert setTopicId(Integer topicId) {
+      public Insert setTopicId(java.lang.Integer topicId) {
         this.topicId = topicId;
         return this;
       }
@@ -2376,7 +2384,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param tagId
      * @return the request
      */
-    public Delete delete(Integer seriesId, Integer submissionId, java.lang.String tagId) throws java.io.IOException {
+    public Delete delete(java.lang.Integer seriesId, java.lang.Integer submissionId, java.lang.String tagId) throws java.io.IOException {
       Delete result = new Delete(seriesId, submissionId, tagId);
       initialize(result);
       return result;
@@ -2406,7 +2414,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param tagId
        * @since 1.13
        */
-      protected Delete(Integer seriesId, Integer submissionId, java.lang.String tagId) {
+      protected Delete(java.lang.Integer seriesId, java.lang.Integer submissionId, java.lang.String tagId) {
         super(KitchSink.this, "DELETE", REST_PATH, null, Void.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -2430,36 +2438,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Delete setSeriesId(Integer seriesId) {
+      public Delete setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public Delete setSubmissionId(Integer submissionId) {
+      public Delete setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -2501,7 +2509,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Tag}
      * @return the request
      */
-    public Insert insert(Integer seriesId, Integer submissionId, com.google.api.services.kitch_sink.model.Tag content) throws java.io.IOException {
+    public Insert insert(java.lang.Integer seriesId, java.lang.Integer submissionId, com.google.api.services.kitch_sink.model.Tag content) throws java.io.IOException {
       Insert result = new Insert(seriesId, submissionId, content);
       initialize(result);
       return result;
@@ -2531,7 +2539,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Tag}
        * @since 1.13
        */
-      protected Insert(Integer seriesId, Integer submissionId, com.google.api.services.kitch_sink.model.Tag content) {
+      protected Insert(java.lang.Integer seriesId, java.lang.Integer submissionId, com.google.api.services.kitch_sink.model.Tag content) {
         super(KitchSink.this, "POST", REST_PATH, content, com.google.api.services.kitch_sink.model.Tag.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -2554,36 +2562,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Insert setSeriesId(Integer seriesId) {
+      public Insert setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public Insert setSubmissionId(Integer submissionId) {
+      public Insert setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -2736,7 +2744,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public Get get(Integer seriesId, Integer topicId) throws java.io.IOException {
+    public Get get(java.lang.Integer seriesId, java.lang.Integer topicId) throws java.io.IOException {
       Get result = new Get(seriesId, topicId);
       initialize(result);
       return result;
@@ -2764,7 +2772,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected Get(Integer seriesId, Integer topicId) {
+      protected Get(java.lang.Integer seriesId, java.lang.Integer topicId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.Topic2.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
@@ -2797,36 +2805,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Get setSeriesId(Integer seriesId) {
+      public Get setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Topic within the Series. */
       @com.google.api.client.util.Key
-      private Integer topicId;
+      private java.lang.Integer topicId;
 
       /** The decimal ID of the Topic within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getTopicId() {
+      public java.lang.Integer getTopicId() {
         return topicId;
       }
 
       /** The decimal ID of the Topic within the Series. */
-      public Get setTopicId(Integer topicId) {
+      public Get setTopicId(java.lang.Integer topicId) {
         this.topicId = topicId;
         return this;
       }
@@ -2850,7 +2858,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Topic}
      * @return the request
      */
-    public Insert insert(Integer seriesId, com.google.api.services.kitch_sink.model.Topic content) throws java.io.IOException {
+    public Insert insert(java.lang.Integer seriesId, com.google.api.services.kitch_sink.model.Topic content) throws java.io.IOException {
       Insert result = new Insert(seriesId, content);
       initialize(result);
       return result;
@@ -2877,7 +2885,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Topic}
        * @since 1.13
        */
-      protected Insert(Integer seriesId, com.google.api.services.kitch_sink.model.Topic content) {
+      protected Insert(java.lang.Integer seriesId, com.google.api.services.kitch_sink.model.Topic content) {
         super(KitchSink.this, "POST", REST_PATH, content, com.google.api.services.kitch_sink.model.Topic.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
       }
@@ -2899,18 +2907,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Insert setSeriesId(Integer seriesId) {
+      public Insert setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
@@ -2933,7 +2941,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public List list(Integer seriesId) throws java.io.IOException {
+    public List list(java.lang.Integer seriesId) throws java.io.IOException {
       List result = new List(seriesId);
       initialize(result);
       return result;
@@ -2958,7 +2966,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected List(Integer seriesId) {
+      protected List(java.lang.Integer seriesId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.TopicList.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
       }
@@ -2990,36 +2998,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public List setSeriesId(Integer seriesId) {
+      public List setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** Maximum number of results to return. */
       @com.google.api.client.util.Key("max-results")
-      private Integer maxResults;
+      private java.lang.Integer maxResults;
 
       /** Maximum number of results to return.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getMaxResults() {
+      public java.lang.Integer getMaxResults() {
         return maxResults;
       }
 
       /** Maximum number of results to return. */
-      public List setMaxResults(Integer maxResults) {
+      public List setMaxResults(java.lang.Integer maxResults) {
         this.maxResults = maxResults;
         return this;
       }
@@ -3057,18 +3065,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** Index of the first result to be retrieved. */
       @com.google.api.client.util.Key("start-index")
-      private Integer startIndex;
+      private java.lang.Integer startIndex;
 
       /** Index of the first result to be retrieved.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getStartIndex() {
+      public java.lang.Integer getStartIndex() {
         return startIndex;
       }
 
       /** Index of the first result to be retrieved. */
-      public List setStartIndex(Integer startIndex) {
+      public List setStartIndex(java.lang.Integer startIndex) {
         this.startIndex = startIndex;
         return this;
       }
@@ -3095,7 +3103,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Topic}
      * @return the request
      */
-    public Update update(Integer seriesId, Integer topicId, com.google.api.services.kitch_sink.model.Topic content) throws java.io.IOException {
+    public Update update(java.lang.Integer seriesId, java.lang.Integer topicId, com.google.api.services.kitch_sink.model.Topic content) throws java.io.IOException {
       Update result = new Update(seriesId, topicId, content);
       initialize(result);
       return result;
@@ -3125,7 +3133,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Topic}
        * @since 1.13
        */
-      protected Update(Integer seriesId, Integer topicId, com.google.api.services.kitch_sink.model.Topic content) {
+      protected Update(java.lang.Integer seriesId, java.lang.Integer topicId, com.google.api.services.kitch_sink.model.Topic content) {
         super(KitchSink.this, "PUT", REST_PATH, content, com.google.api.services.kitch_sink.model.Topic.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
@@ -3148,36 +3156,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Update setSeriesId(Integer seriesId) {
+      public Update setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Topic within the Series. */
       @com.google.api.client.util.Key
-      private Integer topicId;
+      private java.lang.Integer topicId;
 
       /** The decimal ID of the Topic within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getTopicId() {
+      public java.lang.Integer getTopicId() {
         return topicId;
       }
 
       /** The decimal ID of the Topic within the Series. */
-      public Update setTopicId(Integer topicId) {
+      public Update setTopicId(java.lang.Integer topicId) {
         this.topicId = topicId;
         return this;
       }
@@ -3225,7 +3233,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       [maximum: 4294967295]
        * @return the request
        */
-      public List list(Integer seriesId, Integer topicId) throws java.io.IOException {
+      public List list(java.lang.Integer seriesId, java.lang.Integer topicId) throws java.io.IOException {
         List result = new List(seriesId, topicId);
         initialize(result);
         return result;
@@ -3254,7 +3262,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       [maximum: 4294967295]
          * @since 1.13
          */
-        protected List(Integer seriesId, Integer topicId) {
+        protected List(java.lang.Integer seriesId, java.lang.Integer topicId) {
           super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.SubmissionList.class);
           this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
           this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
@@ -3287,36 +3295,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** The decimal ID of the Series. */
         @com.google.api.client.util.Key
-        private Integer seriesId;
+        private java.lang.Integer seriesId;
 
         /** The decimal ID of the Series.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getSeriesId() {
+        public java.lang.Integer getSeriesId() {
           return seriesId;
         }
 
         /** The decimal ID of the Series. */
-        public List setSeriesId(Integer seriesId) {
+        public List setSeriesId(java.lang.Integer seriesId) {
           this.seriesId = seriesId;
           return this;
         }
 
         /** The decimal ID of the Topic within the Series. */
         @com.google.api.client.util.Key
-        private Integer topicId;
+        private java.lang.Integer topicId;
 
         /** The decimal ID of the Topic within the Series.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getTopicId() {
+        public java.lang.Integer getTopicId() {
           return topicId;
         }
 
         /** The decimal ID of the Topic within the Series. */
-        public List setTopicId(Integer topicId) {
+        public List setTopicId(java.lang.Integer topicId) {
           this.topicId = topicId;
           return this;
         }
@@ -3387,18 +3395,18 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
         /** Index of the first result to be retrieved. */
         @com.google.api.client.util.Key("start-index")
-        private Integer startIndex;
+        private java.lang.Integer startIndex;
 
         /** Index of the first result to be retrieved.
 
        [minimum: 0] [maximum: 4294967295]
          */
-        public Integer getStartIndex() {
+        public java.lang.Integer getStartIndex() {
           return startIndex;
         }
 
         /** Index of the first result to be retrieved. */
-        public List setStartIndex(Integer startIndex) {
+        public List setStartIndex(java.lang.Integer startIndex) {
           this.startIndex = startIndex;
           return this;
         }
@@ -3449,7 +3457,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public Get get(Integer seriesId, Integer submissionId) throws java.io.IOException {
+    public Get get(java.lang.Integer seriesId, java.lang.Integer submissionId) throws java.io.IOException {
       Get result = new Get(seriesId, submissionId);
       initialize(result);
       return result;
@@ -3478,7 +3486,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected Get(Integer seriesId, Integer submissionId) {
+      protected Get(java.lang.Integer seriesId, java.lang.Integer submissionId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.Vote.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -3511,36 +3519,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Get setSeriesId(Integer seriesId) {
+      public Get setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public Get setSubmissionId(Integer submissionId) {
+      public Get setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -3583,7 +3591,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Vote}
      * @return the request
      */
-    public Insert insert(Integer seriesId, Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) throws java.io.IOException {
+    public Insert insert(java.lang.Integer seriesId, java.lang.Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) throws java.io.IOException {
       Insert result = new Insert(seriesId, submissionId, content);
       initialize(result);
       return result;
@@ -3614,7 +3622,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Vote}
        * @since 1.13
        */
-      protected Insert(Integer seriesId, Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) {
+      protected Insert(java.lang.Integer seriesId, java.lang.Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) {
         super(KitchSink.this, "POST", REST_PATH, content, com.google.api.services.kitch_sink.model.Vote.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -3637,36 +3645,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Insert setSeriesId(Integer seriesId) {
+      public Insert setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public Insert setSubmissionId(Integer submissionId) {
+      public Insert setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -3689,7 +3697,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
      * @return the request
      */
-    public List list(Integer seriesId) throws java.io.IOException {
+    public List list(java.lang.Integer seriesId) throws java.io.IOException {
       List result = new List(seriesId);
       initialize(result);
       return result;
@@ -3714,7 +3722,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     [maximum: 4294967295]
        * @since 1.13
        */
-      protected List(Integer seriesId) {
+      protected List(java.lang.Integer seriesId) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.VoteList.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
       }
@@ -3746,36 +3754,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public List setSeriesId(Integer seriesId) {
+      public List setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** Index of the first result to be retrieved. */
       @com.google.api.client.util.Key("start-index")
-      private Integer startIndex;
+      private java.lang.Integer startIndex;
 
       /** Index of the first result to be retrieved.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getStartIndex() {
+      public java.lang.Integer getStartIndex() {
         return startIndex;
       }
 
       /** Index of the first result to be retrieved. */
-      public List setStartIndex(Integer startIndex) {
+      public List setStartIndex(java.lang.Integer startIndex) {
         this.startIndex = startIndex;
         return this;
       }
@@ -3803,7 +3811,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * @param content the {@link com.google.api.services.kitch_sink.model.Vote}
      * @return the request
      */
-    public Update update(Integer seriesId, Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) throws java.io.IOException {
+    public Update update(java.lang.Integer seriesId, java.lang.Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) throws java.io.IOException {
       Update result = new Update(seriesId, submissionId, content);
       initialize(result);
       return result;
@@ -3837,7 +3845,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * @param content the {@link com.google.api.services.kitch_sink.model.Vote}
        * @since 1.13
        */
-      protected Update(Integer seriesId, Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) {
+      protected Update(java.lang.Integer seriesId, java.lang.Integer submissionId, com.google.api.services.kitch_sink.model.Vote content) {
         super(KitchSink.this, "PUT", REST_PATH, content, com.google.api.services.kitch_sink.model.Vote.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
@@ -3860,36 +3868,36 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Series. */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.Integer seriesId;
 
       /** The decimal ID of the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSeriesId() {
+      public java.lang.Integer getSeriesId() {
         return seriesId;
       }
 
       /** The decimal ID of the Series. */
-      public Update setSeriesId(Integer seriesId) {
+      public Update setSeriesId(java.lang.Integer seriesId) {
         this.seriesId = seriesId;
         return this;
       }
 
       /** The decimal ID of the Submission within the Series. */
       @com.google.api.client.util.Key("submission_id")
-      private Integer submissionId;
+      private java.lang.Integer submissionId;
 
       /** The decimal ID of the Submission within the Series.
 
      [minimum: 0] [maximum: 4294967295]
        */
-      public Integer getSubmissionId() {
+      public java.lang.Integer getSubmissionId() {
         return submissionId;
       }
 
       /** The decimal ID of the Submission within the Series. */
-      public Update setSubmissionId(Integer submissionId) {
+      public Update setSubmissionId(java.lang.Integer submissionId) {
         this.submissionId = submissionId;
         return this;
       }
@@ -3959,6 +3967,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
           DEFAULT_SERVICE_PATH,
           httpRequestInitializer,
           true);
+      setBatchPath(DEFAULT_BATCH_PATH);
     }
 
     /** Builds a new instance of {@link KitchSink}. */
@@ -3975,6 +3984,11 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
     @Override
     public Builder setServicePath(String servicePath) {
       return (Builder) super.setServicePath(servicePath);
+    }
+
+    @Override
+    public Builder setBatchPath(String batchPath) {
+      return (Builder) super.setBatchPath(batchPath);
     }
 
     @Override
@@ -5156,25 +5170,25 @@ public final class Rule extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer close;
+    private java.lang.Integer close;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer open;
+    private java.lang.Integer open;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getClose() {
+    public java.lang.Integer getClose() {
       return close;
     }
 
     /**
      * @param close close or {@code null} for none
      */
-    public Submissions setClose(Integer close) {
+    public Submissions setClose(java.lang.Integer close) {
       this.close = close;
       return this;
     }
@@ -5182,14 +5196,14 @@ public final class Rule extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getOpen() {
+    public java.lang.Integer getOpen() {
       return open;
     }
 
     /**
      * @param open open or {@code null} for none
      */
-    public Submissions setOpen(Integer open) {
+    public Submissions setOpen(java.lang.Integer open) {
       this.open = open;
       return this;
     }
@@ -5279,7 +5293,7 @@ public final class Series extends com.google.api.client.json.GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private Integer numTopics;
+  private java.lang.Integer numTopics;
 
   /**
    * The value may be {@code null}.
@@ -5380,14 +5394,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
   /**
    * @return value or {@code null} for none
    */
-  public Integer getNumTopics() {
+  public java.lang.Integer getNumTopics() {
     return numTopics;
   }
 
   /**
    * @param numTopics numTopics or {@code null} for none
    */
-  public Series setNumTopics(Integer numTopics) {
+  public Series setNumTopics(java.lang.Integer numTopics) {
     this.numTopics = numTopics;
     return this;
   }
@@ -5426,7 +5440,7 @@ public final class Series extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer anonymousSubmissions;
+    private java.lang.Integer anonymousSubmissions;
 
     /**
      * The value may be {@code null}.
@@ -5438,31 +5452,31 @@ public final class Series extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("else")
-    private Integer else__;
+    private java.lang.Integer else__;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("minus_votes")
-    private Integer minusVotes;
+    private java.lang.Integer minusVotes;
 
     /**
      * The value may be {@code null}.
      */
-    @com.google.api.client.util.Key("none_votes")
-    private Integer noneVotes;
+    @com.google.api.client.util.Key("none_votes") @com.google.api.client.json.JsonString
+    private java.math.BigInteger noneVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("plus_votes")
-    private Integer plusVotes;
+    private java.lang.Integer plusVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer submissions;
+    private java.lang.Integer submissions;
 
     /**
      * The value may be {@code null}.
@@ -5473,14 +5487,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getAnonymousSubmissions() {
+    public java.lang.Integer getAnonymousSubmissions() {
       return anonymousSubmissions;
     }
 
     /**
      * @param anonymousSubmissions anonymousSubmissions or {@code null} for none
      */
-    public Counters setAnonymousSubmissions(Integer anonymousSubmissions) {
+    public Counters setAnonymousSubmissions(java.lang.Integer anonymousSubmissions) {
       this.anonymousSubmissions = anonymousSubmissions;
       return this;
     }
@@ -5503,14 +5517,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getElse() {
+    public java.lang.Integer getElse() {
       return else__;
     }
 
     /**
      * @param else__ else__ or {@code null} for none
      */
-    public Counters setElse(Integer else__) {
+    public Counters setElse(java.lang.Integer else__) {
       this.else__ = else__;
       return this;
     }
@@ -5518,14 +5532,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getMinusVotes() {
+    public java.lang.Integer getMinusVotes() {
       return minusVotes;
     }
 
     /**
      * @param minusVotes minusVotes or {@code null} for none
      */
-    public Counters setMinusVotes(Integer minusVotes) {
+    public Counters setMinusVotes(java.lang.Integer minusVotes) {
       this.minusVotes = minusVotes;
       return this;
     }
@@ -5533,14 +5547,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getNoneVotes() {
+    public java.math.BigInteger getNoneVotes() {
       return noneVotes;
     }
 
     /**
      * @param noneVotes noneVotes or {@code null} for none
      */
-    public Counters setNoneVotes(Integer noneVotes) {
+    public Counters setNoneVotes(java.math.BigInteger noneVotes) {
       this.noneVotes = noneVotes;
       return this;
     }
@@ -5548,14 +5562,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getPlusVotes() {
+    public java.lang.Integer getPlusVotes() {
       return plusVotes;
     }
 
     /**
      * @param plusVotes plusVotes or {@code null} for none
      */
-    public Counters setPlusVotes(Integer plusVotes) {
+    public Counters setPlusVotes(java.lang.Integer plusVotes) {
       this.plusVotes = plusVotes;
       return this;
     }
@@ -5563,14 +5577,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSubmissions() {
+    public java.lang.Integer getSubmissions() {
       return submissions;
     }
 
     /**
      * @param submissions submissions or {@code null} for none
      */
-    public Counters setSubmissions(Integer submissions) {
+    public Counters setSubmissions(java.lang.Integer submissions) {
       this.submissions = submissions;
       return this;
     }
@@ -5609,19 +5623,19 @@ public final class Series extends com.google.api.client.json.GenericJson {
        * The value may be {@code null}.
        */
       @com.google.api.client.util.Key("all-votes")
-      private Integer allVotes;
+      private java.lang.Integer allVotes;
 
       /**
        * @return value or {@code null} for none
        */
-      public Integer getAllVotes() {
+      public java.lang.Integer getAllVotes() {
         return allVotes;
       }
 
       /**
        * @param allVotes allVotes or {@code null} for none
        */
-      public SeriesCountersCounters setAllVotes(Integer allVotes) {
+      public SeriesCountersCounters setAllVotes(java.lang.Integer allVotes) {
         this.allVotes = allVotes;
         return this;
       }
@@ -5648,19 +5662,19 @@ public final class Series extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer seriesId;
+    private java.lang.Integer seriesId;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSeriesId() {
+    public java.lang.Integer getSeriesId() {
       return seriesId;
     }
 
     /**
      * @param seriesId seriesId or {@code null} for none
      */
-    public Id setSeriesId(Integer seriesId) {
+    public Id setSeriesId(java.lang.Integer seriesId) {
       this.seriesId = seriesId;
       return this;
     }
@@ -5831,7 +5845,7 @@ public final class Submission extends com.google.api.client.json.GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private Integer created;
+  private java.lang.Integer created;
 
   /**
    * The value may be {@code null}.
@@ -5950,14 +5964,14 @@ public final class Submission extends com.google.api.client.json.GenericJson {
   /**
    * @return value or {@code null} for none
    */
-  public Integer getCreated() {
+  public java.lang.Integer getCreated() {
     return created;
   }
 
   /**
    * @param created created or {@code null} for none
    */
-  public Submission setCreated(Integer created) {
+  public Submission setCreated(java.lang.Integer created) {
     this.created = created;
     return this;
   }
@@ -6172,31 +6186,31 @@ public final class Submission extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("minus_votes")
-    private Integer minusVotes;
+    private java.lang.Integer minusVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("none_votes")
-    private Integer noneVotes;
+    private java.lang.Integer noneVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("plus_votes")
-    private Integer plusVotes;
+    private java.lang.Integer plusVotes;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getMinusVotes() {
+    public java.lang.Integer getMinusVotes() {
       return minusVotes;
     }
 
     /**
      * @param minusVotes minusVotes or {@code null} for none
      */
-    public Counters setMinusVotes(Integer minusVotes) {
+    public Counters setMinusVotes(java.lang.Integer minusVotes) {
       this.minusVotes = minusVotes;
       return this;
     }
@@ -6204,14 +6218,14 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getNoneVotes() {
+    public java.lang.Integer getNoneVotes() {
       return noneVotes;
     }
 
     /**
      * @param noneVotes noneVotes or {@code null} for none
      */
-    public Counters setNoneVotes(Integer noneVotes) {
+    public Counters setNoneVotes(java.lang.Integer noneVotes) {
       this.noneVotes = noneVotes;
       return this;
     }
@@ -6219,14 +6233,14 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getPlusVotes() {
+    public java.lang.Integer getPlusVotes() {
       return plusVotes;
     }
 
     /**
      * @param plusVotes plusVotes or {@code null} for none
      */
-    public Counters setPlusVotes(Integer plusVotes) {
+    public Counters setPlusVotes(java.lang.Integer plusVotes) {
       this.plusVotes = plusVotes;
       return this;
     }
@@ -6252,25 +6266,25 @@ public final class Submission extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer seriesId;
+    private java.lang.Integer seriesId;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer submissionId;
+    private java.lang.Integer submissionId;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSeriesId() {
+    public java.lang.Integer getSeriesId() {
       return seriesId;
     }
 
     /**
      * @param seriesId seriesId or {@code null} for none
      */
-    public Id setSeriesId(Integer seriesId) {
+    public Id setSeriesId(java.lang.Integer seriesId) {
       this.seriesId = seriesId;
       return this;
     }
@@ -6278,14 +6292,14 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSubmissionId() {
+    public java.lang.Integer getSubmissionId() {
       return submissionId;
     }
 
     /**
      * @param submissionId submissionId or {@code null} for none
      */
-    public Id setSubmissionId(Integer submissionId) {
+    public Id setSubmissionId(java.lang.Integer submissionId) {
       this.submissionId = submissionId;
       return this;
     }
@@ -6311,25 +6325,25 @@ public final class Submission extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer seriesId;
+    private java.lang.Integer seriesId;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer submissionId;
+    private java.lang.Integer submissionId;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSeriesId() {
+    public java.lang.Integer getSeriesId() {
       return seriesId;
     }
 
     /**
      * @param seriesId seriesId or {@code null} for none
      */
-    public ParentSubmissionId setSeriesId(Integer seriesId) {
+    public ParentSubmissionId setSeriesId(java.lang.Integer seriesId) {
       this.seriesId = seriesId;
       return this;
     }
@@ -6337,14 +6351,14 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSubmissionId() {
+    public java.lang.Integer getSubmissionId() {
       return submissionId;
     }
 
     /**
      * @param submissionId submissionId or {@code null} for none
      */
-    public ParentSubmissionId setSubmissionId(Integer submissionId) {
+    public ParentSubmissionId setSubmissionId(java.lang.Integer submissionId) {
       this.submissionId = submissionId;
       return this;
     }
@@ -6590,13 +6604,13 @@ public final class Tag extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer seriesId;
+    private java.lang.Integer seriesId;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer submissionId;
+    private java.lang.Integer submissionId;
 
     /**
      * The value may be {@code null}.
@@ -6607,14 +6621,14 @@ public final class Tag extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSeriesId() {
+    public java.lang.Integer getSeriesId() {
       return seriesId;
     }
 
     /**
      * @param seriesId seriesId or {@code null} for none
      */
-    public Id setSeriesId(Integer seriesId) {
+    public Id setSeriesId(java.lang.Integer seriesId) {
       this.seriesId = seriesId;
       return this;
     }
@@ -6622,14 +6636,14 @@ public final class Tag extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSubmissionId() {
+    public java.lang.Integer getSubmissionId() {
       return submissionId;
     }
 
     /**
      * @param submissionId submissionId or {@code null} for none
      */
-    public Id setSubmissionId(Integer submissionId) {
+    public Id setSubmissionId(java.lang.Integer submissionId) {
       this.submissionId = submissionId;
       return this;
     }
@@ -6926,49 +6940,49 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("minus_votes")
-    private Integer minusVotes;
+    private java.lang.Integer minusVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("none_votes")
-    private Integer noneVotes;
+    private java.lang.Integer noneVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("plus_votes")
-    private Integer plusVotes;
+    private java.lang.Integer plusVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer submissions;
+    private java.lang.Integer submissions;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer users;
+    private java.lang.Integer users;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer videoSubmissions;
+    private java.lang.Integer videoSubmissions;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getMinusVotes() {
+    public java.lang.Integer getMinusVotes() {
       return minusVotes;
     }
 
     /**
      * @param minusVotes minusVotes or {@code null} for none
      */
-    public Counters setMinusVotes(Integer minusVotes) {
+    public Counters setMinusVotes(java.lang.Integer minusVotes) {
       this.minusVotes = minusVotes;
       return this;
     }
@@ -6976,14 +6990,14 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getNoneVotes() {
+    public java.lang.Integer getNoneVotes() {
       return noneVotes;
     }
 
     /**
      * @param noneVotes noneVotes or {@code null} for none
      */
-    public Counters setNoneVotes(Integer noneVotes) {
+    public Counters setNoneVotes(java.lang.Integer noneVotes) {
       this.noneVotes = noneVotes;
       return this;
     }
@@ -6991,14 +7005,14 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getPlusVotes() {
+    public java.lang.Integer getPlusVotes() {
       return plusVotes;
     }
 
     /**
      * @param plusVotes plusVotes or {@code null} for none
      */
-    public Counters setPlusVotes(Integer plusVotes) {
+    public Counters setPlusVotes(java.lang.Integer plusVotes) {
       this.plusVotes = plusVotes;
       return this;
     }
@@ -7006,14 +7020,14 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSubmissions() {
+    public java.lang.Integer getSubmissions() {
       return submissions;
     }
 
     /**
      * @param submissions submissions or {@code null} for none
      */
-    public Counters setSubmissions(Integer submissions) {
+    public Counters setSubmissions(java.lang.Integer submissions) {
       this.submissions = submissions;
       return this;
     }
@@ -7021,14 +7035,14 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getUsers() {
+    public java.lang.Integer getUsers() {
       return users;
     }
 
     /**
      * @param users users or {@code null} for none
      */
-    public Counters setUsers(Integer users) {
+    public Counters setUsers(java.lang.Integer users) {
       this.users = users;
       return this;
     }
@@ -7036,14 +7050,14 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getVideoSubmissions() {
+    public java.lang.Integer getVideoSubmissions() {
       return videoSubmissions;
     }
 
     /**
      * @param videoSubmissions videoSubmissions or {@code null} for none
      */
-    public Counters setVideoSubmissions(Integer videoSubmissions) {
+    public Counters setVideoSubmissions(java.lang.Integer videoSubmissions) {
       this.videoSubmissions = videoSubmissions;
       return this;
     }
@@ -7069,25 +7083,25 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer seriesId;
+    private java.lang.Integer seriesId;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer topicId;
+    private java.lang.Integer topicId;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSeriesId() {
+    public java.lang.Integer getSeriesId() {
       return seriesId;
     }
 
     /**
      * @param seriesId seriesId or {@code null} for none
      */
-    public Id setSeriesId(Integer seriesId) {
+    public Id setSeriesId(java.lang.Integer seriesId) {
       this.seriesId = seriesId;
       return this;
     }
@@ -7095,14 +7109,14 @@ public final class Topic2 extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getTopicId() {
+    public java.lang.Integer getTopicId() {
       return topicId;
     }
 
     /**
      * @param topicId topicId or {@code null} for none
      */
-    public Id setTopicId(Integer topicId) {
+    public Id setTopicId(java.lang.Integer topicId) {
       this.topicId = topicId;
       return this;
     }
@@ -7319,49 +7333,49 @@ public final class Topic extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("minus_votes")
-    private Integer minusVotes;
+    private java.lang.Integer minusVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("none_votes")
-    private Integer noneVotes;
+    private java.lang.Integer noneVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key("plus_votes")
-    private Integer plusVotes;
+    private java.lang.Integer plusVotes;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer submissions;
+    private java.lang.Integer submissions;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer users;
+    private java.lang.Integer users;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer videoSubmissions;
+    private java.lang.Integer videoSubmissions;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getMinusVotes() {
+    public java.lang.Integer getMinusVotes() {
       return minusVotes;
     }
 
     /**
      * @param minusVotes minusVotes or {@code null} for none
      */
-    public Counters setMinusVotes(Integer minusVotes) {
+    public Counters setMinusVotes(java.lang.Integer minusVotes) {
       this.minusVotes = minusVotes;
       return this;
     }
@@ -7369,14 +7383,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getNoneVotes() {
+    public java.lang.Integer getNoneVotes() {
       return noneVotes;
     }
 
     /**
      * @param noneVotes noneVotes or {@code null} for none
      */
-    public Counters setNoneVotes(Integer noneVotes) {
+    public Counters setNoneVotes(java.lang.Integer noneVotes) {
       this.noneVotes = noneVotes;
       return this;
     }
@@ -7384,14 +7398,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getPlusVotes() {
+    public java.lang.Integer getPlusVotes() {
       return plusVotes;
     }
 
     /**
      * @param plusVotes plusVotes or {@code null} for none
      */
-    public Counters setPlusVotes(Integer plusVotes) {
+    public Counters setPlusVotes(java.lang.Integer plusVotes) {
       this.plusVotes = plusVotes;
       return this;
     }
@@ -7399,14 +7413,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSubmissions() {
+    public java.lang.Integer getSubmissions() {
       return submissions;
     }
 
     /**
      * @param submissions submissions or {@code null} for none
      */
-    public Counters setSubmissions(Integer submissions) {
+    public Counters setSubmissions(java.lang.Integer submissions) {
       this.submissions = submissions;
       return this;
     }
@@ -7414,14 +7428,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getUsers() {
+    public java.lang.Integer getUsers() {
       return users;
     }
 
     /**
      * @param users users or {@code null} for none
      */
-    public Counters setUsers(Integer users) {
+    public Counters setUsers(java.lang.Integer users) {
       this.users = users;
       return this;
     }
@@ -7429,14 +7443,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getVideoSubmissions() {
+    public java.lang.Integer getVideoSubmissions() {
       return videoSubmissions;
     }
 
     /**
      * @param videoSubmissions videoSubmissions or {@code null} for none
      */
-    public Counters setVideoSubmissions(Integer videoSubmissions) {
+    public Counters setVideoSubmissions(java.lang.Integer videoSubmissions) {
       this.videoSubmissions = videoSubmissions;
       return this;
     }
@@ -7462,25 +7476,25 @@ public final class Topic extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer seriesId;
+    private java.lang.Integer seriesId;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer topicId;
+    private java.lang.Integer topicId;
 
     /**
      * @return value or {@code null} for none
      */
-    public Integer getSeriesId() {
+    public java.lang.Integer getSeriesId() {
       return seriesId;
     }
 
     /**
      * @param seriesId seriesId or {@code null} for none
      */
-    public Id setSeriesId(Integer seriesId) {
+    public Id setSeriesId(java.lang.Integer seriesId) {
       this.seriesId = seriesId;
       return this;
     }
@@ -7488,14 +7502,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getTopicId() {
+    public java.lang.Integer getTopicId() {
       return topicId;
     }
 
     /**
      * @param topicId topicId or {@code null} for none
      */
-    public Id setTopicId(Integer topicId) {
+    public Id setTopicId(java.lang.Integer topicId) {
       this.topicId = topicId;
       return this;
     }
@@ -7578,25 +7592,25 @@ public final class Topic extends com.google.api.client.json.GenericJson {
        * The value may be {@code null}.
        */
       @com.google.api.client.util.Key
-      private Integer close;
+      private java.lang.Integer close;
 
       /**
        * The value may be {@code null}.
        */
       @com.google.api.client.util.Key
-      private Integer open;
+      private java.lang.Integer open;
 
       /**
        * @return value or {@code null} for none
        */
-      public Integer getClose() {
+      public java.lang.Integer getClose() {
         return close;
       }
 
       /**
        * @param close close or {@code null} for none
        */
-      public Submissions setClose(Integer close) {
+      public Submissions setClose(java.lang.Integer close) {
         this.close = close;
         return this;
       }
@@ -7604,14 +7618,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
       /**
        * @return value or {@code null} for none
        */
-      public Integer getOpen() {
+      public java.lang.Integer getOpen() {
         return open;
       }
 
       /**
        * @param open open or {@code null} for none
        */
-      public Submissions setOpen(Integer open) {
+      public Submissions setOpen(java.lang.Integer open) {
         this.open = open;
         return this;
       }
@@ -7636,25 +7650,25 @@ public final class Topic extends com.google.api.client.json.GenericJson {
        * The value may be {@code null}.
        */
       @com.google.api.client.util.Key
-      private Integer close;
+      private java.lang.Integer close;
 
       /**
        * The value may be {@code null}.
        */
       @com.google.api.client.util.Key
-      private Integer open;
+      private java.lang.Integer open;
 
       /**
        * @return value or {@code null} for none
        */
-      public Integer getClose() {
+      public java.lang.Integer getClose() {
         return close;
       }
 
       /**
        * @param close close or {@code null} for none
        */
-      public Votes setClose(Integer close) {
+      public Votes setClose(java.lang.Integer close) {
         this.close = close;
         return this;
       }
@@ -7662,14 +7676,14 @@ public final class Topic extends com.google.api.client.json.GenericJson {
       /**
        * @return value or {@code null} for none
        */
-      public Integer getOpen() {
+      public java.lang.Integer getOpen() {
         return open;
       }
 
       /**
        * @param open open or {@code null} for none
        */
-      public Votes setOpen(Integer open) {
+      public Votes setOpen(java.lang.Integer open) {
         this.open = open;
         return this;
       }

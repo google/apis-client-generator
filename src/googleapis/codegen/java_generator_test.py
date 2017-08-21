@@ -75,24 +75,47 @@ class JavaApiTest(basetest.TestCase):
     """Test mapping of JSON schema types to Java class names."""
     language_model = java_generator.JavaLanguageModel()
     test_cases = [
-        ['String', {'type': 'string', 'format': 'byte'}],
-        ['DateTime', {'type': 'string', 'format': 'date-time'}],
-        ['Double', {'type': 'number', 'format': 'double'}],
-        ['Float', {'type': 'number', 'format': 'float'}],
-        ['Short', {'type': 'integer', 'format': 'int16'}],
-        ['Integer', {'type': 'integer', 'format': 'int32'}],
-        ['Long', {'type': 'string', 'format': 'int64'}],
-        ['Object', {'type': 'any'}],
-        ['Boolean', {'type': 'boolean'}],
-        ['String', {'type': 'string'}],
-        ['Long', {'type': 'integer', 'format': 'uint32'}],
-        ['UnsignedLong', {'type': 'string', 'format': 'uint64'}],
+        ['java.lang.String', {'type': 'string', 'format': 'byte'}],
+        ['com.google.api.client.util.DateTime',
+         {'type': 'string', 'format': 'date-time'}],
+        ['java.lang.Double', {'type': 'number', 'format': 'double'}],
+        ['java.lang.Float', {'type': 'number', 'format': 'float'}],
+        ['java.lang.Short', {'type': 'integer', 'format': 'int16'}],
+        ['java.lang.Integer', {'type': 'integer', 'format': 'int32'}],
+        ['java.lang.Long', {'type': 'string', 'format': 'int64'}],
+        ['java.lang.Object', {'type': 'any'}],
+        ['java.lang.Boolean', {'type': 'boolean'}],
+        ['java.lang.String', {'type': 'string'}],
+        ['java.lang.Long', {'type': 'integer', 'format': 'uint32'}],
+        ['java.math.BigInteger', {'type': 'string', 'format': 'uint64'}],
+    ]
+    for test_case in test_cases:
+      self.assertEquals(
+          test_case[0],
+          language_model.GetCodeTypeFromDictionary(test_case[1]))
+
+  def testGetPrimitiveTypeFromDictionary(self):
+    """Test mapping of JSON schema types to Java class names."""
+    language_model = java_generator.JavaLanguageModel()
+    test_cases = [
+        ['double', {'type': 'number', 'format': 'double'}],
+        ['float', {'type': 'number', 'format': 'float'}],
+        ['short', {'type': 'integer', 'format': 'int16'}],
+        ['int', {'type': 'integer', 'format': 'int32'}],
+        ['long', {'type': 'string', 'format': 'int64'}],
+        ['boolean', {'type': 'boolean'}],
+        ['long', {'type': 'integer', 'format': 'uint32'}],
+        [None, {'type': 'string'}],
+        [None, {'type': 'string', 'format': 'byte'}],
+        [None, {'type': 'string', 'format': 'date-time'}],
+        [None, {'type': 'string', 'format': 'uint64'}],
+        [None, {'type': 'anything_else', 'format': 'uint64'}],
     ]
 
     for test_case in test_cases:
       self.assertEquals(
           test_case[0],
-          language_model.GetCodeTypeFromDictionary(test_case[1]))
+          language_model.GetPrimitiveTypeFromDictionary(test_case[1]))
 
 
 class JavaGeneratorTest(basetest.TestCase):
@@ -241,14 +264,14 @@ class JavaLanguageModelDataValueTest(basetest.TestCase):
     render_method = self.language_model._SUPPORTED_TYPES['integer']
     self.assertRaises(ValueError, render_method, dv)
 
-    dv.SetTemplateValue('codeType', 'Long')
+    dv.SetTemplateValue('codeType', 'java.lang.Long')
     self.assertEqual('42L', render_method(dv))
 
 
 class Java14LanguageModelTest(basetest.TestCase):
 
   def setUp(self):
-    self.language_model = java_generator.Java14LanguageModel()
+    self.language_model = java_generator.JavaLanguageModel()
 
   def _CreateDataValue(self, value, val_type):
     def_dict = {
@@ -267,14 +290,6 @@ class Java14LanguageModelTest(basetest.TestCase):
 
     dv.SetValue(False)
     self.assertEqual('false', render_method(dv))
-
-  def testRenderInteger(self):
-    dv = self._CreateDataValue(42, 'integer')
-    render_method = self.language_model._SUPPORTED_TYPES['integer']
-    self.assertRaises(ValueError, render_method, dv)
-
-    dv.SetTemplateValue('codeType', 'java.lang.Long')
-    self.assertEqual('42L', render_method(dv))
 
 
 if __name__ == '__main__':

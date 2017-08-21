@@ -20,8 +20,8 @@ __author__ = 'yanivi@google.com (Yaniv Inbar)'
 
 from googleapis.codegen import api_library_generator
 from googleapis.codegen import data_types
-from googleapis.codegen.java_generator import Java14LanguageModel
 from googleapis.codegen.java_generator import JavaApi
+from googleapis.codegen.java_generator import JavaLanguageModel
 
 
 class JavaProtoGenerator(api_library_generator.ApiLibraryGenerator):
@@ -36,7 +36,7 @@ class JavaProtoGenerator(api_library_generator.ApiLibraryGenerator):
 
   @classmethod
   def _GetDefaultLanguageModel(cls, options=None):
-    return Java14LanguageModel(options=options)
+    return JavaLanguageModel(options=options)
 
   def AnnotateMethod(self, unused_the_api, method, unused_resource):
     """Annotate a Method with Java Proto specific elements.

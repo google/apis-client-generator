@@ -1730,6 +1730,8 @@ import com.google.web.bindery.autobean.shared.Splittable;
 import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
+import java.math.BigInteger;
+
 
 /**
  * Model definition for KitchSink.SeriesCounters.
@@ -1771,10 +1773,10 @@ public interface SeriesCounters extends ValueProxy {
 
   
   @PropertyName("none_votes")
-  Integer getNoneVotes();
+  BigInteger getNoneVotes();
 
   @PropertyName("none_votes")
-  SeriesCounters setNoneVotes(Integer noneVotes);
+  SeriesCounters setNoneVotes(BigInteger noneVotes);
 
   
   @PropertyName("plus_votes")
