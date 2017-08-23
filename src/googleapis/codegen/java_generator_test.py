@@ -190,9 +190,8 @@ class JavaLanguageModelTest(basetest.TestCase):
       return gen
 
     gen = MakeGen('google.com')
-    self.assertEquals('com/google/api/services/fake', gen.api.module.path)
-    self.assertEquals('com/google/api/services/fake/model',
-                      gen.api.model_module.path)
+    self.assertEquals('com/google/fake', gen.api.module.path)
+    self.assertEquals('com/google/fake/model', gen.api.model_module.path)
 
     gen = MakeGen('not-google.com')
     self.assertEquals('com/not_google/fake', gen.api.module.path)
@@ -218,10 +217,8 @@ class JavaLanguageModelTest(basetest.TestCase):
       return gen
 
     gen = MakeGen()
-    self.assertEquals('com/google/api/services/my/path/canonicalname',
-                      gen.api.module.path)
-    self.assertEquals('com/google/api/services/my/path/canonicalname/model',
-                      gen.api.model_module.path)
+    self.assertEquals('com/google/my/path/canonicalname', gen.api.module.path)
+    self.assertEquals('com/google/my/path/canonicalname/model', gen.api.model_module.path)
 
   def testAllowedCharacters(self):
     # make sure $ is allowed in a name and that @ is not
