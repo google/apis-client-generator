@@ -2,6 +2,7 @@
 """Foundary for getting a package writer."""
 
 from googleapis.codegen.filesys import filesystem_library_package
+from googleapis.codegen.filesys import single_file_library_package
 from googleapis.codegen.filesys import tar_library_package
 from googleapis.codegen.filesys import zip_library_package
 
@@ -26,6 +27,8 @@ def GetPackageWriter(output_dir=None, output_file=None, output_format='zip'):
     elif output_format == 'tar':
       package_writer = tar_library_package.TarLibraryPackage(out,
                                                              compress=False)
+    elif output_format == 'txt':
+      package_writer = single_file_library_package.SingleFileLibraryPackage(out)
     else:
       package_writer = zip_library_package.ZipLibraryPackage(out)
   return package_writer

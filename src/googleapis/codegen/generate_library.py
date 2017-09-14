@@ -94,7 +94,7 @@ flags.DEFINE_string(
 flags.DEFINE_enum(
     'output_format',
     'zip',
-    ['zip', 'tgz', 'tar'],
+    ['zip', 'tgz', 'tar', 'txt'],
     'What format to use for --output_file.')
 flags.DEFINE_enum(
     'output_type',
