@@ -1,4 +1,4 @@
-=== begin: ./EccoDomaniIeri.php
+=== begin: EccoDomaniIeri.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -197,8 +197,8 @@ class Google_Service_EccoDomaniIeri_HelloGreetingCollection extends Google_Colle
     return $this->items;
   }
 }
-=== end: ./EccoDomaniIeri.php
-=== begin: ./README.txt
+=== end: EccoDomaniIeri.php
+=== begin: README.txt
 PHP library for Schmecken Sie Gut v1
 
 
@@ -208,4 +208,4 @@ Requirements:
 Google API PHP Client, version 1.1.1
 URL: https://github.com/google/google-api-php-client/releases
 
-=== end: ./README.txt
+=== end: README.txt

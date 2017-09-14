@@ -1,4 +1,4 @@
-=== begin: ./build.xml
+=== begin: build.xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <project basedir="." default="jar" name="gwt-helloworld-v1">
@@ -75,16 +75,16 @@
     </copy>
   </target>
 </project>
-=== end: ./build.xml
-=== begin: ./com/google/api/gwt/services/EccoDomaniIeri.gwt.xml
+=== end: build.xml
+=== begin: com/google/api/gwt/services/EccoDomaniIeri.gwt.xml
 <module>
   <inherits name="com.google.web.bindery.requestfactory.RequestFactory"/>
   <inherits name="com.google.api.gwt.ApiCore" />
 
   <source path="helloworld" includes="shared/**"/>
 </module>
-=== end: ./com/google/api/gwt/services/EccoDomaniIeri.gwt.xml
-=== begin: ./gov/nasa/api/gwt/services/public/helloworld/shared/EccoDomaniIeri.java
+=== end: com/google/api/gwt/services/EccoDomaniIeri.gwt.xml
+=== begin: gov/nasa/api/gwt/services/public/helloworld/shared/EccoDomaniIeri.java
 /*
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -224,53 +224,8 @@ public interface EccoDomaniIeri extends RequestFactory {
 
 
 }
-=== end: ./gov/nasa/api/gwt/services/public/helloworld/shared/EccoDomaniIeri.java
-=== begin: ./gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreetingCollection.java
-/*
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-/*
- * Warning! This file is generated. Modify at your own risk.
- */
-
-package gov.nasa.api.gwt.services.public.helloworld.shared.model;
-
-
-import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
-import com.google.web.bindery.autobean.shared.Splittable;
-import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
-import com.google.web.bindery.requestfactory.shared.ValueProxy;
-
-
-/**
- * Model definition for EccoDomaniIeri.HelloGreetingCollection.
- *
- * Collection of Greetings.
- *
- * This class models an object which will be transmitted to or from the EccoDomaniIeri service.
- *
- * @author Google, Inc.
- */
-@JsonRpcProxy
-public interface HelloGreetingCollection extends ValueProxy {
-
-  /** Greeting that stores a message. */
-  @PropertyName("items")
-  java.util.List<HelloGreeting> getItems();
-
-  @PropertyName("items")
-  HelloGreetingCollection setItems(java.util.List<HelloGreeting> items);
-}
-=== end: ./gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreetingCollection.java
-=== begin: ./gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreeting.java
+=== end: gov/nasa/api/gwt/services/public/helloworld/shared/EccoDomaniIeri.java
+=== begin: gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreeting.java
 /*
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -314,8 +269,53 @@ public interface HelloGreeting extends ValueProxy {
   @PropertyName("message")
   HelloGreeting setMessage(String message);
 }
-=== end: ./gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreeting.java
-=== begin: ./gov/nasa/api/gwt/services/public/helloworld/shared/package-info.java
+=== end: gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreeting.java
+=== begin: gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreetingCollection.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package gov.nasa.api.gwt.services.public.helloworld.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for EccoDomaniIeri.HelloGreetingCollection.
+ *
+ * Collection of Greetings.
+ *
+ * This class models an object which will be transmitted to or from the EccoDomaniIeri service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface HelloGreetingCollection extends ValueProxy {
+
+  /** Greeting that stores a message. */
+  @PropertyName("items")
+  java.util.List<HelloGreeting> getItems();
+
+  @PropertyName("items")
+  HelloGreetingCollection setItems(java.util.List<HelloGreeting> items);
+}
+=== end: gov/nasa/api/gwt/services/public/helloworld/shared/model/HelloGreetingCollection.java
+=== begin: gov/nasa/api/gwt/services/public/helloworld/shared/package-info.java
 /*
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -347,4 +347,4 @@ public interface HelloGreeting extends ValueProxy {
  * @author Google, Inc.
  */
 package gov.nasa.api.gwt.services.public.helloworld.shared;
-=== end: ./gov/nasa/api/gwt/services/public/helloworld/shared/package-info.java
+=== end: gov/nasa/api/gwt/services/public/helloworld/shared/package-info.java

@@ -1,4 +1,4 @@
-=== begin: ./Google.Apis.KitchSink.v1.1.8.1.00.nuspec
+=== begin: Google.Apis.KitchSink.v1.1.8.1.00.nuspec
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
@@ -35,8 +35,8 @@
         <file src="bin\Release\Google.Apis.KitchSink.v1.xml" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.KitchSink.v1.xml" />
     </files>
 </package>
-=== end: ./Google.Apis.KitchSink.v1.1.8.1.00.nuspec
-=== begin: ./Google.Apis.KitchSink.v1.cs
+=== end: Google.Apis.KitchSink.v1.1.8.1.00.nuspec
+=== begin: Google.Apis.KitchSink.v1.cs
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
 // the License. You may obtain a copy of the License at
 //
@@ -3856,8 +3856,8 @@ namespace Google.Apis.KitchSink.v1
         }
     }
 }
-=== end: ./Google.Apis.KitchSink.v1.cs
-=== begin: ./Google.Apis.KitchSink.v1.csproj
+=== end: Google.Apis.KitchSink.v1.cs
+=== begin: Google.Apis.KitchSink.v1.csproj
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
@@ -3951,21 +3951,8 @@ namespace Google.Apis.KitchSink.v1
   </Target>
   -->
 </Project>
-=== end: ./Google.Apis.KitchSink.v1.csproj
-=== begin: ./packages.config
-﻿<?xml version="1.0" encoding="utf-8"?>
-<packages>
-  <package id="Google.Apis" version="1.8.1" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Google.Apis.Core" version="1.8.1" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Microsoft.Bcl" version="1.0.19" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Microsoft.Bcl.Async" version="1.0.16" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Microsoft.Bcl.Build" version="1.0.10" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Microsoft.Net.Http" version="2.1.10" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Newtonsoft.Json" version="5.0.8" targetFramework="portable-win+net40+sl40+wp71"/>
-  <package id="Zlib.Portable" version="1.9.2" targetFramework="portable-win+net40+sl40+wp71"/>
-</packages>
-=== end: ./packages.config
-=== begin: ./Properties/AssemblyInfo.cs
+=== end: Google.Apis.KitchSink.v1.csproj
+=== begin: Properties/AssemblyInfo.cs
 ﻿/*
 Copyright 2013 Google Inc
 
@@ -3999,4 +3986,17 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.8.1.0")]
-=== end: ./Properties/AssemblyInfo.cs
+=== end: Properties/AssemblyInfo.cs
+=== begin: packages.config
+﻿<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Google.Apis" version="1.8.1" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Google.Apis.Core" version="1.8.1" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Microsoft.Bcl" version="1.0.19" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Microsoft.Bcl.Async" version="1.0.16" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Microsoft.Bcl.Build" version="1.0.10" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Microsoft.Net.Http" version="2.1.10" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Newtonsoft.Json" version="5.0.8" targetFramework="portable-win+net40+sl40+wp71"/>
+  <package id="Zlib.Portable" version="1.9.2" targetFramework="portable-win+net40+sl40+wp71"/>
+</packages>
+=== end: packages.config

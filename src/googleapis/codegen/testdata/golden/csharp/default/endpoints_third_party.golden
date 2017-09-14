@@ -1,4 +1,4 @@
-=== begin: ./Nasa.Apis.public.EccoDomaniIeri.v1.1.10.0.00.nuspec
+=== begin: Nasa.Apis.public.EccoDomaniIeri.v1.1.10.0.00.nuspec
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
@@ -41,8 +41,8 @@
         <file src="bin\ReleaseSigned\Nasa.Apis.public.EccoDomaniIeri.v1.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Nasa.Apis.public.EccoDomaniIeri.v1.xml" />
     </files>
 </package>
-=== end: ./Nasa.Apis.public.EccoDomaniIeri.v1.1.10.0.00.nuspec
-=== begin: ./Nasa.Apis.public.EccoDomaniIeri.v1.cs
+=== end: Nasa.Apis.public.EccoDomaniIeri.v1.1.10.0.00.nuspec
+=== begin: Nasa.Apis.public.EccoDomaniIeri.v1.cs
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
 // the License. You may obtain a copy of the License at
 //
@@ -536,8 +536,8 @@ namespace Nasa.Apis.public.EccoDomaniIeri.v1
         }
     }
 }
-=== end: ./Nasa.Apis.public.EccoDomaniIeri.v1.cs
-=== begin: ./Nasa.Apis.public.EccoDomaniIeri.v1.csproj
+=== end: Nasa.Apis.public.EccoDomaniIeri.v1.cs
+=== begin: Nasa.Apis.public.EccoDomaniIeri.v1.csproj
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
@@ -646,21 +646,8 @@ namespace Nasa.Apis.public.EccoDomaniIeri.v1
   </Target>
   -->
 </Project>
-=== end: ./Nasa.Apis.public.EccoDomaniIeri.v1.csproj
-=== begin: ./packages.config
-﻿<?xml version="1.0" encoding="utf-8"?>
-<packages>
-  <package id="Google.Apis" version="1.10.0" targetFramework="portable-net40+sl50+win+wpa81+wp80"/>
-  <package id="Google.Apis.Core" version="1.10.0" targetFramework="portable-net40+sl50+win+wpa81+wp80"/>
-  <package id="Microsoft.Bcl" version="1.1.10" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
-  <package id="Microsoft.Bcl.Async" version="1.0.168" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
-  <package id="Microsoft.Bcl.Build" version="1.0.21" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
-  <package id="Microsoft.Net.Http" version="2.2.29" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
-  <package id="Newtonsoft.Json" version="7.0.1" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
-  <package id="Zlib.Portable.Signed" version="1.11.0" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
-</packages>
-=== end: ./packages.config
-=== begin: ./Properties/AssemblyInfo.cs
+=== end: Nasa.Apis.public.EccoDomaniIeri.v1.csproj
+=== begin: Properties/AssemblyInfo.cs
 ﻿/*
 Copyright 2013 Google Inc
 
@@ -694,4 +681,17 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.10.0.0")]
-=== end: ./Properties/AssemblyInfo.cs
+=== end: Properties/AssemblyInfo.cs
+=== begin: packages.config
+﻿<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Google.Apis" version="1.10.0" targetFramework="portable-net40+sl50+win+wpa81+wp80"/>
+  <package id="Google.Apis.Core" version="1.10.0" targetFramework="portable-net40+sl50+win+wpa81+wp80"/>
+  <package id="Microsoft.Bcl" version="1.1.10" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
+  <package id="Microsoft.Bcl.Async" version="1.0.168" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
+  <package id="Microsoft.Bcl.Build" version="1.0.21" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
+  <package id="Microsoft.Net.Http" version="2.2.29" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
+  <package id="Newtonsoft.Json" version="7.0.1" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
+  <package id="Zlib.Portable.Signed" version="1.11.0" targetFramework="portable-net40+sl50+win+wpa81+wp80" />
+</packages>
+=== end: packages.config

@@ -1,4 +1,4 @@
-=== begin: ./google_api_helloworld_v1/lib/helloworld_v1_api_browser.dart
+=== begin: google_api_helloworld_v1/lib/helloworld_v1_api_browser.dart
 library helloworld_v1_api_browser;
 
 import "helloworld_v1_api_client.dart";
@@ -14,8 +14,8 @@ import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 part "src/browser/browserclient.dart";
 part "src/browser/helloworld.dart";
 
-=== end: ./google_api_helloworld_v1/lib/helloworld_v1_api_browser.dart
-=== begin: ./google_api_helloworld_v1/lib/helloworld_v1_api_client.dart
+=== end: google_api_helloworld_v1/lib/helloworld_v1_api_browser.dart
+=== begin: google_api_helloworld_v1/lib/helloworld_v1_api_client.dart
 library helloworld_v1_api_client;
 
 import "dart:core" as core;
@@ -26,8 +26,8 @@ part "src/common/client.dart";
 part "src/common/schemas.dart";
 part "src/common/resources.dart";
 
-=== end: ./google_api_helloworld_v1/lib/helloworld_v1_api_client.dart
-=== begin: ./google_api_helloworld_v1/lib/helloworld_v1_api_console.dart
+=== end: google_api_helloworld_v1/lib/helloworld_v1_api_client.dart
+=== begin: google_api_helloworld_v1/lib/helloworld_v1_api_console.dart
 library helloworld_v1_api_console;
 
 import "helloworld_v1_api_client.dart";
@@ -44,8 +44,8 @@ import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
 part "src/console/consoleclient.dart";
 part "src/console/helloworld.dart";
 
-=== end: ./google_api_helloworld_v1/lib/helloworld_v1_api_console.dart
-=== begin: ./google_api_helloworld_v1/lib/src/browser/browserclient.dart
+=== end: google_api_helloworld_v1/lib/helloworld_v1_api_console.dart
+=== begin: google_api_helloworld_v1/lib/src/browser/browserclient.dart
 part of helloworld_v1_api_browser;
 
 /**
@@ -206,8 +206,8 @@ abstract class BrowserClient extends Client {
   }
 }
 
-=== end: ./google_api_helloworld_v1/lib/src/browser/browserclient.dart
-=== begin: ./google_api_helloworld_v1/lib/src/browser/helloworld.dart
+=== end: google_api_helloworld_v1/lib/src/browser/browserclient.dart
+=== begin: google_api_helloworld_v1/lib/src/browser/helloworld.dart
 part of helloworld_v1_api_browser;
 
 /** Client to access the helloworld v1 API */
@@ -277,8 +277,8 @@ class EccoDomaniIeriApi extends BrowserClient {
     _greetings = new GreetingsResource(this);
   }
 }
-=== end: ./google_api_helloworld_v1/lib/src/browser/helloworld.dart
-=== begin: ./google_api_helloworld_v1/lib/src/common/client.dart
+=== end: google_api_helloworld_v1/lib/src/browser/helloworld.dart
+=== begin: google_api_helloworld_v1/lib/src/common/client.dart
 part of helloworld_v1_api_client;
 
 /**
@@ -345,8 +345,8 @@ class APIRequestException implements core.Exception {
   core.String toString() => (msg == null) ? "APIRequestException" : "APIRequestException: $msg";
 }
 
-=== end: ./google_api_helloworld_v1/lib/src/common/client.dart
-=== begin: ./google_api_helloworld_v1/lib/src/common/resources.dart
+=== end: google_api_helloworld_v1/lib/src/common/client.dart
+=== begin: google_api_helloworld_v1/lib/src/common/resources.dart
 part of helloworld_v1_api_client;
 
 
@@ -499,8 +499,8 @@ class GreetingsResource extends Resource {
   }
 }
 
-=== end: ./google_api_helloworld_v1/lib/src/common/resources.dart
-=== begin: ./google_api_helloworld_v1/lib/src/common/schemas.dart
+=== end: google_api_helloworld_v1/lib/src/common/resources.dart
+=== begin: google_api_helloworld_v1/lib/src/common/schemas.dart
 part of helloworld_v1_api_client;
 
 
@@ -564,8 +564,8 @@ class HelloGreetingCollection {
   core.String toString() => JSON.encode(this.toJson());
 }
 
-=== end: ./google_api_helloworld_v1/lib/src/common/schemas.dart
-=== begin: ./google_api_helloworld_v1/lib/src/console/consoleclient.dart
+=== end: google_api_helloworld_v1/lib/src/common/schemas.dart
+=== begin: google_api_helloworld_v1/lib/src/console/consoleclient.dart
 part of helloworld_v1_api_console;
 
 /**
@@ -680,8 +680,8 @@ abstract class ConsoleClient extends Client {
   }
 }
 
-=== end: ./google_api_helloworld_v1/lib/src/console/consoleclient.dart
-=== begin: ./google_api_helloworld_v1/lib/src/console/helloworld.dart
+=== end: google_api_helloworld_v1/lib/src/console/consoleclient.dart
+=== begin: google_api_helloworld_v1/lib/src/console/helloworld.dart
 part of helloworld_v1_api_console;
 
 /** Client to access the helloworld v1 API */
@@ -751,8 +751,8 @@ class EccoDomaniIeriApi extends ConsoleClient {
     _greetings = new GreetingsResource(this);
   }
 }
-=== end: ./google_api_helloworld_v1/lib/src/console/helloworld.dart
-=== begin: ./google_api_helloworld_v1/pubspec.yaml
+=== end: google_api_helloworld_v1/lib/src/console/helloworld.dart
+=== begin: google_api_helloworld_v1/pubspec.yaml
 name: google_api_helloworld_v1
 description: >
   helloworld API v1.
@@ -761,4 +761,4 @@ author: Sam McCall <sammccall@google.com>
 dependencies:
   js: '>=0.0.18'
   google_oauth2_client: '>=0.2.9'
-=== end: ./google_api_helloworld_v1/pubspec.yaml
+=== end: google_api_helloworld_v1/pubspec.yaml

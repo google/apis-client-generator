@@ -1,4 +1,4 @@
-=== begin: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_browser.dart
+=== begin: google_api_kitch_sink_v1/lib/kitch_sink_v1_api_browser.dart
 library kitch_sink_v1_api_browser;
 
 import "kitch_sink_v1_api_client.dart";
@@ -14,8 +14,8 @@ import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 part "src/browser/browserclient.dart";
 part "src/browser/kitch_sink.dart";
 
-=== end: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_browser.dart
-=== begin: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_client.dart
+=== end: google_api_kitch_sink_v1/lib/kitch_sink_v1_api_browser.dart
+=== begin: google_api_kitch_sink_v1/lib/kitch_sink_v1_api_client.dart
 library kitch_sink_v1_api_client;
 
 import "dart:core" as core;
@@ -26,8 +26,8 @@ part "src/common/client.dart";
 part "src/common/schemas.dart";
 part "src/common/resources.dart";
 
-=== end: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_client.dart
-=== begin: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_console.dart
+=== end: google_api_kitch_sink_v1/lib/kitch_sink_v1_api_client.dart
+=== begin: google_api_kitch_sink_v1/lib/kitch_sink_v1_api_console.dart
 library kitch_sink_v1_api_console;
 
 import "kitch_sink_v1_api_client.dart";
@@ -44,8 +44,8 @@ import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
 part "src/console/consoleclient.dart";
 part "src/console/kitch_sink.dart";
 
-=== end: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_console.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/browser/browserclient.dart
+=== end: google_api_kitch_sink_v1/lib/kitch_sink_v1_api_console.dart
+=== begin: google_api_kitch_sink_v1/lib/src/browser/browserclient.dart
 part of kitch_sink_v1_api_browser;
 
 /**
@@ -206,8 +206,8 @@ abstract class BrowserClient extends Client {
   }
 }
 
-=== end: ./google_api_kitch_sink_v1/lib/src/browser/browserclient.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/browser/kitch_sink.dart
+=== end: google_api_kitch_sink_v1/lib/src/browser/browserclient.dart
+=== begin: google_api_kitch_sink_v1/lib/src/browser/kitch_sink.dart
 part of kitch_sink_v1_api_browser;
 
 /** Client to access the kitch_sink v1 API */
@@ -313,8 +313,8 @@ class KitchSinkApi extends BrowserClient {
     _votes = new VotesResource(this);
   }
 }
-=== end: ./google_api_kitch_sink_v1/lib/src/browser/kitch_sink.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/common/client.dart
+=== end: google_api_kitch_sink_v1/lib/src/browser/kitch_sink.dart
+=== begin: google_api_kitch_sink_v1/lib/src/common/client.dart
 part of kitch_sink_v1_api_client;
 
 /**
@@ -381,8 +381,8 @@ class APIRequestException implements core.Exception {
   core.String toString() => (msg == null) ? "APIRequestException" : "APIRequestException: $msg";
 }
 
-=== end: ./google_api_kitch_sink_v1/lib/src/common/client.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/common/resources.dart
+=== end: google_api_kitch_sink_v1/lib/src/common/client.dart
+=== begin: google_api_kitch_sink_v1/lib/src/common/resources.dart
 part of kitch_sink_v1_api_client;
 
 
@@ -1798,8 +1798,8 @@ class VotesResource extends Resource {
   }
 }
 
-=== end: ./google_api_kitch_sink_v1/lib/src/common/resources.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/common/schemas.dart
+=== end: google_api_kitch_sink_v1/lib/src/common/resources.dart
+=== begin: google_api_kitch_sink_v1/lib/src/common/schemas.dart
 part of kitch_sink_v1_api_client;
 
 
@@ -3580,8 +3580,8 @@ class VoteList {
   core.String toString() => JSON.encode(this.toJson());
 }
 
-=== end: ./google_api_kitch_sink_v1/lib/src/common/schemas.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/console/consoleclient.dart
+=== end: google_api_kitch_sink_v1/lib/src/common/schemas.dart
+=== begin: google_api_kitch_sink_v1/lib/src/console/consoleclient.dart
 part of kitch_sink_v1_api_console;
 
 /**
@@ -3696,8 +3696,8 @@ abstract class ConsoleClient extends Client {
   }
 }
 
-=== end: ./google_api_kitch_sink_v1/lib/src/console/consoleclient.dart
-=== begin: ./google_api_kitch_sink_v1/lib/src/console/kitch_sink.dart
+=== end: google_api_kitch_sink_v1/lib/src/console/consoleclient.dart
+=== begin: google_api_kitch_sink_v1/lib/src/console/kitch_sink.dart
 part of kitch_sink_v1_api_console;
 
 /** Client to access the kitch_sink v1 API */
@@ -3803,8 +3803,8 @@ class KitchSinkApi extends ConsoleClient {
     _votes = new VotesResource(this);
   }
 }
-=== end: ./google_api_kitch_sink_v1/lib/src/console/kitch_sink.dart
-=== begin: ./google_api_kitch_sink_v1/pubspec.yaml
+=== end: google_api_kitch_sink_v1/lib/src/console/kitch_sink.dart
+=== begin: google_api_kitch_sink_v1/pubspec.yaml
 name: google_api_kitch_sink_v1
 description: >
   An API with every strange thing in it
@@ -3813,4 +3813,4 @@ author: Sam McCall <sammccall@google.com>
 dependencies:
   js: '>=0.0.18'
   google_oauth2_client: '>=0.2.9'
-=== end: ./google_api_kitch_sink_v1/pubspec.yaml
+=== end: google_api_kitch_sink_v1/pubspec.yaml

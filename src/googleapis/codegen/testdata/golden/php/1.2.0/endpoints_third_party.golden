@@ -1,76 +1,4 @@
-=== begin: ./EccoDomaniIeri/HelloGreetingCollection.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class NASA_Service_EccoDomaniIeri_HelloGreetingCollection extends Google_Collection
-{
-  protected $collection_key = 'items';
-  protected $itemsType = 'Nasa_Service_EccoDomaniIeri_HelloGreeting';
-  protected $itemsDataType = 'array';
-
-  /**
-   * @param Nasa_Service_EccoDomaniIeri_HelloGreeting
-   */
-  public function setItems($items)
-  {
-    $this->items = $items;
-  }
-  /**
-   * @return Nasa_Service_EccoDomaniIeri_HelloGreeting
-   */
-  public function getItems()
-  {
-    return $this->items;
-  }
-}
-=== end: ./EccoDomaniIeri/HelloGreetingCollection.php
-=== begin: ./EccoDomaniIeri/HelloGreeting.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class NASA_Service_EccoDomaniIeri_HelloGreeting extends Google_Model
-{
-  public $message;
-
-  public function setMessage($message)
-  {
-    $this->message = $message;
-  }
-  public function getMessage()
-  {
-    return $this->message;
-  }
-}
-=== end: ./EccoDomaniIeri/HelloGreeting.php
-=== begin: ./EccoDomaniIeri.php
+=== begin: EccoDomaniIeri.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -162,8 +90,80 @@ class NASA_Service_EccoDomaniIeri extends Google_Service
     );
   }
 }
-=== end: ./EccoDomaniIeri.php
-=== begin: ./EccoDomaniIeri/Resource/Greetings.php
+=== end: EccoDomaniIeri.php
+=== begin: EccoDomaniIeri/HelloGreeting.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class NASA_Service_EccoDomaniIeri_HelloGreeting extends Google_Model
+{
+  public $message;
+
+  public function setMessage($message)
+  {
+    $this->message = $message;
+  }
+  public function getMessage()
+  {
+    return $this->message;
+  }
+}
+=== end: EccoDomaniIeri/HelloGreeting.php
+=== begin: EccoDomaniIeri/HelloGreetingCollection.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class NASA_Service_EccoDomaniIeri_HelloGreetingCollection extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $itemsType = 'Nasa_Service_EccoDomaniIeri_HelloGreeting';
+  protected $itemsDataType = 'array';
+
+  /**
+   * @param Nasa_Service_EccoDomaniIeri_HelloGreeting
+   */
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+  /**
+   * @return Nasa_Service_EccoDomaniIeri_HelloGreeting
+   */
+  public function getItems()
+  {
+    return $this->items;
+  }
+}
+=== end: EccoDomaniIeri/HelloGreetingCollection.php
+=== begin: EccoDomaniIeri/Resource/Greetings.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -243,4 +243,4 @@ class NASA_Service_EccoDomaniIeri_Resource_Greetings extends Google_Service_Reso
     return $this->call('multiply', array($params), "NASA_Service_EccoDomaniIeri_HelloGreeting");
   }
 }
-=== end: ./EccoDomaniIeri/Resource/Greetings.php
+=== end: EccoDomaniIeri/Resource/Greetings.php

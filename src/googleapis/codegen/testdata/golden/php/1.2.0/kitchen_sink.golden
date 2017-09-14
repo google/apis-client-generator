@@ -1,259 +1,4 @@
-=== begin: ./KitchSink/Enum.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_Enum extends Google_Model
-{
-  public $name;
-
-  public function setName($name)
-  {
-    $this->name = $name;
-  }
-  public function getName()
-  {
-    return $this->name;
-  }
-}
-=== end: ./KitchSink/Enum.php
-=== begin: ./KitchSink/GeometryCollection.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_GeometryCollection extends Google_Service_KitchSink_Geometry
-{
-  protected $collection_key = 'geometries';
-  protected $geometriesType = 'Google_Service_KitchSink_Geometry';
-  protected $geometriesDataType = 'array';
-  protected function gapiInit()
-  {
-    $this->type = 'Collection';
-  }
-  /**
-   * @param Google_Service_KitchSink_Geometry
-   */
-  public function setGeometries($geometries)
-  {
-    $this->geometries = $geometries;
-  }
-  /**
-   * @return Google_Service_KitchSink_Geometry
-   */
-  public function getGeometries()
-  {
-    return $this->geometries;
-  }
-}
-=== end: ./KitchSink/GeometryCollection.php
-=== begin: ./KitchSink/Geometry.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_Geometry extends Google_Model
-{
-  public $type;
-
-  public function setType($type)
-  {
-    $this->type = $type;
-  }
-  public function getType()
-  {
-    return $this->type;
-  }
-}
-=== end: ./KitchSink/Geometry.php
-=== begin: ./KitchSink/GeometryPolygon.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_GeometryPolygon extends Google_Service_KitchSink_Geometry
-{
-  public $coordinates;
-  protected function gapiInit()
-  {
-    $this->type = 'Polygon';
-  }
-  public function setCoordinates($coordinates)
-  {
-    $this->coordinates = $coordinates;
-  }
-  public function getCoordinates()
-  {
-    return $this->coordinates;
-  }
-}
-=== end: ./KitchSink/GeometryPolygon.php
-=== begin: ./KitchSink/GeometryReference.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_GeometryReference extends Google_Model
-{
-  public $coordinates;
-  public $type;
-
-  public function setCoordinates($coordinates)
-  {
-    $this->coordinates = $coordinates;
-  }
-  public function getCoordinates()
-  {
-    return $this->coordinates;
-  }
-  public function setType($type)
-  {
-    $this->type = $type;
-  }
-  public function getType()
-  {
-    return $this->type;
-  }
-}
-=== end: ./KitchSink/GeometryReference.php
-=== begin: ./KitchSink/LatLong.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_LatLong extends Google_Model
-{
-  public $latitude;
-  public $location;
-  public $longitude;
-
-  public function setLatitude($latitude)
-  {
-    $this->latitude = $latitude;
-  }
-  public function getLatitude()
-  {
-    return $this->latitude;
-  }
-  public function setLocation($location)
-  {
-    $this->location = $location;
-  }
-  public function getLocation()
-  {
-    return $this->location;
-  }
-  public function setLongitude($longitude)
-  {
-    $this->longitude = $longitude;
-  }
-  public function getLongitude()
-  {
-    return $this->longitude;
-  }
-}
-=== end: ./KitchSink/LatLong.php
-=== begin: ./KitchSink/ModeratorTopicsResourcePartial.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_ModeratorTopicsResourcePartial extends Google_Model
-{
-}
-=== end: ./KitchSink/ModeratorTopicsResourcePartial.php
-=== begin: ./KitchSink.php
+=== begin: KitchSink.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -932,8 +677,327 @@ class Google_Service_KitchSink extends Google_Service
     );
   }
 }
-=== end: ./KitchSink.php
-=== begin: ./KitchSink/ProfileAttribution.php
+=== end: KitchSink.php
+=== begin: KitchSink/Enum.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_Enum extends Google_Model
+{
+  public $name;
+
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+  public function getName()
+  {
+    return $this->name;
+  }
+}
+=== end: KitchSink/Enum.php
+=== begin: KitchSink/Geometry.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_Geometry extends Google_Model
+{
+  public $type;
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+  public function getType()
+  {
+    return $this->type;
+  }
+}
+=== end: KitchSink/Geometry.php
+=== begin: KitchSink/GeometryCollection.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_GeometryCollection extends Google_Service_KitchSink_Geometry
+{
+  protected $collection_key = 'geometries';
+  protected $geometriesType = 'Google_Service_KitchSink_Geometry';
+  protected $geometriesDataType = 'array';
+  protected function gapiInit()
+  {
+    $this->type = 'Collection';
+  }
+  /**
+   * @param Google_Service_KitchSink_Geometry
+   */
+  public function setGeometries($geometries)
+  {
+    $this->geometries = $geometries;
+  }
+  /**
+   * @return Google_Service_KitchSink_Geometry
+   */
+  public function getGeometries()
+  {
+    return $this->geometries;
+  }
+}
+=== end: KitchSink/GeometryCollection.php
+=== begin: KitchSink/GeometryPolygon.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_GeometryPolygon extends Google_Service_KitchSink_Geometry
+{
+  public $coordinates;
+  protected function gapiInit()
+  {
+    $this->type = 'Polygon';
+  }
+  public function setCoordinates($coordinates)
+  {
+    $this->coordinates = $coordinates;
+  }
+  public function getCoordinates()
+  {
+    return $this->coordinates;
+  }
+}
+=== end: KitchSink/GeometryPolygon.php
+=== begin: KitchSink/GeometryReference.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_GeometryReference extends Google_Model
+{
+  public $coordinates;
+  public $type;
+
+  public function setCoordinates($coordinates)
+  {
+    $this->coordinates = $coordinates;
+  }
+  public function getCoordinates()
+  {
+    return $this->coordinates;
+  }
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+  public function getType()
+  {
+    return $this->type;
+  }
+}
+=== end: KitchSink/GeometryReference.php
+=== begin: KitchSink/LatLong.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_LatLong extends Google_Model
+{
+  public $latitude;
+  public $location;
+  public $longitude;
+
+  public function setLatitude($latitude)
+  {
+    $this->latitude = $latitude;
+  }
+  public function getLatitude()
+  {
+    return $this->latitude;
+  }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+  public function getLocation()
+  {
+    return $this->location;
+  }
+  public function setLongitude($longitude)
+  {
+    $this->longitude = $longitude;
+  }
+  public function getLongitude()
+  {
+    return $this->longitude;
+  }
+}
+=== end: KitchSink/LatLong.php
+=== begin: KitchSink/ModeratorTopicsResourcePartial.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_ModeratorTopicsResourcePartial extends Google_Model
+{
+}
+=== end: KitchSink/ModeratorTopicsResourcePartial.php
+=== begin: KitchSink/Profile.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_Profile extends Google_Model
+{
+  protected $attributionType = 'Google_Service_KitchSink_ProfileAttribution';
+  protected $attributionDataType = '';
+  protected $idType = 'Google_Service_KitchSink_ProfileId';
+  protected $idDataType = '';
+  public $kind;
+
+  /**
+   * @param Google_Service_KitchSink_ProfileAttribution
+   */
+  public function setAttribution(Google_Service_KitchSink_ProfileAttribution $attribution)
+  {
+    $this->attribution = $attribution;
+  }
+  /**
+   * @return Google_Service_KitchSink_ProfileAttribution
+   */
+  public function getAttribution()
+  {
+    return $this->attribution;
+  }
+  /**
+   * @param Google_Service_KitchSink_ProfileId
+   */
+  public function setId(Google_Service_KitchSink_ProfileId $id)
+  {
+    $this->id = $id;
+  }
+  /**
+   * @return Google_Service_KitchSink_ProfileId
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+  public function getKind()
+  {
+    return $this->kind;
+  }
+}
+=== end: KitchSink/Profile.php
+=== begin: KitchSink/ProfileAttribution.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -998,8 +1062,8 @@ class Google_Service_KitchSink_ProfileAttribution extends Google_Model
     return $this->location;
   }
 }
-=== end: ./KitchSink/ProfileAttribution.php
-=== begin: ./KitchSink/ProfileId.php
+=== end: KitchSink/ProfileAttribution.php
+=== begin: KitchSink/ProfileId.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1030,72 +1094,8 @@ class Google_Service_KitchSink_ProfileId extends Google_Model
     return $this->user;
   }
 }
-=== end: ./KitchSink/ProfileId.php
-=== begin: ./KitchSink/Profile.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_Profile extends Google_Model
-{
-  protected $attributionType = 'Google_Service_KitchSink_ProfileAttribution';
-  protected $attributionDataType = '';
-  protected $idType = 'Google_Service_KitchSink_ProfileId';
-  protected $idDataType = '';
-  public $kind;
-
-  /**
-   * @param Google_Service_KitchSink_ProfileAttribution
-   */
-  public function setAttribution(Google_Service_KitchSink_ProfileAttribution $attribution)
-  {
-    $this->attribution = $attribution;
-  }
-  /**
-   * @return Google_Service_KitchSink_ProfileAttribution
-   */
-  public function getAttribution()
-  {
-    return $this->attribution;
-  }
-  /**
-   * @param Google_Service_KitchSink_ProfileId
-   */
-  public function setId(Google_Service_KitchSink_ProfileId $id)
-  {
-    $this->id = $id;
-  }
-  /**
-   * @return Google_Service_KitchSink_ProfileId
-   */
-  public function getId()
-  {
-    return $this->id;
-  }
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
-  }
-}
-=== end: ./KitchSink/Profile.php
-=== begin: ./KitchSink/Resource/Featured.php
+=== end: KitchSink/ProfileId.php
+=== begin: KitchSink/Resource/Featured.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1124,8 +1124,8 @@ class Google_Service_KitchSink_Profile extends Google_Model
 class Google_Service_KitchSink_Resource_Featured extends Google_Service_Resource
 {
 }
-=== end: ./KitchSink/Resource/Featured.php
-=== begin: ./KitchSink/Resource/FeaturedSeries.php
+=== end: KitchSink/Resource/Featured.php
+=== begin: KitchSink/Resource/FeaturedSeries.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1166,8 +1166,8 @@ class Google_Service_KitchSink_Resource_FeaturedSeries extends Google_Service_Re
     return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
   }
 }
-=== end: ./KitchSink/Resource/FeaturedSeries.php
-=== begin: ./KitchSink/Resource/KitchSinkGlobal.php
+=== end: KitchSink/Resource/FeaturedSeries.php
+=== begin: KitchSink/Resource/KitchSinkGlobal.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1196,8 +1196,8 @@ class Google_Service_KitchSink_Resource_FeaturedSeries extends Google_Service_Re
 class Google_Service_KitchSink_Resource_KitchSinkGlobal extends Google_Service_Resource
 {
 }
-=== end: ./KitchSink/Resource/KitchSinkGlobal.php
-=== begin: ./KitchSink/Resource/KitchSinkGlobalSeries.php
+=== end: KitchSink/Resource/KitchSinkGlobal.php
+=== begin: KitchSink/Resource/KitchSinkGlobalSeries.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1244,8 +1244,8 @@ class Google_Service_KitchSink_Resource_KitchSinkGlobalSeries extends Google_Ser
     return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
   }
 }
-=== end: ./KitchSink/Resource/KitchSinkGlobalSeries.php
-=== begin: ./KitchSink/Resource/My.php
+=== end: KitchSink/Resource/KitchSinkGlobalSeries.php
+=== begin: KitchSink/Resource/My.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1274,8 +1274,80 @@ class Google_Service_KitchSink_Resource_KitchSinkGlobalSeries extends Google_Ser
 class Google_Service_KitchSink_Resource_My extends Google_Service_Resource
 {
 }
-=== end: ./KitchSink/Resource/My.php
-=== begin: ./KitchSink/Resource/MyrecentKitchSinkPrivate.php
+=== end: KitchSink/Resource/My.php
+=== begin: KitchSink/Resource/MySeries.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * The "series" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $series = $kitch_sinkService->series;
+ *  </code>
+ */
+class Google_Service_KitchSink_Resource_MySeries extends Google_Service_Resource
+{
+  /**
+   * Lists all series created by the authenticated user. (series.listMySeries)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listMySeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+=== end: KitchSink/Resource/MySeries.php
+=== begin: KitchSink/Resource/Myrecent.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * The "myrecent" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $myrecent = $kitch_sinkService->myrecent;
+ *  </code>
+ */
+class Google_Service_KitchSink_Resource_Myrecent extends Google_Service_Resource
+{
+}
+=== end: KitchSink/Resource/Myrecent.php
+=== begin: KitchSink/Resource/MyrecentKitchSinkPrivate.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1317,80 +1389,8 @@ class Google_Service_KitchSink_Resource_MyrecentKitchSinkPrivate extends Google_
     return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
   }
 }
-=== end: ./KitchSink/Resource/MyrecentKitchSinkPrivate.php
-=== begin: ./KitchSink/Resource/Myrecent.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * The "myrecent" collection of methods.
- * Typical usage is:
- *  <code>
- *   $kitch_sinkService = new Google_Service_KitchSink(...);
- *   $myrecent = $kitch_sinkService->myrecent;
- *  </code>
- */
-class Google_Service_KitchSink_Resource_Myrecent extends Google_Service_Resource
-{
-}
-=== end: ./KitchSink/Resource/Myrecent.php
-=== begin: ./KitchSink/Resource/MySeries.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * The "series" collection of methods.
- * Typical usage is:
- *  <code>
- *   $kitch_sinkService = new Google_Service_KitchSink(...);
- *   $series = $kitch_sinkService->series;
- *  </code>
- */
-class Google_Service_KitchSink_Resource_MySeries extends Google_Service_Resource
-{
-  /**
-   * Lists all series created by the authenticated user. (series.listMySeries)
-   *
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_KitchSink_SeriesList
-   */
-  public function listMySeries($optParams = array())
-  {
-    $params = array();
-    $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
-  }
-}
-=== end: ./KitchSink/Resource/MySeries.php
-=== begin: ./KitchSink/Resource/Profiles.php
+=== end: KitchSink/Resource/MyrecentKitchSinkPrivate.php
+=== begin: KitchSink/Resource/Profiles.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1444,8 +1444,8 @@ class Google_Service_KitchSink_Resource_Profiles extends Google_Service_Resource
     return $this->call('update', array($params), "Google_Service_KitchSink_Profile");
   }
 }
-=== end: ./KitchSink/Resource/Profiles.php
-=== begin: ./KitchSink/Resource/Responses.php
+=== end: KitchSink/Resource/Profiles.php
+=== begin: KitchSink/Resource/Responses.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1518,8 +1518,8 @@ class Google_Service_KitchSink_Resource_Responses extends Google_Service_Resourc
     return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
   }
 }
-=== end: ./KitchSink/Resource/Responses.php
-=== begin: ./KitchSink/Resource/Series.php
+=== end: KitchSink/Resource/Responses.php
+=== begin: KitchSink/Resource/Series.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1603,8 +1603,8 @@ class Google_Service_KitchSink_Resource_Series extends Google_Service_Resource
     return $this->call('update', array($params), "Google_Service_KitchSink_Series");
   }
 }
-=== end: ./KitchSink/Resource/Series.php
-=== begin: ./KitchSink/Resource/SeriesResponses.php
+=== end: KitchSink/Resource/Series.php
+=== begin: KitchSink/Resource/SeriesResponses.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1656,8 +1656,8 @@ class Google_Service_KitchSink_Resource_SeriesResponses extends Google_Service_R
     return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
   }
 }
-=== end: ./KitchSink/Resource/SeriesResponses.php
-=== begin: ./KitchSink/Resource/SeriesSubmissions.php
+=== end: KitchSink/Resource/SeriesResponses.php
+=== begin: KitchSink/Resource/SeriesSubmissions.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1710,8 +1710,8 @@ class Google_Service_KitchSink_Resource_SeriesSubmissions extends Google_Service
     return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
   }
 }
-=== end: ./KitchSink/Resource/SeriesSubmissions.php
-=== begin: ./KitchSink/Resource/Submissions.php
+=== end: KitchSink/Resource/SeriesSubmissions.php
+=== begin: KitchSink/Resource/Submissions.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1777,8 +1777,8 @@ class Google_Service_KitchSink_Resource_Submissions extends Google_Service_Resou
     return $this->call('insert', array($params), "Google_Service_KitchSink_Submission");
   }
 }
-=== end: ./KitchSink/Resource/Submissions.php
-=== begin: ./KitchSink/Resource/Tags.php
+=== end: KitchSink/Resource/Submissions.php
+=== begin: KitchSink/Resource/Tags.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1852,8 +1852,8 @@ class Google_Service_KitchSink_Resource_Tags extends Google_Service_Resource
     return $this->call('list', array($params), "Google_Service_KitchSink_TagList");
   }
 }
-=== end: ./KitchSink/Resource/Tags.php
-=== begin: ./KitchSink/Resource/Topics.php
+=== end: KitchSink/Resource/Tags.php
+=== begin: KitchSink/Resource/Topics.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1944,8 +1944,8 @@ class Google_Service_KitchSink_Resource_Topics extends Google_Service_Resource
     return $this->call('update', array($params), "Google_Service_KitchSink_Topic");
   }
 }
-=== end: ./KitchSink/Resource/Topics.php
-=== begin: ./KitchSink/Resource/TopicsSubmissions.php
+=== end: KitchSink/Resource/Topics.php
+=== begin: KitchSink/Resource/TopicsSubmissions.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -1997,8 +1997,8 @@ class Google_Service_KitchSink_Resource_TopicsSubmissions extends Google_Service
     return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
   }
 }
-=== end: ./KitchSink/Resource/TopicsSubmissions.php
-=== begin: ./KitchSink/Resource/Votes.php
+=== end: KitchSink/Resource/TopicsSubmissions.php
+=== begin: KitchSink/Resource/Votes.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2094,8 +2094,8 @@ class Google_Service_KitchSink_Resource_Votes extends Google_Service_Resource
     return $this->call('update', array($params), "Google_Service_KitchSink_Vote");
   }
 }
-=== end: ./KitchSink/Resource/Votes.php
-=== begin: ./KitchSink/Rule.php
+=== end: KitchSink/Resource/Votes.php
+=== begin: KitchSink/Rule.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2133,8 +2133,8 @@ class Google_Service_KitchSink_Rule extends Google_Model
     return $this->submissions;
   }
 }
-=== end: ./KitchSink/Rule.php
-=== begin: ./KitchSink/RuleSubmissions.php
+=== end: KitchSink/Rule.php
+=== begin: KitchSink/RuleSubmissions.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2174,231 +2174,8 @@ class Google_Service_KitchSink_RuleSubmissions extends Google_Model
     return $this->open;
   }
 }
-=== end: ./KitchSink/RuleSubmissions.php
-=== begin: ./KitchSink/SeriesCountersCounters.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_SeriesCountersCounters extends Google_Model
-{
-  protected $internal_gapi_mappings = array(
-        "allVotes" => "all-votes",
-  );
-  public $allVotes;
-
-  public function setAllVotes($allVotes)
-  {
-    $this->allVotes = $allVotes;
-  }
-  public function getAllVotes()
-  {
-    return $this->allVotes;
-  }
-}
-=== end: ./KitchSink/SeriesCountersCounters.php
-=== begin: ./KitchSink/SeriesCounters.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_SeriesCounters extends Google_Model
-{
-  protected $internal_gapi_mappings = array(
-        "minusVotes" => "minus_votes",
-        "noneVotes" => "none_votes",
-        "plusVotes" => "plus_votes",
-  );
-  public $anonymousSubmissions;
-  protected $countersType = 'Google_Service_KitchSink_SeriesCountersCounters';
-  protected $countersDataType = '';
-  public $else;
-  public $minusVotes;
-  public $noneVotes;
-  public $plusVotes;
-  public $submissions;
-  public $users;
-
-  public function setAnonymousSubmissions($anonymousSubmissions)
-  {
-    $this->anonymousSubmissions = $anonymousSubmissions;
-  }
-  public function getAnonymousSubmissions()
-  {
-    return $this->anonymousSubmissions;
-  }
-  /**
-   * @param Google_Service_KitchSink_SeriesCountersCounters
-   */
-  public function setCounters(Google_Service_KitchSink_SeriesCountersCounters $counters)
-  {
-    $this->counters = $counters;
-  }
-  /**
-   * @return Google_Service_KitchSink_SeriesCountersCounters
-   */
-  public function getCounters()
-  {
-    return $this->counters;
-  }
-  public function setElse($else)
-  {
-    $this->else = $else;
-  }
-  public function getElse()
-  {
-    return $this->else;
-  }
-  public function setMinusVotes($minusVotes)
-  {
-    $this->minusVotes = $minusVotes;
-  }
-  public function getMinusVotes()
-  {
-    return $this->minusVotes;
-  }
-  public function setNoneVotes($noneVotes)
-  {
-    $this->noneVotes = $noneVotes;
-  }
-  public function getNoneVotes()
-  {
-    return $this->noneVotes;
-  }
-  public function setPlusVotes($plusVotes)
-  {
-    $this->plusVotes = $plusVotes;
-  }
-  public function getPlusVotes()
-  {
-    return $this->plusVotes;
-  }
-  public function setSubmissions($submissions)
-  {
-    $this->submissions = $submissions;
-  }
-  public function getSubmissions()
-  {
-    return $this->submissions;
-  }
-  public function setUsers($users)
-  {
-    $this->users = $users;
-  }
-  public function getUsers()
-  {
-    return $this->users;
-  }
-}
-=== end: ./KitchSink/SeriesCounters.php
-=== begin: ./KitchSink/SeriesId.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_SeriesId extends Google_Model
-{
-  public $seriesId;
-
-  public function setSeriesId($seriesId)
-  {
-    $this->seriesId = $seriesId;
-  }
-  public function getSeriesId()
-  {
-    return $this->seriesId;
-  }
-}
-=== end: ./KitchSink/SeriesId.php
-=== begin: ./KitchSink/SeriesList.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_SeriesList extends Google_Collection
-{
-  protected $collection_key = 'items';
-  protected $itemsType = 'Google_Service_KitchSink_Series';
-  protected $itemsDataType = 'array';
-  public $kind;
-
-  /**
-   * @param Google_Service_KitchSink_Series
-   */
-  public function setItems($items)
-  {
-    $this->items = $items;
-  }
-  /**
-   * @return Google_Service_KitchSink_Series
-   */
-  public function getItems()
-  {
-    return $this->items;
-  }
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
-  }
-}
-=== end: ./KitchSink/SeriesList.php
-=== begin: ./KitchSink/Series.php
+=== end: KitchSink/RuleSubmissions.php
+=== begin: KitchSink/Series.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2506,8 +2283,8 @@ class Google_Service_KitchSink_Series extends Google_Model
     return $this->videoSubmissionAllowed;
   }
 }
-=== end: ./KitchSink/Series.php
-=== begin: ./KitchSink/SubmissionAttribution.php
+=== end: KitchSink/Series.php
+=== begin: KitchSink/SeriesCounters.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2525,71 +2302,53 @@ class Google_Service_KitchSink_Series extends Google_Model
  * the License.
  */
 
-class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
-{
-  protected $internal_gapi_mappings = array(
-        "avatarUrl" => "$avatarUrl",
-        "object" => "$object",
-  );
-  public $avatarUrl;
-  public $object;
-  public $location;
-
-  public function setAvatarUrl($avatarUrl)
-  {
-    $this->avatarUrl = $avatarUrl;
-  }
-  public function getAvatarUrl()
-  {
-    return $this->avatarUrl;
-  }
-  public function setObject($object)
-  {
-    $this->object = $object;
-  }
-  public function getObject()
-  {
-    return $this->object;
-  }
-  public function setLocation($location)
-  {
-    $this->location = $location;
-  }
-  public function getLocation()
-  {
-    return $this->location;
-  }
-}
-=== end: ./KitchSink/SubmissionAttribution.php
-=== begin: ./KitchSink/SubmissionCounters.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_SubmissionCounters extends Google_Model
+class Google_Service_KitchSink_SeriesCounters extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "minusVotes" => "minus_votes",
         "noneVotes" => "none_votes",
         "plusVotes" => "plus_votes",
   );
+  public $anonymousSubmissions;
+  protected $countersType = 'Google_Service_KitchSink_SeriesCountersCounters';
+  protected $countersDataType = '';
+  public $else;
   public $minusVotes;
   public $noneVotes;
   public $plusVotes;
+  public $submissions;
+  public $users;
 
+  public function setAnonymousSubmissions($anonymousSubmissions)
+  {
+    $this->anonymousSubmissions = $anonymousSubmissions;
+  }
+  public function getAnonymousSubmissions()
+  {
+    return $this->anonymousSubmissions;
+  }
+  /**
+   * @param Google_Service_KitchSink_SeriesCountersCounters
+   */
+  public function setCounters(Google_Service_KitchSink_SeriesCountersCounters $counters)
+  {
+    $this->counters = $counters;
+  }
+  /**
+   * @return Google_Service_KitchSink_SeriesCountersCounters
+   */
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setElse($else)
+  {
+    $this->else = $else;
+  }
+  public function getElse()
+  {
+    return $this->else;
+  }
   public function setMinusVotes($minusVotes)
   {
     $this->minusVotes = $minusVotes;
@@ -2614,9 +2373,25 @@ class Google_Service_KitchSink_SubmissionCounters extends Google_Model
   {
     return $this->plusVotes;
   }
+  public function setSubmissions($submissions)
+  {
+    $this->submissions = $submissions;
+  }
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+  public function setUsers($users)
+  {
+    $this->users = $users;
+  }
+  public function getUsers()
+  {
+    return $this->users;
+  }
 }
-=== end: ./KitchSink/SubmissionCounters.php
-=== begin: ./KitchSink/SubmissionId.php
+=== end: KitchSink/SeriesCounters.php
+=== begin: KitchSink/SeriesCountersCounters.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2634,10 +2409,44 @@ class Google_Service_KitchSink_SubmissionCounters extends Google_Model
  * the License.
  */
 
-class Google_Service_KitchSink_SubmissionId extends Google_Model
+class Google_Service_KitchSink_SeriesCountersCounters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "allVotes" => "all-votes",
+  );
+  public $allVotes;
+
+  public function setAllVotes($allVotes)
+  {
+    $this->allVotes = $allVotes;
+  }
+  public function getAllVotes()
+  {
+    return $this->allVotes;
+  }
+}
+=== end: KitchSink/SeriesCountersCounters.php
+=== begin: KitchSink/SeriesId.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_SeriesId extends Google_Model
 {
   public $seriesId;
-  public $submissionId;
 
   public function setSeriesId($seriesId)
   {
@@ -2647,17 +2456,9 @@ class Google_Service_KitchSink_SubmissionId extends Google_Model
   {
     return $this->seriesId;
   }
-  public function setSubmissionId($submissionId)
-  {
-    $this->submissionId = $submissionId;
-  }
-  public function getSubmissionId()
-  {
-    return $this->submissionId;
-  }
 }
-=== end: ./KitchSink/SubmissionId.php
-=== begin: ./KitchSink/SubmissionList.php
+=== end: KitchSink/SeriesId.php
+=== begin: KitchSink/SeriesList.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2675,22 +2476,22 @@ class Google_Service_KitchSink_SubmissionId extends Google_Model
  * the License.
  */
 
-class Google_Service_KitchSink_SubmissionList extends Google_Collection
+class Google_Service_KitchSink_SeriesList extends Google_Collection
 {
   protected $collection_key = 'items';
-  protected $itemsType = 'Google_Service_KitchSink_Submission';
+  protected $itemsType = 'Google_Service_KitchSink_Series';
   protected $itemsDataType = 'array';
   public $kind;
 
   /**
-   * @param Google_Service_KitchSink_Submission
+   * @param Google_Service_KitchSink_Series
    */
   public function setItems($items)
   {
     $this->items = $items;
   }
   /**
-   * @return Google_Service_KitchSink_Submission
+   * @return Google_Service_KitchSink_Series
    */
   public function getItems()
   {
@@ -2705,49 +2506,8 @@ class Google_Service_KitchSink_SubmissionList extends Google_Collection
     return $this->kind;
   }
 }
-=== end: ./KitchSink/SubmissionList.php
-=== begin: ./KitchSink/SubmissionParentSubmissionId.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_SubmissionParentSubmissionId extends Google_Model
-{
-  public $seriesId;
-  public $submissionId;
-
-  public function setSeriesId($seriesId)
-  {
-    $this->seriesId = $seriesId;
-  }
-  public function getSeriesId()
-  {
-    return $this->seriesId;
-  }
-  public function setSubmissionId($submissionId)
-  {
-    $this->submissionId = $submissionId;
-  }
-  public function getSubmissionId()
-  {
-    return $this->submissionId;
-  }
-}
-=== end: ./KitchSink/SubmissionParentSubmissionId.php
-=== begin: ./KitchSink/Submission.php
+=== end: KitchSink/SeriesList.php
+=== begin: KitchSink/Submission.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2930,8 +2690,8 @@ class Google_Service_KitchSink_Submission extends Google_Collection
     return $this->translations;
   }
 }
-=== end: ./KitchSink/Submission.php
-=== begin: ./KitchSink/TagId.php
+=== end: KitchSink/Submission.php
+=== begin: KitchSink/SubmissionAttribution.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2949,11 +2709,119 @@ class Google_Service_KitchSink_Submission extends Google_Collection
  * the License.
  */
 
-class Google_Service_KitchSink_TagId extends Google_Model
+class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "avatarUrl" => "$avatarUrl",
+        "object" => "$object",
+  );
+  public $avatarUrl;
+  public $object;
+  public $location;
+
+  public function setAvatarUrl($avatarUrl)
+  {
+    $this->avatarUrl = $avatarUrl;
+  }
+  public function getAvatarUrl()
+  {
+    return $this->avatarUrl;
+  }
+  public function setObject($object)
+  {
+    $this->object = $object;
+  }
+  public function getObject()
+  {
+    return $this->object;
+  }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+  public function getLocation()
+  {
+    return $this->location;
+  }
+}
+=== end: KitchSink/SubmissionAttribution.php
+=== begin: KitchSink/SubmissionCounters.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_SubmissionCounters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "minusVotes" => "minus_votes",
+        "noneVotes" => "none_votes",
+        "plusVotes" => "plus_votes",
+  );
+  public $minusVotes;
+  public $noneVotes;
+  public $plusVotes;
+
+  public function setMinusVotes($minusVotes)
+  {
+    $this->minusVotes = $minusVotes;
+  }
+  public function getMinusVotes()
+  {
+    return $this->minusVotes;
+  }
+  public function setNoneVotes($noneVotes)
+  {
+    $this->noneVotes = $noneVotes;
+  }
+  public function getNoneVotes()
+  {
+    return $this->noneVotes;
+  }
+  public function setPlusVotes($plusVotes)
+  {
+    $this->plusVotes = $plusVotes;
+  }
+  public function getPlusVotes()
+  {
+    return $this->plusVotes;
+  }
+}
+=== end: KitchSink/SubmissionCounters.php
+=== begin: KitchSink/SubmissionId.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_SubmissionId extends Google_Model
 {
   public $seriesId;
   public $submissionId;
-  public $tag;
 
   public function setSeriesId($seriesId)
   {
@@ -2971,17 +2839,99 @@ class Google_Service_KitchSink_TagId extends Google_Model
   {
     return $this->submissionId;
   }
-  public function setTag($tag)
+}
+=== end: KitchSink/SubmissionId.php
+=== begin: KitchSink/SubmissionList.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_SubmissionList extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $itemsType = 'Google_Service_KitchSink_Submission';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  /**
+   * @param Google_Service_KitchSink_Submission
+   */
+  public function setItems($items)
   {
-    $this->tag = $tag;
+    $this->items = $items;
   }
-  public function getTag()
+  /**
+   * @return Google_Service_KitchSink_Submission
+   */
+  public function getItems()
   {
-    return $this->tag;
+    return $this->items;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+  public function getKind()
+  {
+    return $this->kind;
   }
 }
-=== end: ./KitchSink/TagId.php
-=== begin: ./KitchSink/Tag.php
+=== end: KitchSink/SubmissionList.php
+=== begin: KitchSink/SubmissionParentSubmissionId.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_SubmissionParentSubmissionId extends Google_Model
+{
+  public $seriesId;
+  public $submissionId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setSubmissionId($submissionId)
+  {
+    $this->submissionId = $submissionId;
+  }
+  public function getSubmissionId()
+  {
+    return $this->submissionId;
+  }
+}
+=== end: KitchSink/SubmissionParentSubmissionId.php
+=== begin: KitchSink/Tag.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3053,8 +3003,8 @@ class Google_Service_KitchSink_Tag extends Google_Model
     return $this->text;
   }
 }
-=== end: ./KitchSink/Tag.php
-=== begin: ./KitchSink/Topic2Counters.php
+=== end: KitchSink/Tag.php
+=== begin: KitchSink/TagId.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3072,92 +3022,11 @@ class Google_Service_KitchSink_Tag extends Google_Model
  * the License.
  */
 
-class Google_Service_KitchSink_Topic2Counters extends Google_Model
-{
-  protected $internal_gapi_mappings = array(
-        "minusVotes" => "minus_votes",
-        "noneVotes" => "none_votes",
-        "plusVotes" => "plus_votes",
-  );
-  public $minusVotes;
-  public $noneVotes;
-  public $plusVotes;
-  public $submissions;
-  public $users;
-  public $videoSubmissions;
-
-  public function setMinusVotes($minusVotes)
-  {
-    $this->minusVotes = $minusVotes;
-  }
-  public function getMinusVotes()
-  {
-    return $this->minusVotes;
-  }
-  public function setNoneVotes($noneVotes)
-  {
-    $this->noneVotes = $noneVotes;
-  }
-  public function getNoneVotes()
-  {
-    return $this->noneVotes;
-  }
-  public function setPlusVotes($plusVotes)
-  {
-    $this->plusVotes = $plusVotes;
-  }
-  public function getPlusVotes()
-  {
-    return $this->plusVotes;
-  }
-  public function setSubmissions($submissions)
-  {
-    $this->submissions = $submissions;
-  }
-  public function getSubmissions()
-  {
-    return $this->submissions;
-  }
-  public function setUsers($users)
-  {
-    $this->users = $users;
-  }
-  public function getUsers()
-  {
-    return $this->users;
-  }
-  public function setVideoSubmissions($videoSubmissions)
-  {
-    $this->videoSubmissions = $videoSubmissions;
-  }
-  public function getVideoSubmissions()
-  {
-    return $this->videoSubmissions;
-  }
-}
-=== end: ./KitchSink/Topic2Counters.php
-=== begin: ./KitchSink/Topic2Id.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_Topic2Id extends Google_Model
+class Google_Service_KitchSink_TagId extends Google_Model
 {
   public $seriesId;
-  public $topicId;
+  public $submissionId;
+  public $tag;
 
   public function setSeriesId($seriesId)
   {
@@ -3167,17 +3036,132 @@ class Google_Service_KitchSink_Topic2Id extends Google_Model
   {
     return $this->seriesId;
   }
-  public function setTopicId($topicId)
+  public function setSubmissionId($submissionId)
   {
-    $this->topicId = $topicId;
+    $this->submissionId = $submissionId;
   }
-  public function getTopicId()
+  public function getSubmissionId()
   {
-    return $this->topicId;
+    return $this->submissionId;
+  }
+  public function setTag($tag)
+  {
+    $this->tag = $tag;
+  }
+  public function getTag()
+  {
+    return $this->tag;
   }
 }
-=== end: ./KitchSink/Topic2Id.php
-=== begin: ./KitchSink/Topic2.php
+=== end: KitchSink/TagId.php
+=== begin: KitchSink/Topic.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_Topic extends Google_Model
+{
+  protected $countersType = 'Google_Service_KitchSink_TopicCounters';
+  protected $countersDataType = '';
+  public $description;
+  protected $idType = 'Google_Service_KitchSink_TopicId';
+  protected $idDataType = '';
+  public $kind;
+  public $name;
+  public $presenter;
+  protected $rulesType = 'Google_Service_KitchSink_TopicRules';
+  protected $rulesDataType = '';
+
+  /**
+   * @param Google_Service_KitchSink_TopicCounters
+   */
+  public function setCounters(Google_Service_KitchSink_TopicCounters $counters)
+  {
+    $this->counters = $counters;
+  }
+  /**
+   * @return Google_Service_KitchSink_TopicCounters
+   */
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+  public function getDescription()
+  {
+    return $this->description;
+  }
+  /**
+   * @param Google_Service_KitchSink_TopicId
+   */
+  public function setId(Google_Service_KitchSink_TopicId $id)
+  {
+    $this->id = $id;
+  }
+  /**
+   * @return Google_Service_KitchSink_TopicId
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function setPresenter($presenter)
+  {
+    $this->presenter = $presenter;
+  }
+  public function getPresenter()
+  {
+    return $this->presenter;
+  }
+  /**
+   * @param Google_Service_KitchSink_TopicRules
+   */
+  public function setRules(Google_Service_KitchSink_TopicRules $rules)
+  {
+    $this->rules = $rules;
+  }
+  /**
+   * @return Google_Service_KitchSink_TopicRules
+   */
+  public function getRules()
+  {
+    return $this->rules;
+  }
+}
+=== end: KitchSink/Topic.php
+=== begin: KitchSink/Topic2.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3300,8 +3284,131 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
     return $this->rules;
   }
 }
-=== end: ./KitchSink/Topic2.php
-=== begin: ./KitchSink/TopicCounters.php
+=== end: KitchSink/Topic2.php
+=== begin: KitchSink/Topic2Counters.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_Topic2Counters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "minusVotes" => "minus_votes",
+        "noneVotes" => "none_votes",
+        "plusVotes" => "plus_votes",
+  );
+  public $minusVotes;
+  public $noneVotes;
+  public $plusVotes;
+  public $submissions;
+  public $users;
+  public $videoSubmissions;
+
+  public function setMinusVotes($minusVotes)
+  {
+    $this->minusVotes = $minusVotes;
+  }
+  public function getMinusVotes()
+  {
+    return $this->minusVotes;
+  }
+  public function setNoneVotes($noneVotes)
+  {
+    $this->noneVotes = $noneVotes;
+  }
+  public function getNoneVotes()
+  {
+    return $this->noneVotes;
+  }
+  public function setPlusVotes($plusVotes)
+  {
+    $this->plusVotes = $plusVotes;
+  }
+  public function getPlusVotes()
+  {
+    return $this->plusVotes;
+  }
+  public function setSubmissions($submissions)
+  {
+    $this->submissions = $submissions;
+  }
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+  public function setUsers($users)
+  {
+    $this->users = $users;
+  }
+  public function getUsers()
+  {
+    return $this->users;
+  }
+  public function setVideoSubmissions($videoSubmissions)
+  {
+    $this->videoSubmissions = $videoSubmissions;
+  }
+  public function getVideoSubmissions()
+  {
+    return $this->videoSubmissions;
+  }
+}
+=== end: KitchSink/Topic2Counters.php
+=== begin: KitchSink/Topic2Id.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_Topic2Id extends Google_Model
+{
+  public $seriesId;
+  public $topicId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setTopicId($topicId)
+  {
+    $this->topicId = $topicId;
+  }
+  public function getTopicId()
+  {
+    return $this->topicId;
+  }
+}
+=== end: KitchSink/Topic2Id.php
+=== begin: KitchSink/TopicCounters.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3382,8 +3489,8 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
     return $this->videoSubmissions;
   }
 }
-=== end: ./KitchSink/TopicCounters.php
-=== begin: ./KitchSink/TopicId.php
+=== end: KitchSink/TopicCounters.php
+=== begin: KitchSink/TopicId.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3423,8 +3530,8 @@ class Google_Service_KitchSink_TopicId extends Google_Model
     return $this->topicId;
   }
 }
-=== end: ./KitchSink/TopicId.php
-=== begin: ./KitchSink/TopicList.php
+=== end: KitchSink/TopicId.php
+=== begin: KitchSink/TopicList.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3472,115 +3579,8 @@ class Google_Service_KitchSink_TopicList extends Google_Collection
     return $this->kind;
   }
 }
-=== end: ./KitchSink/TopicList.php
-=== begin: ./KitchSink/Topic.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_Topic extends Google_Model
-{
-  protected $countersType = 'Google_Service_KitchSink_TopicCounters';
-  protected $countersDataType = '';
-  public $description;
-  protected $idType = 'Google_Service_KitchSink_TopicId';
-  protected $idDataType = '';
-  public $kind;
-  public $name;
-  public $presenter;
-  protected $rulesType = 'Google_Service_KitchSink_TopicRules';
-  protected $rulesDataType = '';
-
-  /**
-   * @param Google_Service_KitchSink_TopicCounters
-   */
-  public function setCounters(Google_Service_KitchSink_TopicCounters $counters)
-  {
-    $this->counters = $counters;
-  }
-  /**
-   * @return Google_Service_KitchSink_TopicCounters
-   */
-  public function getCounters()
-  {
-    return $this->counters;
-  }
-  public function setDescription($description)
-  {
-    $this->description = $description;
-  }
-  public function getDescription()
-  {
-    return $this->description;
-  }
-  /**
-   * @param Google_Service_KitchSink_TopicId
-   */
-  public function setId(Google_Service_KitchSink_TopicId $id)
-  {
-    $this->id = $id;
-  }
-  /**
-   * @return Google_Service_KitchSink_TopicId
-   */
-  public function getId()
-  {
-    return $this->id;
-  }
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
-  }
-  public function setName($name)
-  {
-    $this->name = $name;
-  }
-  public function getName()
-  {
-    return $this->name;
-  }
-  public function setPresenter($presenter)
-  {
-    $this->presenter = $presenter;
-  }
-  public function getPresenter()
-  {
-    return $this->presenter;
-  }
-  /**
-   * @param Google_Service_KitchSink_TopicRules
-   */
-  public function setRules(Google_Service_KitchSink_TopicRules $rules)
-  {
-    $this->rules = $rules;
-  }
-  /**
-   * @return Google_Service_KitchSink_TopicRules
-   */
-  public function getRules()
-  {
-    return $this->rules;
-  }
-}
-=== end: ./KitchSink/Topic.php
-=== begin: ./KitchSink/TopicRules.php
+=== end: KitchSink/TopicList.php
+=== begin: KitchSink/TopicRules.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3634,8 +3634,8 @@ class Google_Service_KitchSink_TopicRules extends Google_Model
     return $this->votes;
   }
 }
-=== end: ./KitchSink/TopicRules.php
-=== begin: ./KitchSink/TopicRulesSubmissions.php
+=== end: KitchSink/TopicRules.php
+=== begin: KitchSink/TopicRulesSubmissions.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3675,8 +3675,8 @@ class Google_Service_KitchSink_TopicRulesSubmissions extends Google_Model
     return $this->open;
   }
 }
-=== end: ./KitchSink/TopicRulesSubmissions.php
-=== begin: ./KitchSink/TopicRulesVotes.php
+=== end: KitchSink/TopicRulesSubmissions.php
+=== begin: KitchSink/TopicRulesVotes.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3716,8 +3716,8 @@ class Google_Service_KitchSink_TopicRulesVotes extends Google_Model
     return $this->open;
   }
 }
-=== end: ./KitchSink/TopicRulesVotes.php
-=== begin: ./KitchSink/Translation.php
+=== end: KitchSink/TopicRulesVotes.php
+=== begin: KitchSink/Translation.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3757,79 +3757,8 @@ class Google_Service_KitchSink_Translation extends Google_Model
     return $this->text;
   }
 }
-=== end: ./KitchSink/Translation.php
-=== begin: ./KitchSink/VoteId.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_VoteId extends Google_Model
-{
-}
-=== end: ./KitchSink/VoteId.php
-=== begin: ./KitchSink/VoteList.php
-<?php
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-class Google_Service_KitchSink_VoteList extends Google_Collection
-{
-  protected $collection_key = 'items';
-  protected $itemsType = 'Google_Service_KitchSink_Vote';
-  protected $itemsDataType = 'array';
-  public $kind;
-
-  /**
-   * @param Google_Service_KitchSink_Vote
-   */
-  public function setItems($items)
-  {
-    $this->items = $items;
-  }
-  /**
-   * @return Google_Service_KitchSink_Vote
-   */
-  public function getItems()
-  {
-    return $this->items;
-  }
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
-  }
-}
-=== end: ./KitchSink/VoteList.php
-=== begin: ./KitchSink/Vote.php
+=== end: KitchSink/Translation.php
+=== begin: KitchSink/Vote.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -3894,4 +3823,75 @@ class Google_Service_KitchSink_Vote extends Google_Model
     return $this->vote;
   }
 }
-=== end: ./KitchSink/Vote.php
+=== end: KitchSink/Vote.php
+=== begin: KitchSink/VoteId.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_VoteId extends Google_Model
+{
+}
+=== end: KitchSink/VoteId.php
+=== begin: KitchSink/VoteList.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+class Google_Service_KitchSink_VoteList extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $itemsType = 'Google_Service_KitchSink_Vote';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  /**
+   * @param Google_Service_KitchSink_Vote
+   */
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+  /**
+   * @return Google_Service_KitchSink_Vote
+   */
+  public function getItems()
+  {
+    return $this->items;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+  public function getKind()
+  {
+    return $this->kind;
+  }
+}
+=== end: KitchSink/VoteList.php

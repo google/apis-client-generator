@@ -1,4 +1,4 @@
-=== begin: ./KitchSink.php
+=== begin: KitchSink.php
 <?php
 /*
  * Copyright 2014 Google Inc.
@@ -2811,8 +2811,8 @@ class Google_Service_KitchSink_VoteList extends Google_Collection
     return $this->kind;
   }
 }
-=== end: ./KitchSink.php
-=== begin: ./README.txt
+=== end: KitchSink.php
+=== begin: README.txt
 PHP library for kitch_sink v1
 
 
@@ -2822,4 +2822,4 @@ Requirements:
 Google API PHP Client, version 1.1.1
 URL: https://github.com/google/google-api-php-client/releases
 
-=== end: ./README.txt
+=== end: README.txt

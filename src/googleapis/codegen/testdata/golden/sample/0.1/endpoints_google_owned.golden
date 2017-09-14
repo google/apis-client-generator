@@ -1,4 +1,4 @@
-=== begin: ./pubspec.yaml
+=== begin: pubspec.yaml
 # This is a Dart pubspec file. It exists here just to show you a file which
 # is not part of the rest of the source, which you want to appear at the top
 # level of output.
@@ -7,62 +7,29 @@ description: >
   helloworld API v1.
 version: 0.1.snapshot
 author: Google Inc.
-=== end: ./pubspec.yaml
-=== begin: ./src/1/2/3/4/x.txt
+=== end: pubspec.yaml
+=== begin: src/1/2/3/4/x.txt
 // Path: 1/2/3/4/x.txt.
 Content for level 4.
-=== end: ./src/1/2/3/4/x.txt
-=== begin: ./src/1/2/3/x.txt
+=== end: src/1/2/3/4/x.txt
+=== begin: src/1/2/3/x.txt
 // Path: 1/2/3/x.txt.
 Content for level 3.
-=== end: ./src/1/2/3/x.txt
-=== begin: ./src/1/2/x.txt
+=== end: src/1/2/3/x.txt
+=== begin: src/1/2/x.txt
 // Path: 1/2/x.txt.
 Content for level 2.
-=== end: ./src/1/2/x.txt
-=== begin: ./src/1/x.txt
+=== end: src/1/2/x.txt
+=== begin: src/1/x.txt
 // Path: 1/x.txt.
 Content for level 1.
-=== end: ./src/1/x.txt
-=== begin: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreetingCollection.xxx
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not
-// use this file except in compliance with the License. You may obtain a copy of
-// the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-// License for the specific language governing permissions and limitations under
-// the License.
-
-// I might put standard imports here.
-
-package com::google::cloud::platform::EccoDomaniIeri;
-
-/**
- * Schema .HelloGreetingCollection { model.description }} <p> Your explanation here.
- */
-class HelloGreetingCollection extends SomeBaseModelClass {
-
-  // Greeting that stores a message.
-  // JSON name: "items"
-  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> _items;
-
-  // Getters and setters might go here
-  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> getItems() {
-    return _items;
-  }
-  void setItems(com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> v) {
-    _items = v;
-  }
-
-}
-
-
-=== end: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreetingCollection.xxx
-=== begin: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreeting.xxx
+=== end: src/1/x.txt
+=== begin: src/README
+This language happens to place the source output in a src folder within
+the package. There is nothing inherently important w.r.t the library
+generator in doing so.
+=== end: src/README
+=== begin: src/com/google/cloud/platform/EccoDomaniIeri/HelloGreeting.xxx
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not
 // use this file except in compliance with the License. You may obtain a copy of
 // the License at
@@ -99,8 +66,46 @@ class HelloGreeting extends SomeBaseModelClass {
 }
 
 
-=== end: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreeting.xxx
-=== begin: ./src/com/google/cloud/platform/EccoDomaniIeri/helloworld.xxx
+=== end: src/com/google/cloud/platform/EccoDomaniIeri/HelloGreeting.xxx
+=== begin: src/com/google/cloud/platform/EccoDomaniIeri/HelloGreetingCollection.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::cloud::platform::EccoDomaniIeri;
+
+/**
+ * Schema .HelloGreetingCollection { model.description }} <p> Your explanation here.
+ */
+class HelloGreetingCollection extends SomeBaseModelClass {
+
+  // Greeting that stores a message.
+  // JSON name: "items"
+  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> _items;
+
+  // Getters and setters might go here
+  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> getItems() {
+    return _items;
+  }
+  void setItems(com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> v) {
+    _items = v;
+  }
+
+}
+
+
+=== end: src/com/google/cloud/platform/EccoDomaniIeri/HelloGreetingCollection.xxx
+=== begin: src/com/google/cloud/platform/EccoDomaniIeri/helloworld.xxx
 
 // Copyright 2013 Google Inc.
 //
@@ -326,9 +331,4 @@ class HelloGreetingCollection extends SomeBaseModelClass {
 
 }
 
-=== end: ./src/com/google/cloud/platform/EccoDomaniIeri/helloworld.xxx
-=== begin: ./src/README
-This language happens to place the source output in a src folder within
-the package. There is nothing inherently important w.r.t the library
-generator in doing so.
-=== end: ./src/README
+=== end: src/com/google/cloud/platform/EccoDomaniIeri/helloworld.xxx
