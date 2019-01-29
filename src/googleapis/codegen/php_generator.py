@@ -165,7 +165,9 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     s = method['wireName']
     if resource and (s.lower() in PhpLanguageModel.PHP_KEYWORDS):
       s += resource['className']
-    return s
+    # Ensure dashes don't show up in method names
+    words = s.split('-')
+    return ''.join(words[:1] + [w.capitalize() for w in words[1:]])
 
   def _SetTypeHint(self, prop):
     """Strip primitive types since PHP doesn't support primitive type hints."""
