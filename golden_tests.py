@@ -16,7 +16,7 @@ import sys
 
 GOLDEN_CASES_DIR = 'src/googleapis/codegen/testdata/golden'
 GOLDEN_DISCOVERY_DIR = 'src/googleapis/codegen/testdata/golden_discovery'
-VERBOSE = True
+VERBOSE = False
 
 Test = namedtuple('Test', [
     'language',
@@ -39,8 +39,6 @@ def FindTests():
         if input.endswith('_monolithic'):
           input = input[0:-11]
           options = ['--monolithic_source_name=sink']  # pure hackery
-        if language != 'objc':
-          continue
         yield Test(
             language = language,
             variant = variant,
@@ -76,9 +74,10 @@ def RunTest(test):
   # Fix this
   out_file = '/tmp/%s.new' % test.golden_file.split('/')[-1]
   if Generate(test.language, test.variant, test.input, test.options, out_file):
-    cmd = ['diff', test.golden_file, out_file]
+    cmd = ['diff', '--brief', test.golden_file, out_file]
     try:
       subprocess.check_call(cmd, stderr=sys.stderr)
+      print('PASS: %s, %s, %s, %s' % (test.language, test.variant, test.input, test.options))
     except subprocess.CalledProcessError as e:
       print('FAIL: %s' % str(test))
 
