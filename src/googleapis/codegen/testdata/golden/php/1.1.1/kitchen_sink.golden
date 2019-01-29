@@ -50,7 +50,7 @@ class Google_Service_KitchSink extends Google_Service
   public $responses;
   public $series;
   public $series_responses;
-  public $series_sub-missions;
+  public $series_sub_missions;
   public $submissions;
   public $tags;
   public $topics;
@@ -341,7 +341,7 @@ class Google_Service_KitchSink extends Google_Service
           )
         )
     );
-    $this->series_sub-missions = new Google_Service_KitchSink_SeriesSubMissions_Resource(
+    $this->series_sub_missions = new Google_Service_KitchSink_SeriesSubMissions_Resource(
         $this,
         $this->serviceName,
         'sub_missions',

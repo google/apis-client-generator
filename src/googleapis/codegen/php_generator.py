@@ -80,6 +80,9 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
                                r.values['className'])
       namespaced = '_'.join((resource.GetTemplateValue('phpPropName'),
                              r.values['wireName']))
+      namespaced = '_'.join(
+          (resource.GetTemplateValue('phpPropName'),
+           self.language_model.ToMemberName(r.values['wireName'], None)))
       r.SetTemplateValue('phpPropName', namespaced)
       self.AnnotateResource(the_api, r)
 
