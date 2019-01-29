@@ -1095,11 +1095,12 @@
       }
      }
     },
-    "submissions": {
+    "sub-missions": {
+     "description": "A sub-resource with a dash in the name",
      "methods": {
-      "list": {
-       "path": "series/{seriesId}/submissions",
-       "id": "moderator.series.submissions.list",
+      "li-st": {
+       "path": "series/{seriesId}/sub-missions",
+       "id": "moderator.series.submissions.li-st",
        "httpMethod": "GET",
        "description": "Searches the submissions for the specified series and returns the search results.",
        "parameters": {
@@ -1241,6 +1242,40 @@
      "id": "moderator.tags.delete",
      "httpMethod": "DELETE",
      "description": "Deletes the specified tag from the specified submission within the specified series.",
+     "parameters": {
+      "seriesId": {
+       "location": "path",
+       "required": true,
+       "description": "The decimal ID of the Series.",
+       "type": "integer",
+       "minimum": "0",
+       "maximum": "4294967295"
+      },
+      "submissionId": {
+       "location": "path",
+       "required": true,
+       "description": "The decimal ID of the Submission within the Series.",
+       "type": "integer",
+       "minimum": "0",
+       "maximum": "4294967295"
+      },
+      "tagId": {
+       "location": "path",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "parameterOrder": [
+      "seriesId",
+      "submissionId",
+      "tagId"
+     ]
+    },
+    "delete$purge": {
+     "path": "series/{seriesId}/submissions/{submissionId}/tags/{tagId}",
+     "id": "moderator.tags.delete$purge",
+     "httpMethod": "DELETE",
+     "description": "Deletes all versions of the specified tag from the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
        "location": "path",

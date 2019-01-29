@@ -1036,14 +1036,14 @@ class SeriesResponsesResourceResource extends Resource {
   }
 }
 
-class SeriesSubmissionsResourceResource extends Resource {
+class SeriesSubMissionsResourceResource extends Resource {
 
-  SeriesSubmissionsResourceResource(Client client) : super(client) {
+  SeriesSubMissionsResourceResource(Client client) : super(client) {
   }
 
 
 
-  // Method SeriesResource.SeriesSubmissionsResourceResource.List
+  // Method SeriesResource.SeriesSubMissionsResourceResource.LiSt
   /**
    * Searches the submissions for the specified series and returns the search results.
    *
@@ -1063,9 +1063,9 @@ class SeriesSubmissionsResourceResource extends Resource {
    *
    * [optParams] - Additional query parameters.
    */
-  async.Future<SubmissionList> list(core.int seriesId, {core.String author, core.bool hasAttachedVideo, core.String lang, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
+  async.Future<SubmissionList> liSt(core.int seriesId, {core.String author, core.bool hasAttachedVideo, core.String lang, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
     var completer = new async.Completer();
-    var url = "series/{seriesId}/submissions";
+    var url = "series/{seriesId}/sub-missions";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
@@ -1225,6 +1225,55 @@ class TagsResource extends Resource {
    * [optParams] - Additional query parameters.
    */
   async.Future delete(core.int seriesId, core.int submissionId, core.String tagId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/tags/{tagId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (tagId == null) paramErrors.add("tagId is required");
+    if (tagId != null) urlParams["tagId"] = tagId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(data))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TagsResource.Delete$purge
+  /**
+   * Deletes all versions of the specified tag from the specified submission within the specified
+   * series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [tagId] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future delete$purge(core.int seriesId, core.int submissionId, core.String tagId, {core.Map optParams}) {
     var completer = new async.Completer();
     var url = "series/{seriesId}/submissions/{submissionId}/tags/{tagId}";
     var urlParams = new core.Map();

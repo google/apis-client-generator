@@ -1781,7 +1781,7 @@ namespace Google.Apis.KitchSink.v1
         {
             this.service = service;
             responses = new ResponsesResource(service);
-            submissions = new SubmissionsResource(service);
+            subMissions = new SubMissionsResource(service);
 
         }
 
@@ -1956,24 +1956,24 @@ namespace Google.Apis.KitchSink.v1
 
             }
         }
-        private readonly SubmissionsResource submissions;
+        private readonly SubMissionsResource subMissions;
 
-        /// <summary>Gets the Submissions resource.</summary>
-        public virtual SubmissionsResource Submissions
+        /// <summary>Gets the SubMissions resource.</summary>
+        public virtual SubMissionsResource SubMissions
         {
-            get { return submissions; }
+            get { return subMissions; }
         }
 
-        /// <summary>The "submissions" collection of methods.</summary>
-        public class SubmissionsResource
+        /// <summary>The "sub-missions" collection of methods.</summary>
+        public class SubMissionsResource
         {
-            private const string Resource = "submissions";
+            private const string Resource = "subMissions";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public SubmissionsResource(Google.Apis.Services.IClientService service)
+            public SubMissionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
 
@@ -1982,16 +1982,16 @@ namespace Google.Apis.KitchSink.v1
 
             /// <summary>Searches the submissions for the specified series and returns the search results.</summary>
             /// <param name="seriesId">The decimal ID of the Series.</param>
-            public virtual ListRequest List(int seriesId)
+            public virtual LiStRequest LiSt(int seriesId)
             {
-                return new ListRequest(service, seriesId);
+                return new LiStRequest(service, seriesId);
             }
 
             /// <summary>Searches the submissions for the specified series and returns the search results.</summary>
-            public class ListRequest : KitchSinkBaseServiceRequest<Google.Apis.KitchSink.v1.Data.SubmissionList>
+            public class LiStRequest : KitchSinkBaseServiceRequest<Google.Apis.KitchSink.v1.Data.SubmissionList>
             {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, int seriesId)
+                /// <summary>Constructs a new LiSt request.</summary>
+                public LiStRequest(Google.Apis.Services.IClientService service, int seriesId)
                     : base(service)
                 {
                     SeriesId = seriesId;
@@ -2035,7 +2035,7 @@ namespace Google.Apis.KitchSink.v1
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
                 {
-                    get { return "list"; }
+                    get { return "li-st"; }
                 }
 
                 ///<summary>Gets the HTTP method.</summary>
@@ -2047,10 +2047,10 @@ namespace Google.Apis.KitchSink.v1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "series/{seriesId}/submissions"; }
+                    get { return "series/{seriesId}/sub-missions"; }
                 }
 
-                /// <summary>Initializes List parameter list.</summary>
+                /// <summary>Initializes LiSt parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -2719,6 +2719,103 @@ namespace Google.Apis.KitchSink.v1
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "seriesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "seriesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "submissionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "submissionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "tagId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tagId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes all versions of the specified tag from the specified submission within the specified
+        /// series.</summary>
+        /// <param name="seriesId">The decimal ID of the Series.</param>
+        /// <param name="submissionId">The decimal ID of
+        /// the Submission within the Series.</param>
+        /// <param name="tagId"></param>
+        public virtual Delete$purgeRequest Delete$purge(int seriesId, int submissionId, string tagId)
+        {
+            return new Delete$purgeRequest(service, seriesId, submissionId, tagId);
+        }
+
+        /// <summary>Deletes all versions of the specified tag from the specified submission within the specified
+        /// series.</summary>
+        public class Delete$purgeRequest : KitchSinkBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete$purge request.</summary>
+            public Delete$purgeRequest(Google.Apis.Services.IClientService service, int seriesId, int submissionId, string tagId)
+                : base(service)
+            {
+                SeriesId = seriesId;
+                SubmissionId = submissionId;
+                TagId = tagId;
+                InitParameters();
+            }
+
+
+            /// <summary>The decimal ID of the Series.</summary>
+            /// [minimum: 0]
+            /// [maximum: 4294967295]
+            [Google.Apis.Util.RequestParameterAttribute("seriesId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual int SeriesId { get; private set; }
+
+            /// <summary>The decimal ID of the Submission within the Series.</summary>
+            /// [minimum: 0]
+            /// [maximum: 4294967295]
+            [Google.Apis.Util.RequestParameterAttribute("submissionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual int SubmissionId { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TagId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete$purge"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "series/{seriesId}/submissions/{submissionId}/tags/{tagId}"; }
+            }
+
+            /// <summary>Initializes Delete$purge parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();

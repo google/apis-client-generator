@@ -543,10 +543,10 @@ public interface KitchSink extends RequestFactory {
       }
     }
     /**
-     * The {@link RequestContext} used to call methods on the "submissions" collection.
+     * The {@link RequestContext} used to call methods on the "sub-missions" collection.
      */
     @JsonRpcService
-    public interface SubmissionsContext extends RequestContext {
+    public interface SubMissionsContext extends RequestContext {
 
       /**
        * Searches the submissions for the specified series and returns the search results.
@@ -554,41 +554,41 @@ public interface KitchSink extends RequestFactory {
        *
        * @param seriesId The decimal ID of the Series.
        */
-      ListRequest list(@PropertyName("seriesId") Integer seriesId);
+      LiStRequest liSt(@PropertyName("seriesId") Integer seriesId);
 
       /**
-       * Request object to call the "moderator.series.submissions.list" method.
+       * Request object to call the "moderator.series.submissions.li-st" method.
        */
-      @JsonRpcWireName(value="moderator.series.submissions.list", version="v1")
-      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SubmissionList> {
+      @JsonRpcWireName(value="moderator.series.submissions.li-st", version="v1")
+      public interface LiStRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SubmissionList> {
 
         /** The decimal ID of the Series. */
         @PropertyName("seriesId")
-        ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+        LiStRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
 
         /** Restricts the results to submissions by a specific author. */
         @PropertyName("author")
-        ListRequest setAuthor(@PropertyName("author") String author);
+        LiStRequest setAuthor(@PropertyName("author") String author);
 
         /** Specifies whether to restrict to submissions that have videos attached. */
         @PropertyName("hasAttachedVideo")
-        ListRequest setHasAttachedVideo(@PropertyName("hasAttachedVideo") Boolean hasAttachedVideo);
+        LiStRequest setHasAttachedVideo(@PropertyName("hasAttachedVideo") Boolean hasAttachedVideo);
 
         /** The language code for the language the client prefers resuls in. */
         @PropertyName("lang")
-        ListRequest setLang(@PropertyName("lang") String lang);
+        LiStRequest setLang(@PropertyName("lang") String lang);
 
         /** Search query. */
         @PropertyName("q")
-        ListRequest setQ(@PropertyName("q") String q);
+        LiStRequest setQ(@PropertyName("q") String q);
 
         /** Sort order. */
         @PropertyName("sort")
-        ListRequest setSort(@PropertyName("sort") String sort);
+        LiStRequest setSort(@PropertyName("sort") String sort);
 
         /** Index of the first result to be retrieved. */
         @PropertyName("start-index")
-        ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+        LiStRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
       }
     }
   }
@@ -687,6 +687,35 @@ public interface KitchSink extends RequestFactory {
 
       @PropertyName("tagId")
       DeleteRequest setTagId(@PropertyName("tagId") String tagId);
+    }
+    /**
+     * Deletes all versions of the specified tag from the specified submission within the specified
+     * series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     * @param tagId
+     */
+    Delete$purgeRequest delete$purge(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId, @PropertyName("tagId") String tagId);
+
+    /**
+     * Request object to call the "moderator.tags.delete$purge" method.
+     */
+    @JsonRpcWireName(value="moderator.tags.delete$purge", version="v1")
+    public interface Delete$purgeRequest extends Request<EmptyResponse> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      Delete$purgeRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      Delete$purgeRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+
+
+      @PropertyName("tagId")
+      Delete$purgeRequest setTagId(@PropertyName("tagId") String tagId);
     }
     /**
      * Inserts a new tag for the specified submission within the specified series.
@@ -1050,8 +1079,8 @@ public interface KitchSink extends RequestFactory {
 
   /** Returns the {@link #ResponsesContext} context. */
   Series.ResponsesContext series_responses();
-  /** Returns the {@link #SubmissionsContext} context. */
-  Series.SubmissionsContext series_submissions();
+  /** Returns the {@link #SubMissionsContext} context. */
+  Series.SubMissionsContext series_subMissions();
   /** Returns the {@link #SubmissionsContext} context. */
   SubmissionsContext submissions();
   /** Returns the {@link #TagsContext} context. */
