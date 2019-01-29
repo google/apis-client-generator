@@ -75,5 +75,6 @@ class {{ api.className }}BaseRequest
  private:
 {% call_template _declare_method_attributes_h parameters=api.parameters %}
 
-  DISALLOW_COPY_AND_ASSIGN({{ api.className }}BaseRequest);
+  {{ api.className }}BaseRequest(const {{ api.className }}BaseRequest&) = delete;
+  {{ api.className }}BaseRequest& operator=(const {{ api.className }}BaseRequest&) = delete;
 };

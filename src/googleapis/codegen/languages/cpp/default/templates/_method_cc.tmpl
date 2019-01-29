@@ -145,7 +145,7 @@ const {{ api.client_namespace }}::MediaUploadSpec
   return {{ api.className }}BaseRequest::AppendVariable(
       variable_name, config, target);
 {% else %}
-  return {{ api.client_namespace }}::StatusInvalidArgument(StrCat("Unexpected url variable name='", variable_name, "'"));
+  return {{ api.client_namespace }}::StatusInvalidArgument(absl::StrCat("Unexpected url variable name='", variable_name, "'"));
 {% endif %}
 }
 {% endif %}

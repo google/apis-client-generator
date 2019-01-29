@@ -83,10 +83,10 @@ void {{ property.setterName }}({{ property.codeType }} value) {
 {% doc_comment noblock %}
 Get the value of the '<code>{{ property.wireName }}</code>' attribute.
 {% enddoc_comment %}
-const StringPiece {{ property.getterName }}() const {
+const absl::string_view {{ property.getterName }}() const {
   const Json::Value& v = Storage("{{ property.wireName }}");
-  if (v == Json::Value::null) return StringPiece("");
-  return StringPiece(v.asCString());
+  if (v == Json::Value::null) return absl::string_view("");
+  return absl::string_view(v.asCString());
 }
 
 {% doc_comment noblock %}
@@ -98,7 +98,7 @@ Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.depre
 {% endif %}
 @param[in] value The new value.
 {% enddoc_comment %}
-void {{ property.setterName }}(const StringPiece& value) {
+void {{ property.setterName }}(const absl::string_view& value) {
   *MutableStorage("{{ property.wireName }}") = value.data();
 }
 {% else %}

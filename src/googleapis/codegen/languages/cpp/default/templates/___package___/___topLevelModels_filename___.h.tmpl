@@ -3,7 +3,7 @@
 {% call_template _time_stamp %}
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   {{ api.title }} ({{ api.name }}/{{ api.version }})
 // Generated from:
@@ -16,9 +16,7 @@
 #define  {{ model.include_guard }}
 
 {% imports model %}
-#include "{{ api.base_include_path }}/macros.h"
 #include "{{ api.client_include_path }}/data/jsoncpp_data.h"
-#include "{{ api.strings_include_path }}/stringpiece.h"
 {% endimports %}
 
 namespace Json {

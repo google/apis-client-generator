@@ -94,7 +94,8 @@ class {{ api.className}} : public {{ api.client_namespace }}::ClientService {
  private:
 {% indent %}{% for resource in api.resources %}{{ resource.className }} {{ resource.memberName }};
 {% endfor %}{% endindent %}
-  DISALLOW_COPY_AND_ASSIGN({{ api.className }});
+  {{ api.className }}(const {{ api.className }}&) = delete;
+  {{ api.className }}& operator=(const {{ api.className }}&) = delete;
 };
 
 

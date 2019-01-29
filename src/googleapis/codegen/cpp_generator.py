@@ -287,7 +287,8 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
     parameter.SetTemplateValue('isPrimitive',
                                self._IsPrimitiveType(parameter.data_type))
     if parameter.data_type.code_type == 'string':
-      parameter.SetTemplateValue('parameterCodeType', 'StringPiece')
+      string_type = self.features.get('stringType') or 'absl::string_view'
+      parameter.SetTemplateValue('parameterCodeType', string_type)
     else:
       parameter.SetTemplateValue('parameterCodeType',
                                  parameter.data_type.code_type)
@@ -646,7 +647,7 @@ class CppLanguageModel(language_model.LanguageModel):
   def DefaultContainerPathForOwner(self, module):
     """Overrides the default implementation."""
     result = ''
-    if FLAGS.cpp_generator_add_owner_dir:
+    if FLAGS['cpp_generator_add_owner_dir'].value:
       result = module.owner_name.lower().replace(' ', '_')
     return result
 
@@ -664,6 +665,7 @@ class CppApi(api.Api):
     base = self.values['name']
     self.module.SetPath(base.lower() + '_api')
 
+    self.SetTemplateValue('absl_include_path', 'absl')
     self.SetTemplateValue('base_include_path', 'googleapis/base')
     self.SetTemplateValue('strings_include_path', 'googleapis/strings')
     self.SetTemplateValue('client_include_path', 'googleapis/client')
