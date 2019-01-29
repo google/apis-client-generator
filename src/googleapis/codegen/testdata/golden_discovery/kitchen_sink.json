@@ -688,6 +688,19 @@
        }
       }
      }
+    },
+    "v2": {
+     "methods": {
+      "listSeries": {
+       "path": "series/featured",
+       "id": "kitch_sink.featured.listSeries",
+       "httpMethod": "GET",
+       "description": "Lists the featured series.",
+       "response": {
+        "$ref": "SeriesList"
+       }
+      }
+     }
     }
    }
   },
@@ -1719,6 +1732,41 @@
      },
      "response": {
       "$ref": "Vote"
+     }
+    }
+   }
+  },
+  "v2": {
+   "methods": {
+    "getTopics": {
+     "path": "series/{seriesId}/topics/{topicId}",
+     "id": "kitch_sink.getTopics",
+     "httpMethod": "GET",
+     "description": "Returns the specified topic from the specified series.",
+     "parameters": {
+      "seriesId": {
+       "location": "path",
+       "required": true,
+       "description": "The decimal ID of the Series.",
+       "type": "integer",
+       "minimum": "0",
+       "maximum": "4294967295"
+      },
+      "topicId": {
+       "location": "path",
+       "required": true,
+       "description": "The decimal ID of the Topic within the Series.",
+       "type": "integer",
+       "minimum": "0",
+       "maximum": "4294967295"
+      }
+     },
+     "parameterOrder": [
+      "seriesId",
+      "topicId"
+     ],
+     "response": {
+      "$ref": "Topic2"
      }
     }
    }

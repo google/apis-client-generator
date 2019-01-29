@@ -182,6 +182,26 @@ public interface KitchSink extends RequestFactory {
       public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
       }
     }
+    /**
+     * The {@link RequestContext} used to call methods on the "v2" collection.
+     */
+    @JsonRpcService
+    public interface V2Context extends RequestContext {
+
+      /**
+       * Lists the featured series.
+       *
+       *
+       */
+      ListSeriesRequest listSeries();
+
+      /**
+       * Request object to call the "kitch_sink.featured.listSeries" method.
+       */
+      @JsonRpcWireName(value="kitch_sink.featured.listSeries", version="v1")
+      public interface ListSeriesRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+      }
+    }
   }
   /**
    * The {@link RequestContext} used to call methods on the "global" collection.
@@ -938,6 +958,36 @@ public interface KitchSink extends RequestFactory {
     }
   }
   /**
+   * The {@link RequestContext} used to call methods on the "v2" collection.
+   */
+  @JsonRpcService
+  public interface V2Context extends RequestContext {
+
+    /**
+     * Returns the specified topic from the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param topicId The decimal ID of the Topic within the Series.
+     */
+    GetTopicsRequest getTopics(@PropertyName("seriesId") Integer seriesId, @PropertyName("topicId") Integer topicId);
+
+    /**
+     * Request object to call the "kitch_sink.getTopics" method.
+     */
+    @JsonRpcWireName(value="kitch_sink.getTopics", version="v1")
+    public interface GetTopicsRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Topic2> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      GetTopicsRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Topic within the Series. */
+      @PropertyName("topicId")
+      GetTopicsRequest setTopicId(@PropertyName("topicId") Integer topicId);
+    }
+  }
+  /**
    * The {@link RequestContext} used to call methods on the "votes" collection.
    */
   @JsonRpcService
@@ -1055,6 +1105,8 @@ public interface KitchSink extends RequestFactory {
 
   /** Returns the {@link #SeriesContext} context. */
   Featured.SeriesContext featured_series();
+  /** Returns the {@link #V2Context} context. */
+  Featured.V2Context featured_v2();
   /** Returns the {@link #GlobalContext} context. */
   GlobalContext global();
 
@@ -1090,6 +1142,8 @@ public interface KitchSink extends RequestFactory {
 
   /** Returns the {@link #SubmissionsContext} context. */
   Topics.SubmissionsContext topics_submissions();
+  /** Returns the {@link #V2Context} context. */
+  V2Context v2();
   /** Returns the {@link #VotesContext} context. */
   VotesContext votes();
 

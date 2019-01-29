@@ -42,6 +42,7 @@ class Google_Service_KitchSink extends Google_Service
       "https://www.googleapis.com/auth/userinfo.email";
 
   public $featured_series;
+  public $featured_v2;
   public $global_series;
   public $my_series;
   public $myrecent_private;
@@ -54,6 +55,7 @@ class Google_Service_KitchSink extends Google_Service
   public $tags;
   public $topics;
   public $topics_submissions;
+  public $v2;
   public $votes;
   
   /**
@@ -76,6 +78,20 @@ class Google_Service_KitchSink extends Google_Service
         array(
           'methods' => array(
             'list' => array(
+              'path' => 'series/featured',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->featured_v2 = new Google_Service_KitchSink_Resource_FeaturedV2(
+        $this,
+        $this->serviceName,
+        'v2',
+        array(
+          'methods' => array(
+            'listSeries' => array(
               'path' => 'series/featured',
               'httpMethod' => 'GET',
               'parameters' => array(),
@@ -612,6 +628,31 @@ class Google_Service_KitchSink extends Google_Service
                 'start-index' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->v2 = new Google_Service_KitchSink_Resource_V2(
+        $this,
+        $this->serviceName,
+        'v2',
+        array(
+          'methods' => array(
+            'getTopics' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
                 ),
               ),
             ),
@@ -1187,6 +1228,48 @@ class Google_Service_KitchSink_Resource_FeaturedSeries extends Google_Service_Re
   }
 }
 === end: KitchSink/Resource/FeaturedSeries.php
+=== begin: KitchSink/Resource/FeaturedV2.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * The "v2" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $v2 = $kitch_sinkService->v2;
+ *  </code>
+ */
+class Google_Service_KitchSink_Resource_FeaturedV2 extends Google_Service_Resource
+{
+  /**
+   * Lists the featured series. (v2.listSeries)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listSeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('listSeries', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+=== end: KitchSink/Resource/FeaturedV2.php
 === begin: KitchSink/Resource/KitchSinkGlobal.php
 <?php
 /*
@@ -2033,6 +2116,50 @@ class Google_Service_KitchSink_Resource_TopicsSubmissions extends Google_Service
   }
 }
 === end: KitchSink/Resource/TopicsSubmissions.php
+=== begin: KitchSink/Resource/V2.php
+<?php
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * The "v2" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $v2 = $kitch_sinkService->v2;
+ *  </code>
+ */
+class Google_Service_KitchSink_Resource_V2 extends Google_Service_Resource
+{
+  /**
+   * Returns the specified topic from the specified series. (v2.getTopics)
+   *
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $topicId The decimal ID of the Topic within the Series.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Topic2
+   */
+  public function getTopics($seriesId, $topicId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId);
+    $params = array_merge($params, $optParams);
+    return $this->call('getTopics', array($params), "Google_Service_KitchSink_Topic2");
+  }
+}
+=== end: KitchSink/Resource/V2.php
 === begin: KitchSink/Resource/Votes.php
 <?php
 /*

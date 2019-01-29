@@ -231,6 +231,95 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       }
 
     }
+    /**
+     * An accessor for creating requests from the V2 collection.
+     *
+     * <p>The typical use is:</p>
+     * <pre>
+     *   {@code KitchSink kitch_sink = new KitchSink(...);}
+     *   {@code KitchSink.V2.List request = kitch_sink.v2().list(parameters ...)}
+     * </pre>
+     *
+     * @return the resource collection
+     */
+    public V2 v2() {
+      return new V2();
+    }
+
+    /**
+     * The "v2" collection of methods.
+     */
+    public class V2 {
+
+      /**
+       * Lists the featured series.
+       *
+       * Create a request for the method "v2.listSeries".
+       *
+       * This request holds the parameters needed by the kitch_sink server.  After setting any optional
+       * parameters, call the {@link ListSeries#execute()} method to invoke the remote operation.
+       *
+       * @return the request
+       */
+      public ListSeries listSeries() throws java.io.IOException {
+        ListSeries result = new ListSeries();
+        initialize(result);
+        return result;
+      }
+
+      public class ListSeries extends KitchSinkRequest<com.google.api.services.kitch_sink.model.SeriesList> {
+
+        private static final String REST_PATH = "series/featured";
+
+        /**
+         * Lists the featured series.
+         *
+         * Create a request for the method "v2.listSeries".
+         *
+         * This request holds the parameters needed by the the kitch_sink server.  After setting any
+         * optional parameters, call the {@link ListSeries#execute()} method to invoke the remote
+         * operation. <p> {@link
+         * ListSeries#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)}
+         * must be called to initialize this instance immediately after invoking the constructor. </p>
+         *
+         * @since 1.13
+         */
+        protected ListSeries() {
+          super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.SeriesList.class);
+        }
+
+        @Override
+        public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException {
+          return super.executeUsingHead();
+        }
+
+        @Override
+        public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException {
+          return super.buildHttpRequestUsingHead();
+        }
+
+        @Override
+        public ListSeries setAlt(java.lang.String alt) {
+          return (ListSeries) super.setAlt(alt);
+        }
+
+        @Override
+        public ListSeries setOauthToken(java.lang.String oauthToken) {
+          return (ListSeries) super.setOauthToken(oauthToken);
+        }
+
+        @Override
+        public ListSeries setPrettyPrint(java.lang.Boolean prettyPrint) {
+          return (ListSeries) super.setPrettyPrint(prettyPrint);
+        }
+
+        @Override
+        public ListSeries set(String parameterName, Object value) {
+          return (ListSeries) super.set(parameterName, value);
+        }
+      }
+
+    }
   }
 
   /**
@@ -3545,6 +3634,146 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       }
 
     }
+  }
+
+  /**
+   * An accessor for creating requests from the V2 collection.
+   *
+   * <p>The typical use is:</p>
+   * <pre>
+   *   {@code KitchSink kitch_sink = new KitchSink(...);}
+   *   {@code KitchSink.V2.List request = kitch_sink.v2().list(parameters ...)}
+   * </pre>
+   *
+   * @return the resource collection
+   */
+  public V2 v2() {
+    return new V2();
+  }
+
+  /**
+   * The "v2" collection of methods.
+   */
+  public class V2 {
+
+    /**
+     * Returns the specified topic from the specified series.
+     *
+     * Create a request for the method "v2.getTopics".
+     *
+     * This request holds the parameters needed by the kitch_sink server.  After setting any optional
+     * parameters, call the {@link GetTopics#execute()} method to invoke the remote operation.
+     *
+     * @param seriesId The decimal ID of the Series.
+    [minimum: 0]
+    [maximum: 4294967295]
+     * @param topicId The decimal ID of the Topic within the Series.
+    [minimum: 0]
+    [maximum: 4294967295]
+     * @return the request
+     */
+    public GetTopics getTopics(java.lang.Integer seriesId, java.lang.Integer topicId) throws java.io.IOException {
+      GetTopics result = new GetTopics(seriesId, topicId);
+      initialize(result);
+      return result;
+    }
+
+    public class GetTopics extends KitchSinkRequest<com.google.api.services.kitch_sink.model.Topic2> {
+
+      private static final String REST_PATH = "series/{seriesId}/topics/{topicId}";
+
+      /**
+       * Returns the specified topic from the specified series.
+       *
+       * Create a request for the method "v2.getTopics".
+       *
+       * This request holds the parameters needed by the the kitch_sink server.  After setting any
+       * optional parameters, call the {@link GetTopics#execute()} method to invoke the remote
+       * operation. <p> {@link
+       * GetTopics#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)}
+       * must be called to initialize this instance immediately after invoking the constructor. </p>
+       *
+       * @param seriesId The decimal ID of the Series.
+    [minimum: 0]
+    [maximum: 4294967295]
+       * @param topicId The decimal ID of the Topic within the Series.
+    [minimum: 0]
+    [maximum: 4294967295]
+       * @since 1.13
+       */
+      protected GetTopics(java.lang.Integer seriesId, java.lang.Integer topicId) {
+        super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.Topic2.class);
+        this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
+        this.topicId = com.google.api.client.util.Preconditions.checkNotNull(topicId, "Required parameter topicId must be specified.");
+      }
+
+      @Override
+      public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException {
+        return super.executeUsingHead();
+      }
+
+      @Override
+      public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException {
+        return super.buildHttpRequestUsingHead();
+      }
+
+      @Override
+      public GetTopics setAlt(java.lang.String alt) {
+        return (GetTopics) super.setAlt(alt);
+      }
+
+      @Override
+      public GetTopics setOauthToken(java.lang.String oauthToken) {
+        return (GetTopics) super.setOauthToken(oauthToken);
+      }
+
+      @Override
+      public GetTopics setPrettyPrint(java.lang.Boolean prettyPrint) {
+        return (GetTopics) super.setPrettyPrint(prettyPrint);
+      }
+
+      /** The decimal ID of the Series. */
+      @com.google.api.client.util.Key
+      private java.lang.Integer seriesId;
+
+      /** The decimal ID of the Series.
+
+     [minimum: 0] [maximum: 4294967295]
+       */
+      public java.lang.Integer getSeriesId() {
+        return seriesId;
+      }
+
+      /** The decimal ID of the Series. */
+      public GetTopics setSeriesId(java.lang.Integer seriesId) {
+        this.seriesId = seriesId;
+        return this;
+      }
+
+      /** The decimal ID of the Topic within the Series. */
+      @com.google.api.client.util.Key
+      private java.lang.Integer topicId;
+
+      /** The decimal ID of the Topic within the Series.
+
+     [minimum: 0] [maximum: 4294967295]
+       */
+      public java.lang.Integer getTopicId() {
+        return topicId;
+      }
+
+      /** The decimal ID of the Topic within the Series. */
+      public GetTopics setTopicId(java.lang.Integer topicId) {
+        this.topicId = topicId;
+        return this;
+      }
+
+      @Override
+      public GetTopics set(String parameterName, Object value) {
+        return (GetTopics) super.set(parameterName, value);
+      }
+    }
+
   }
 
   /**

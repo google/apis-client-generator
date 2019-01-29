@@ -1113,6 +1113,21 @@ FeaturedResource_SeriesResource_ListMethod::~FeaturedResource_SeriesResource_Lis
 
 
 
+// Standard constructor.
+FeaturedResource_V2Resource_ListSeriesMethod::FeaturedResource_V2Resource_ListSeriesMethod(
+    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_)
+    : KitchSinkServiceBaseRequest(
+        _service_, _credential_,
+        googleapis_client::HttpRequest::GET,
+        "series/featured") {
+}
+
+// Standard destructor.
+FeaturedResource_V2Resource_ListSeriesMethod::~FeaturedResource_V2Resource_ListSeriesMethod() {
+}
+
+
+
 
 
 // Standard constructor.
@@ -2178,6 +2193,41 @@ TopicsResource_SubmissionsResource_ListMethod::~TopicsResource_SubmissionsResour
 
 
 // Standard constructor.
+V2Resource_GetTopicsMethod::V2Resource_GetTopicsMethod(
+    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& topic_id)
+    : KitchSinkServiceBaseRequest(
+        _service_, _credential_,
+        googleapis_client::HttpRequest::GET,
+        "series/{seriesId}/topics/{topicId}"),
+      series_id_(series_id),
+      topic_id_(topic_id) {
+}
+
+// Standard destructor.
+V2Resource_GetTopicsMethod::~V2Resource_GetTopicsMethod() {
+}
+
+
+::util::Status V2Resource_GetTopicsMethod::AppendVariable(
+        const string& variable_name,
+        const googleapis_client::UriTemplateConfig& config,
+        string* target) {
+  if (variable_name == "seriesId") {
+    googleapis_client::UriTemplate::AppendValue(
+        series_id_, config, target);
+    return googleapis_client::StatusOk();
+  }
+  if (variable_name == "topicId") {
+    googleapis_client::UriTemplate::AppendValue(
+        topic_id_, config, target);
+    return googleapis_client::StatusOk();
+  }
+  return KitchSinkServiceBaseRequest::AppendVariable(
+      variable_name, config, target);
+}
+
+
+// Standard constructor.
 VotesResource_GetMethod::VotesResource_GetMethod(
     const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& submission_id)
     : KitchSinkServiceBaseRequest(
@@ -2345,7 +2395,7 @@ VotesResource_UpdateMethod::~VotesResource_UpdateMethod() {
 
 
 KitchSinkService::KitchSinkService(googleapis_client::HttpTransport* transport)
-  : ClientService("https://www.googleapis.com/", "sink/v1/", transport), featured_(this), global_(this), my_(this), myrecent_(this), profiles_(this), responses_(this), series_(this), submissions_(this), tags_(this), topics_(this), votes_(this) {
+  : ClientService("https://www.googleapis.com/", "sink/v1/", transport), featured_(this), global_(this), my_(this), myrecent_(this), profiles_(this), responses_(this), series_(this), submissions_(this), tags_(this), topics_(this), v2_(this), votes_(this) {
 
 }
 
@@ -2354,7 +2404,7 @@ KitchSinkService::~KitchSinkService() {
 
 
 KitchSinkService::FeaturedResource::FeaturedResource(KitchSinkService* service)
-  : service_(service), series_(service) {
+  : service_(service), series_(service), v2_(service) {
 }
 
 
@@ -2368,6 +2418,16 @@ KitchSinkService::FeaturedResource::SeriesResource::SeriesResource(KitchSinkServ
 
 FeaturedResource_SeriesResource_ListMethod* KitchSinkService::FeaturedResource::SeriesResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_) const {
   return new FeaturedResource_SeriesResource_ListMethod(service_, _credential_);
+}
+
+KitchSinkService::FeaturedResource::V2Resource::V2Resource(KitchSinkService* service)
+  : service_(service) {
+}
+
+
+
+FeaturedResource_V2Resource_ListSeriesMethod* KitchSinkService::FeaturedResource::V2Resource::NewListSeriesMethod(googleapis_client::AuthorizationCredential* _credential_) const {
+  return new FeaturedResource_V2Resource_ListSeriesMethod(service_, _credential_);
 }
 
 KitchSinkService::GlobalResource::GlobalResource(KitchSinkService* service)
@@ -2580,6 +2640,16 @@ KitchSinkService::TopicsResource::SubmissionsResource::SubmissionsResource(Kitch
 
 TopicsResource_SubmissionsResource_ListMethod* KitchSinkService::TopicsResource::SubmissionsResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& topic_id) const {
   return new TopicsResource_SubmissionsResource_ListMethod(service_, _credential_, series_id, topic_id);
+}
+
+KitchSinkService::V2Resource::V2Resource(KitchSinkService* service)
+  : service_(service) {
+}
+
+
+
+V2Resource_GetTopicsMethod* KitchSinkService::V2Resource::NewGetTopicsMethod(googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& topic_id) const {
+  return new V2Resource_GetTopicsMethod(service_, _credential_, series_id, topic_id);
 }
 
 KitchSinkService::VotesResource::VotesResource(KitchSinkService* service)
@@ -2922,6 +2992,56 @@ class FeaturedResource_SeriesResource_ListMethod : public KitchSinkServiceBaseRe
  private:
   FeaturedResource_SeriesResource_ListMethod(const FeaturedResource_SeriesResource_ListMethod&) = delete;
   FeaturedResource_SeriesResource_ListMethod& operator=(const FeaturedResource_SeriesResource_ListMethod&) = delete;
+};
+
+
+/**
+ * Implements the listSeries method.
+ *
+ * @ingroup ServiceMethod
+ *
+ * This class uses the Command Pattern. Construct an instance with the required
+ * parameters, then set any additional optional parameters by using the
+ * attribute setters. To invoke the method, call <code>Execute</code>.
+ *
+ * No authorization scopes are required for this method.
+ */
+class FeaturedResource_V2Resource_ListSeriesMethod : public KitchSinkServiceBaseRequest {
+ public:
+  /**
+   * The standard constructor takes all the required method parameters.
+   * @param[in] _service_  The service instance to send to when executed.
+   * @param[in] _credential_  If not NULL, the credential to authorize with.
+   *            In practice this is supplied by the user code that is
+   *            creating the method instance.
+   */
+  FeaturedResource_V2Resource_ListSeriesMethod(
+      const KitchSinkService* _service_,
+      googleapis_client::AuthorizationCredential* _credential_);
+
+  /**
+   * Standard destructor.
+   */
+  virtual ~FeaturedResource_V2Resource_ListSeriesMethod();
+
+  /**
+   * Executes the method and parses the response into a data object on success.
+   *
+   * @param[out] data Loads from the response payload JSON data on success.
+   *
+   * @return Success if an HTTP 2xx response was received. Otherwise the
+   *         status indicates the reason for failure. Finer detail may be
+   *         available from the underlying http_request to distinguish the
+   *         transport_status from the overal HTTP request status.
+   */
+  ::util::Status ExecuteAndParseResponse(
+      SeriesList* data) {
+    return KitchSinkServiceBaseRequest::ExecuteAndParseResponse(data);
+  }
+
+ private:
+  FeaturedResource_V2Resource_ListSeriesMethod(const FeaturedResource_V2Resource_ListSeriesMethod&) = delete;
+  FeaturedResource_V2Resource_ListSeriesMethod& operator=(const FeaturedResource_V2Resource_ListSeriesMethod&) = delete;
 };
 
 
@@ -5878,6 +5998,79 @@ class TopicsResource_SubmissionsResource_ListMethod : public KitchSinkServiceBas
 
 
 /**
+ * Implements the getTopics method.
+ *
+ * @ingroup ServiceMethod
+ *
+ * This class uses the Command Pattern. Construct an instance with the required
+ * parameters, then set any additional optional parameters by using the
+ * attribute setters. To invoke the method, call <code>Execute</code>.
+ *
+ * No authorization scopes are required for this method.
+ */
+class V2Resource_GetTopicsMethod : public KitchSinkServiceBaseRequest {
+ public:
+  /**
+   * The standard constructor takes all the required method parameters.
+   * @param[in] _service_  The service instance to send to when executed.
+   * @param[in] _credential_  If not NULL, the credential to authorize with.
+   *            In practice this is supplied by the user code that is
+   *            creating the method instance.
+   * @param[in] series_id The decimal ID of the Series.
+   * @param[in] topic_id The decimal ID of the Topic within the Series.
+   */
+  V2Resource_GetTopicsMethod(
+      const KitchSinkService* _service_,
+      googleapis_client::AuthorizationCredential* _credential_,
+      const int32& series_id,
+      const int32& topic_id);
+
+  /**
+   * Standard destructor.
+   */
+  virtual ~V2Resource_GetTopicsMethod();
+
+
+  /**
+   * Appends variable value to the target string.
+   *
+   * This is a helper function used to resolve templated variables in the URI.
+   *
+   * @param[in] variable_name  The name of the templated variable.
+   * @param[in] config  A pass-through parameter used for lists and maps.
+   * @param[in, out] target The string to append the value to.
+   */
+  virtual ::util::Status AppendVariable(
+        const string& variable_name,
+        const googleapis_client::UriTemplateConfig& config,
+        string* target);
+
+
+  /**
+   * Executes the method and parses the response into a data object on success.
+   *
+   * @param[out] data Loads from the response payload JSON data on success.
+   *
+   * @return Success if an HTTP 2xx response was received. Otherwise the
+   *         status indicates the reason for failure. Finer detail may be
+   *         available from the underlying http_request to distinguish the
+   *         transport_status from the overal HTTP request status.
+   */
+  ::util::Status ExecuteAndParseResponse(
+      Topic2* data) {
+    return KitchSinkServiceBaseRequest::ExecuteAndParseResponse(data);
+  }
+
+ private:
+  int32 series_id_;
+  int32 topic_id_;
+  V2Resource_GetTopicsMethod(const V2Resource_GetTopicsMethod&) = delete;
+  V2Resource_GetTopicsMethod& operator=(const V2Resource_GetTopicsMethod&) = delete;
+};
+
+
+
+/**
  * Implements the get method.
  *
  * @ingroup ServiceMethod
@@ -6390,10 +6583,60 @@ class KitchSinkService : public googleapis_client::ClientService {
     }
 
 
+    /**
+     * Acts as message factory for accessing  data.
+     *
+     * @ingroup ServiceClass
+     */
+    class V2Resource {
+     public:
+      /**
+       * Standard constructor.
+       *
+       * @param[in] service  The service instance is used to bind to the
+       *            methods created from this resource instance.  This will be
+       *            the service that methods are invoked on.
+       */
+      explicit V2Resource(KitchSinkService* service);
+
+      /**
+       * Standard destructor.
+       */
+      ~V2Resource() {}
+
+
+      /**
+       * Creates a new FeaturedResource_V2Resource_ListSeriesMethod instance.
+       *
+       * @param[in] _credential_  Can be NULL.
+       *            NULL credentials will not authorize the request.
+       * @returns  The caller should <code>Execute</code> the method instance,
+       *           then destroy it when they are finished.
+       */
+      FeaturedResource_V2Resource_ListSeriesMethod* NewListSeriesMethod(
+          googleapis_client::AuthorizationCredential* _credential_) const;
+
+     private:
+      KitchSinkService* service_;
+
+      V2Resource(const V2Resource&) = delete;
+      V2Resource& operator=(const V2Resource&) = delete;
+    };
+    /**
+     * Gets the v2 resource method factory.
+     *
+     * @return V2Resource for creating methods.
+     */
+    const V2Resource& get_v2() const {
+      return v2_;
+    }
+
+
 
    private:
     KitchSinkService* service_;
     SeriesResource series_;
+    V2Resource v2_;
 
     FeaturedResource(const FeaturedResource&) = delete;
     FeaturedResource& operator=(const FeaturedResource&) = delete;
@@ -7283,6 +7526,50 @@ class KitchSinkService : public googleapis_client::ClientService {
    *
    * @ingroup ServiceClass
    */
+  class V2Resource {
+   public:
+    /**
+     * Standard constructor.
+     *
+     * @param[in] service  The service instance is used to bind to the
+     *            methods created from this resource instance.  This will be
+     *            the service that methods are invoked on.
+     */
+    explicit V2Resource(KitchSinkService* service);
+
+    /**
+     * Standard destructor.
+     */
+    ~V2Resource() {}
+
+
+    /**
+     * Creates a new V2Resource_GetTopicsMethod instance.
+     *
+     * @param[in] _credential_  Can be NULL.
+     *            NULL credentials will not authorize the request.
+     * @param[in] series_id The decimal ID of the Series.
+     * @param[in] topic_id The decimal ID of the Topic within the Series.
+     * @returns  The caller should <code>Execute</code> the method instance,
+     *           then destroy it when they are finished.
+     */
+    V2Resource_GetTopicsMethod* NewGetTopicsMethod(
+        googleapis_client::AuthorizationCredential* _credential_,
+        const int32& series_id,
+        const int32& topic_id) const;
+
+   private:
+    KitchSinkService* service_;
+
+    V2Resource(const V2Resource&) = delete;
+    V2Resource& operator=(const V2Resource&) = delete;
+  };
+
+  /**
+   * Acts as message factory for accessing  data.
+   *
+   * @ingroup ServiceClass
+   */
   class VotesResource {
    public:
     /**
@@ -7490,6 +7777,16 @@ class KitchSinkService : public googleapis_client::ClientService {
   /**
    * Gets the  resource method factory.
    *
+   * @return V2Resource for creating methods.
+   */
+  const V2Resource& get_v2() const {
+    return v2_;
+  }
+
+
+  /**
+   * Gets the  resource method factory.
+   *
    * @return VotesResource for creating methods.
    */
   const VotesResource& get_votes() const {
@@ -7535,6 +7832,7 @@ class KitchSinkService : public googleapis_client::ClientService {
   SubmissionsResource submissions_;
   TagsResource tags_;
   TopicsResource topics_;
+  V2Resource v2_;
   VotesResource votes_;
 
   KitchSinkService(const KitchSinkService&) = delete;
@@ -10114,6 +10412,21 @@ FeaturedResource_SeriesResource_ListMethod::~FeaturedResource_SeriesResource_Lis
 
 
 
+// Standard constructor.
+FeaturedResource_V2Resource_ListSeriesMethod::FeaturedResource_V2Resource_ListSeriesMethod(
+    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_)
+    : KitchSinkServiceBaseRequest(
+        _service_, _credential_,
+        googleapis_client::HttpRequest::GET,
+        "series/featured") {
+}
+
+// Standard destructor.
+FeaturedResource_V2Resource_ListSeriesMethod::~FeaturedResource_V2Resource_ListSeriesMethod() {
+}
+
+
+
 
 
 // Standard constructor.
@@ -11179,6 +11492,41 @@ TopicsResource_SubmissionsResource_ListMethod::~TopicsResource_SubmissionsResour
 
 
 // Standard constructor.
+V2Resource_GetTopicsMethod::V2Resource_GetTopicsMethod(
+    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& topic_id)
+    : KitchSinkServiceBaseRequest(
+        _service_, _credential_,
+        googleapis_client::HttpRequest::GET,
+        "series/{seriesId}/topics/{topicId}"),
+      series_id_(series_id),
+      topic_id_(topic_id) {
+}
+
+// Standard destructor.
+V2Resource_GetTopicsMethod::~V2Resource_GetTopicsMethod() {
+}
+
+
+::util::Status V2Resource_GetTopicsMethod::AppendVariable(
+        const string& variable_name,
+        const googleapis_client::UriTemplateConfig& config,
+        string* target) {
+  if (variable_name == "seriesId") {
+    googleapis_client::UriTemplate::AppendValue(
+        series_id_, config, target);
+    return googleapis_client::StatusOk();
+  }
+  if (variable_name == "topicId") {
+    googleapis_client::UriTemplate::AppendValue(
+        topic_id_, config, target);
+    return googleapis_client::StatusOk();
+  }
+  return KitchSinkServiceBaseRequest::AppendVariable(
+      variable_name, config, target);
+}
+
+
+// Standard constructor.
 VotesResource_GetMethod::VotesResource_GetMethod(
     const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& submission_id)
     : KitchSinkServiceBaseRequest(
@@ -11346,7 +11694,7 @@ VotesResource_UpdateMethod::~VotesResource_UpdateMethod() {
 
 
 KitchSinkService::KitchSinkService(googleapis_client::HttpTransport* transport)
-  : ClientService("https://www.googleapis.com/", "sink/v1/", transport), featured_(this), global_(this), my_(this), myrecent_(this), profiles_(this), responses_(this), series_(this), submissions_(this), tags_(this), topics_(this), votes_(this) {
+  : ClientService("https://www.googleapis.com/", "sink/v1/", transport), featured_(this), global_(this), my_(this), myrecent_(this), profiles_(this), responses_(this), series_(this), submissions_(this), tags_(this), topics_(this), v2_(this), votes_(this) {
 
 }
 
@@ -11355,7 +11703,7 @@ KitchSinkService::~KitchSinkService() {
 
 
 KitchSinkService::FeaturedResource::FeaturedResource(KitchSinkService* service)
-  : service_(service), series_(service) {
+  : service_(service), series_(service), v2_(service) {
 }
 
 
@@ -11369,6 +11717,16 @@ KitchSinkService::FeaturedResource::SeriesResource::SeriesResource(KitchSinkServ
 
 FeaturedResource_SeriesResource_ListMethod* KitchSinkService::FeaturedResource::SeriesResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_) const {
   return new FeaturedResource_SeriesResource_ListMethod(service_, _credential_);
+}
+
+KitchSinkService::FeaturedResource::V2Resource::V2Resource(KitchSinkService* service)
+  : service_(service) {
+}
+
+
+
+FeaturedResource_V2Resource_ListSeriesMethod* KitchSinkService::FeaturedResource::V2Resource::NewListSeriesMethod(googleapis_client::AuthorizationCredential* _credential_) const {
+  return new FeaturedResource_V2Resource_ListSeriesMethod(service_, _credential_);
 }
 
 KitchSinkService::GlobalResource::GlobalResource(KitchSinkService* service)
@@ -11581,6 +11939,16 @@ KitchSinkService::TopicsResource::SubmissionsResource::SubmissionsResource(Kitch
 
 TopicsResource_SubmissionsResource_ListMethod* KitchSinkService::TopicsResource::SubmissionsResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& topic_id) const {
   return new TopicsResource_SubmissionsResource_ListMethod(service_, _credential_, series_id, topic_id);
+}
+
+KitchSinkService::V2Resource::V2Resource(KitchSinkService* service)
+  : service_(service) {
+}
+
+
+
+V2Resource_GetTopicsMethod* KitchSinkService::V2Resource::NewGetTopicsMethod(googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& topic_id) const {
+  return new V2Resource_GetTopicsMethod(service_, _credential_, series_id, topic_id);
 }
 
 KitchSinkService::VotesResource::VotesResource(KitchSinkService* service)
@@ -18793,6 +19161,56 @@ class FeaturedResource_SeriesResource_ListMethod : public KitchSinkServiceBaseRe
 };
 
 
+/**
+ * Implements the listSeries method.
+ *
+ * @ingroup ServiceMethod
+ *
+ * This class uses the Command Pattern. Construct an instance with the required
+ * parameters, then set any additional optional parameters by using the
+ * attribute setters. To invoke the method, call <code>Execute</code>.
+ *
+ * No authorization scopes are required for this method.
+ */
+class FeaturedResource_V2Resource_ListSeriesMethod : public KitchSinkServiceBaseRequest {
+ public:
+  /**
+   * The standard constructor takes all the required method parameters.
+   * @param[in] _service_  The service instance to send to when executed.
+   * @param[in] _credential_  If not NULL, the credential to authorize with.
+   *            In practice this is supplied by the user code that is
+   *            creating the method instance.
+   */
+  FeaturedResource_V2Resource_ListSeriesMethod(
+      const KitchSinkService* _service_,
+      googleapis_client::AuthorizationCredential* _credential_);
+
+  /**
+   * Standard destructor.
+   */
+  virtual ~FeaturedResource_V2Resource_ListSeriesMethod();
+
+  /**
+   * Executes the method and parses the response into a data object on success.
+   *
+   * @param[out] data Loads from the response payload JSON data on success.
+   *
+   * @return Success if an HTTP 2xx response was received. Otherwise the
+   *         status indicates the reason for failure. Finer detail may be
+   *         available from the underlying http_request to distinguish the
+   *         transport_status from the overal HTTP request status.
+   */
+  ::util::Status ExecuteAndParseResponse(
+      SeriesList* data) {
+    return KitchSinkServiceBaseRequest::ExecuteAndParseResponse(data);
+  }
+
+ private:
+  FeaturedResource_V2Resource_ListSeriesMethod(const FeaturedResource_V2Resource_ListSeriesMethod&) = delete;
+  FeaturedResource_V2Resource_ListSeriesMethod& operator=(const FeaturedResource_V2Resource_ListSeriesMethod&) = delete;
+};
+
+
 
 
 
@@ -21746,6 +22164,79 @@ class TopicsResource_SubmissionsResource_ListMethod : public KitchSinkServiceBas
 
 
 /**
+ * Implements the getTopics method.
+ *
+ * @ingroup ServiceMethod
+ *
+ * This class uses the Command Pattern. Construct an instance with the required
+ * parameters, then set any additional optional parameters by using the
+ * attribute setters. To invoke the method, call <code>Execute</code>.
+ *
+ * No authorization scopes are required for this method.
+ */
+class V2Resource_GetTopicsMethod : public KitchSinkServiceBaseRequest {
+ public:
+  /**
+   * The standard constructor takes all the required method parameters.
+   * @param[in] _service_  The service instance to send to when executed.
+   * @param[in] _credential_  If not NULL, the credential to authorize with.
+   *            In practice this is supplied by the user code that is
+   *            creating the method instance.
+   * @param[in] series_id The decimal ID of the Series.
+   * @param[in] topic_id The decimal ID of the Topic within the Series.
+   */
+  V2Resource_GetTopicsMethod(
+      const KitchSinkService* _service_,
+      googleapis_client::AuthorizationCredential* _credential_,
+      const int32& series_id,
+      const int32& topic_id);
+
+  /**
+   * Standard destructor.
+   */
+  virtual ~V2Resource_GetTopicsMethod();
+
+
+  /**
+   * Appends variable value to the target string.
+   *
+   * This is a helper function used to resolve templated variables in the URI.
+   *
+   * @param[in] variable_name  The name of the templated variable.
+   * @param[in] config  A pass-through parameter used for lists and maps.
+   * @param[in, out] target The string to append the value to.
+   */
+  virtual ::util::Status AppendVariable(
+        const string& variable_name,
+        const googleapis_client::UriTemplateConfig& config,
+        string* target);
+
+
+  /**
+   * Executes the method and parses the response into a data object on success.
+   *
+   * @param[out] data Loads from the response payload JSON data on success.
+   *
+   * @return Success if an HTTP 2xx response was received. Otherwise the
+   *         status indicates the reason for failure. Finer detail may be
+   *         available from the underlying http_request to distinguish the
+   *         transport_status from the overal HTTP request status.
+   */
+  ::util::Status ExecuteAndParseResponse(
+      Topic2* data) {
+    return KitchSinkServiceBaseRequest::ExecuteAndParseResponse(data);
+  }
+
+ private:
+  int32 series_id_;
+  int32 topic_id_;
+  V2Resource_GetTopicsMethod(const V2Resource_GetTopicsMethod&) = delete;
+  V2Resource_GetTopicsMethod& operator=(const V2Resource_GetTopicsMethod&) = delete;
+};
+
+
+
+/**
  * Implements the get method.
  *
  * @ingroup ServiceMethod
@@ -22258,10 +22749,60 @@ class KitchSinkService : public googleapis_client::ClientService {
     }
 
 
+    /**
+     * Acts as message factory for accessing  data.
+     *
+     * @ingroup ServiceClass
+     */
+    class V2Resource {
+     public:
+      /**
+       * Standard constructor.
+       *
+       * @param[in] service  The service instance is used to bind to the
+       *            methods created from this resource instance.  This will be
+       *            the service that methods are invoked on.
+       */
+      explicit V2Resource(KitchSinkService* service);
+
+      /**
+       * Standard destructor.
+       */
+      ~V2Resource() {}
+
+
+      /**
+       * Creates a new FeaturedResource_V2Resource_ListSeriesMethod instance.
+       *
+       * @param[in] _credential_  Can be NULL.
+       *            NULL credentials will not authorize the request.
+       * @returns  The caller should <code>Execute</code> the method instance,
+       *           then destroy it when they are finished.
+       */
+      FeaturedResource_V2Resource_ListSeriesMethod* NewListSeriesMethod(
+          googleapis_client::AuthorizationCredential* _credential_) const;
+
+     private:
+      KitchSinkService* service_;
+
+      V2Resource(const V2Resource&) = delete;
+      V2Resource& operator=(const V2Resource&) = delete;
+    };
+    /**
+     * Gets the v2 resource method factory.
+     *
+     * @return V2Resource for creating methods.
+     */
+    const V2Resource& get_v2() const {
+      return v2_;
+    }
+
+
 
    private:
     KitchSinkService* service_;
     SeriesResource series_;
+    V2Resource v2_;
 
     FeaturedResource(const FeaturedResource&) = delete;
     FeaturedResource& operator=(const FeaturedResource&) = delete;
@@ -23151,6 +23692,50 @@ class KitchSinkService : public googleapis_client::ClientService {
    *
    * @ingroup ServiceClass
    */
+  class V2Resource {
+   public:
+    /**
+     * Standard constructor.
+     *
+     * @param[in] service  The service instance is used to bind to the
+     *            methods created from this resource instance.  This will be
+     *            the service that methods are invoked on.
+     */
+    explicit V2Resource(KitchSinkService* service);
+
+    /**
+     * Standard destructor.
+     */
+    ~V2Resource() {}
+
+
+    /**
+     * Creates a new V2Resource_GetTopicsMethod instance.
+     *
+     * @param[in] _credential_  Can be NULL.
+     *            NULL credentials will not authorize the request.
+     * @param[in] series_id The decimal ID of the Series.
+     * @param[in] topic_id The decimal ID of the Topic within the Series.
+     * @returns  The caller should <code>Execute</code> the method instance,
+     *           then destroy it when they are finished.
+     */
+    V2Resource_GetTopicsMethod* NewGetTopicsMethod(
+        googleapis_client::AuthorizationCredential* _credential_,
+        const int32& series_id,
+        const int32& topic_id) const;
+
+   private:
+    KitchSinkService* service_;
+
+    V2Resource(const V2Resource&) = delete;
+    V2Resource& operator=(const V2Resource&) = delete;
+  };
+
+  /**
+   * Acts as message factory for accessing  data.
+   *
+   * @ingroup ServiceClass
+   */
   class VotesResource {
    public:
     /**
@@ -23358,6 +23943,16 @@ class KitchSinkService : public googleapis_client::ClientService {
   /**
    * Gets the  resource method factory.
    *
+   * @return V2Resource for creating methods.
+   */
+  const V2Resource& get_v2() const {
+    return v2_;
+  }
+
+
+  /**
+   * Gets the  resource method factory.
+   *
    * @return VotesResource for creating methods.
    */
   const VotesResource& get_votes() const {
@@ -23403,6 +23998,7 @@ class KitchSinkService : public googleapis_client::ClientService {
   SubmissionsResource submissions_;
   TagsResource tags_;
   TopicsResource topics_;
+  V2Resource v2_;
   VotesResource votes_;
 
   KitchSinkService(const KitchSinkService&) = delete;
