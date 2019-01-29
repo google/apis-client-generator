@@ -1152,10 +1152,11 @@ def Imports(parser, token):
 class ParameterListNode(django_template.Node):
   """Node for parameter_list blocks."""
 
-  def __init__(self, nodelist, separator):
+  def __init__(self, nodelist, separator, append=False):
     super(ParameterListNode, self).__init__()
     self._nodelist = nodelist
     self._separator = separator
+    self._append = append
 
   def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
@@ -1163,9 +1164,11 @@ class ParameterListNode(django_template.Node):
     # Split apart on paramater boundaries, getting rid of white space between
     # parameters
     for block in self._nodelist.render(context).split(ParameterNode.BEGIN):
-      block = block.rstrip().replace(ParameterNode.END, '')
+      block = block.lstrip().rstrip().replace(ParameterNode.END, '')
       if block:
         blocks.append(block)
+    if self._append and blocks:
+      blocks.insert(0, '')
     return self._separator.join(blocks)
 
 
@@ -1188,18 +1191,25 @@ class ParameterNode(django_template.Node):
 
 @register.tag(name='parameter_list')
 def DoParameterList(parser, token):
-  """Gather a list of parameter declarations and join them with ','.
+  r"""Gather a list of parameter declarations and join them with ','.
 
   Gathers all 'parameter' nodes until the 'end_parameter_list' tag and joins
   them together with a ', ' separator. Extra white space between nodes is
-  removed, but other text is left intact, joined to the end of the preceeding
+  removed, but other text is left intact, joined to the end of the preceding
   parameter node. Blank parameters are omitted from the list.
 
   Usage:
-    foo({% parameter_list separator %}{% for p in method.parameters %}
-        {{ p.type }} {{ p.name }}
+    foo({% parameter_list [separator [append]] %}{% for p in m.parameters %}
+        {% parameter %}
+          {{ p.type }} {{ p.name }}
+        {% end_parameter %}
         {% endfor %}
         {% end_parameter_list %})
+
+    separater: may contain \n, \t, \r, and \b (for space)
+    append: indicates that this list appends another. If there are any
+    parameters in the list, a leading separator will be emitted. This
+    effectively 'appends' this parameter_list to any previous output.
 
   Args:
     parser: (parser) the Django parser context.
@@ -1208,14 +1218,25 @@ def DoParameterList(parser, token):
   Returns:
     a ParameterListNode
   """
-  try:
-    unused_tag_name, separator = token.split_contents()
-  except ValueError:
-    # No separator, set default.
-    separator = ', '
+  separator = ', '
+  append = False
+  args = token.split_contents()
+  if len(args) > 1:
+    separator = args[1]
+    separator = separator.replace(r'\n', '\n')
+    separator = separator.replace(r'\r', '\r')
+    separator = separator.replace(r'\t', '\t')
+    separator = separator.replace(r'\b', ' ')
+  if len(args) > 2:
+    if args[2] == 'append':
+      append = True
+  if len(args) > 3:
+    raise django_template.TemplateSyntaxError(
+        'parameter_list expects at most two arguments')
+
   nodelist = parser.parse(('end_parameter_list',))
   parser.delete_first_token()
-  return ParameterListNode(nodelist, separator)
+  return ParameterListNode(nodelist, separator, append)
 
 
 @register.tag(name='parameter')
@@ -1434,7 +1455,7 @@ class LiteralStringNode(django_template.Node):
 
 @register.tag(name='literal')
 def DoLiteralString(unused_parser, token):
-  """Emit a variable as a string literal, escaped for the current language.
+  r"""Emit a variable as a string literal, escaped for the current language.
 
   A variable foo containing 'ab<newline>c' would be emitted as "ab\\nc"
   (with no literal newline character). Multiple variables are concatenated.
