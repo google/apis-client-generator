@@ -22,7 +22,7 @@
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -98,7 +98,7 @@
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -149,7 +149,7 @@ GTL_EXTERN NSString * const kGTLKitchSinkGeometryReference_Type_Polygon;  // "Po
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -189,7 +189,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -235,7 +235,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -279,7 +279,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -325,7 +325,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -369,7 +369,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -417,7 +417,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -470,7 +470,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -516,7 +516,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -560,7 +560,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -609,7 +609,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -653,7 +653,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -705,7 +705,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -749,7 +749,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -792,7 +792,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -835,7 +835,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -890,7 +890,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -944,7 +944,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -992,7 +992,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1038,7 +1038,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1108,7 +1108,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1163,7 +1163,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1214,7 +1214,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1267,7 +1267,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1353,7 +1353,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1419,7 +1419,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1470,7 +1470,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1523,7 +1523,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1581,7 +1581,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1635,7 +1635,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1703,7 +1703,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1759,7 +1759,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1831,7 +1831,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1895,7 +1895,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1946,7 +1946,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -1999,7 +1999,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2048,7 +2048,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2092,7 +2092,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2149,7 +2149,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2202,7 +2202,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2253,7 +2253,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2306,7 +2306,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2350,7 +2350,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2448,7 +2448,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
@@ -2491,7 +2491,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 //
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   kitch_sink (kitch_sink/v1)
 // Description:
