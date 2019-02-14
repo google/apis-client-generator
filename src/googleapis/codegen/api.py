@@ -138,11 +138,6 @@ class Api(template_objects.CodeObject):
     self._SetupModules()
     self.void_type = data_types.Void(self)
     self._BuildSchemaDefinitions()
-    self._BuildResourceDefinitions()
-    self.SetTemplateValue('resources', self._resources)
-
-    # Make data models part of the api dictionary
-    self.SetTemplateValue('models', self.ModelClasses())
 
     # Replace methods dict with Methods
     self._top_level_methods = []
@@ -150,6 +145,13 @@ class Api(template_objects.CodeObject):
     for name in sorted(method_dict):
       self._top_level_methods.append(Method(self, name, method_dict[name]))
     self.SetTemplateValue('methods', self._top_level_methods)
+
+    # Build resources
+    self._BuildResourceDefinitions()
+    self.SetTemplateValue('resources', self._resources)
+
+    # Make data models part of the api dictionary
+    self.SetTemplateValue('models', self.ModelClasses())
 
     # Global parameters
     self._parameters = []
@@ -214,7 +216,8 @@ class Api(template_objects.CodeObject):
     def_dict = self.values.get('resources') or {}
     for name in sorted(def_dict):
       resource = Resource(self, name, def_dict[name], parent=self)
-      self._resources.append(resource)
+      if not (self.api.get('reparentMethodsUsingId') and resource.is_skippable):
+        self._resources.append(resource)
 
   def _BuildSchemaDefinitions(self):
     """Loop over the schemas in the discovery doc and build definitions."""
@@ -557,14 +560,17 @@ class Resource(template_objects.CodeObject):
     self._methods = []
     method_dict = self.values.get('methods') or {}
     for name in sorted(method_dict):
-      self._methods.append(Method(api, name, method_dict[name], parent=self))
+      method = Method(api, name, method_dict[name], parent=self)
+      if not self.reparent(method):
+        self._methods.append(method)
     self.SetTemplateValue('methods', self._methods)
     # Get sub resources
     self._resources = []
     r_def_dict = self.values.get('resources') or {}
     for name in sorted(r_def_dict):
-      r = Resource(api, name, r_def_dict[name], parent=self)
-      self._resources.append(r)
+      resource = Resource(api, name, r_def_dict[name], parent=self)
+      if not (api.get('reparentMethodsUsingId') and resource.is_skippable):
+        self._resources.append(resource)
     self.SetTemplateValue('resources', self._resources)
 
   @property
@@ -574,6 +580,26 @@ class Resource(template_objects.CodeObject):
   @property
   def methods_dict(self):
     return {method['wireName']: method for method in self._methods}
+
+  def reparent(self, method):
+    """If method's id matches our parent's path, add it there, return True."""
+    if not self.api.get('reparentMethodsUsingId'):
+      return False
+    id_ancestors = method.get('id', '').split('.')[:-1]
+    if [a.codeName for a in self.ancestors] == id_ancestors:
+      if isinstance(self.parent, Api):
+        methods = self.parent.top_level_methods
+      else:
+        methods = self.parent.methods
+      methods.append(method)
+      methods.sort(key=lambda m: m.get('name'))
+      method.SetParent(self.parent)
+      return True
+
+  @property
+  def is_skippable(self):
+    """Should we skip adding this resource?"""
+    return not (self.methods or self._resources)
 
 
 class AuthScope(template_objects.CodeObject):

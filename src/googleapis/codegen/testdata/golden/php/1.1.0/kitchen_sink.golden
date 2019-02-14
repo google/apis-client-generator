@@ -40,6 +40,7 @@ class Google_Service_KitchSink extends Google_Service
   const USERINFO_EMAIL = "https://www.googleapis.com/auth/userinfo.email";
 
   public $featured_series;
+  public $featured_v2;
   public $global_series;
   public $my_series;
   public $myrecent_private;
@@ -47,11 +48,12 @@ class Google_Service_KitchSink extends Google_Service
   public $responses;
   public $series;
   public $series_responses;
-  public $series_submissions;
+  public $series_sub_missions;
   public $submissions;
   public $tags;
   public $topics;
   public $topics_submissions;
+  public $v2;
   public $votes;
   
 
@@ -74,6 +76,20 @@ class Google_Service_KitchSink extends Google_Service
         array(
           'methods' => array(
             'list' => array(
+              'path' => 'series/featured',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->featured_v2 = new Google_Service_KitchSink_FeaturedV2_Resource(
+        $this,
+        $this->serviceName,
+        'v2',
+        array(
+          'methods' => array(
+            'listSeries' => array(
               'path' => 'series/featured',
               'httpMethod' => 'GET',
               'parameters' => array(),
@@ -323,14 +339,14 @@ class Google_Service_KitchSink extends Google_Service
           )
         )
     );
-    $this->series_submissions = new Google_Service_KitchSink_SeriesSubmissions_Resource(
+    $this->series_sub_missions = new Google_Service_KitchSink_SeriesSubMissions_Resource(
         $this,
         $this->serviceName,
-        'submissions',
+        'sub_missions',
         array(
           'methods' => array(
-            'list' => array(
-              'path' => 'series/{seriesId}/submissions',
+            'li-st' => array(
+              'path' => 'series/{seriesId}/sub-missions',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'seriesId' => array(
@@ -422,6 +438,26 @@ class Google_Service_KitchSink extends Google_Service
         array(
           'methods' => array(
             'delete' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/tags/{tagId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'tagId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete$purge' => array(
               'path' => 'series/{seriesId}/submissions/{submissionId}/tags/{tagId}',
               'httpMethod' => 'DELETE',
               'parameters' => array(
@@ -596,6 +632,31 @@ class Google_Service_KitchSink extends Google_Service
           )
         )
     );
+    $this->v2 = new Google_Service_KitchSink_V2_Resource(
+        $this,
+        $this->serviceName,
+        'v2',
+        array(
+          'methods' => array(
+            'getTopics' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
     $this->votes = new Google_Service_KitchSink_Votes_Resource(
         $this,
         $this->serviceName,
@@ -712,6 +773,30 @@ class Google_Service_KitchSink_FeaturedSeries_Resource extends Google_Service_Re
     $params = array();
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+/**
+ * The "v2" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $v2 = $kitch_sinkService->v2;
+ *  </code>
+ */
+class Google_Service_KitchSink_FeaturedV2_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Lists the featured series. (v2.listSeries)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listSeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('listSeries', array($params), "Google_Service_KitchSink_SeriesList");
   }
 }
 
@@ -1056,19 +1141,19 @@ class Google_Service_KitchSink_SeriesResponses_Resource extends Google_Service_R
   }
 }
 /**
- * The "submissions" collection of methods.
+ * The "sub-missions" collection of methods.
  * Typical usage is:
  *  <code>
  *   $kitch_sinkService = new Google_Service_KitchSink(...);
- *   $submissions = $kitch_sinkService->submissions;
+ *   $sub_missions = $kitch_sinkService->sub_missions;
  *  </code>
  */
-class Google_Service_KitchSink_SeriesSubmissions_Resource extends Google_Service_Resource
+class Google_Service_KitchSink_SeriesSubMissions_Resource extends Google_Service_Resource
 {
 
   /**
    * Searches the submissions for the specified series and returns the search
-   * results. (submissions.listSeriesSubmissions)
+   * results. (sub-missions.liSt)
    *
    * @param int $seriesId
    * The decimal ID of the Series.
@@ -1088,11 +1173,11 @@ class Google_Service_KitchSink_SeriesSubmissions_Resource extends Google_Service
    * Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SubmissionList
    */
-  public function listSeriesSubmissions($seriesId, $optParams = array())
+  public function liSt($seriesId, $optParams = array())
   {
     $params = array('seriesId' => $seriesId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
+    return $this->call('li-st', array($params), "Google_Service_KitchSink_SubmissionList");
   }
 }
 
@@ -1178,6 +1263,24 @@ class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
     $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId, 'tagId' => $tagId);
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
+  }
+  /**
+   * Deletes all versions of the specified tag from the specified submission
+   * within the specified series. (tags.delete$purge)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param string $tagId
+   *
+   * @param array $optParams Optional parameters.
+   */
+  public function delete$purge($seriesId, $submissionId, $tagId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId, 'tagId' => $tagId);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete$purge', array($params));
   }
   /**
    * Inserts a new tag for the specified submission within the specified series.
@@ -1338,6 +1441,35 @@ class Google_Service_KitchSink_TopicsSubmissions_Resource extends Google_Service
     $params = array('seriesId' => $seriesId, 'topicId' => $topicId);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
+  }
+}
+
+/**
+ * The "v2" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $v2 = $kitch_sinkService->v2;
+ *  </code>
+ */
+class Google_Service_KitchSink_V2_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Returns the specified topic from the specified series. (v2.getTopics)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $topicId
+   * The decimal ID of the Topic within the Series.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Topic2
+   */
+  public function getTopics($seriesId, $topicId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId);
+    $params = array_merge($params, $optParams);
+    return $this->call('getTopics', array($params), "Google_Service_KitchSink_Topic2");
   }
 }
 

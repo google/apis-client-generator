@@ -7,8 +7,8 @@
     sep = "&";
   }
 {% else %}
-  StrAppend(target, sep, "{{ variable.wireName }}=",
-            {{ api.client_namespace }}::CppValueToEscapedUrlValue(
-              {{ variable.memberName }}));
+  absl::StrAppend(target, sep, "{{ variable.wireName }}=",
+                  {{ api.client_namespace }}::CppValueToEscapedUrlValue(
+                      {{ variable.memberName }}));
   sep = "&";
 {% endif %}

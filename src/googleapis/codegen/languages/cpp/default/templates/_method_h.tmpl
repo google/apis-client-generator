@@ -129,7 +129,8 @@ void set_use_media_download(bool use) {
  private:
 {% call_template _declare_method_attributes_h parameters=method.parameters %}{% if method.mediaUpload %}{# the uploader in the base class handles the content #}
 {% elif method.requestType %}  string _content_;{% endif %}
-  DISALLOW_COPY_AND_ASSIGN({{ method.className }});
+  {{ method.className }}(const {{ method.className }}&) = delete;
+  {{ method.className }}& operator=(const {{ method.className }}&) = delete;
 {% endfilter %}
 };
 {% if method.isPagingStyleStandard %}

@@ -23,7 +23,7 @@
   {% endif %}
 {% endfor %}
   return {{ api.client_namespace }}::StatusInvalidArgument(
-      StrCat("Unknown url variable='", variable_name, "'"));
+      absl::StrCat("Unknown url variable='", variable_name, "'"));
 }
 {% endfilter %}
 

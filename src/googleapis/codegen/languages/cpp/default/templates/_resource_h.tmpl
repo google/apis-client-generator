@@ -37,5 +37,6 @@ const {{ subresource.className }}& {{ subresource.getterName }}() const {
   {{ api.className }}* service_;{% for subresource in resource.resources %}
   {{ subresource.className }} {{ subresource.memberName }};{% endfor %}
 
-  DISALLOW_COPY_AND_ASSIGN({{ resource.className }});
+  {{ resource.className }}(const {{ resource.className }}&) = delete;
+  {{ resource.className }}& operator=(const {{ resource.className }}&) = delete;
 };

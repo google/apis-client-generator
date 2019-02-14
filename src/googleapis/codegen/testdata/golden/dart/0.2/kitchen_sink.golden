@@ -234,6 +234,8 @@ class KitchSinkApi extends BrowserClient {
   TagsResource get tags => _tags;
   TopicsResource _topics;
   TopicsResource get topics => _topics;
+  V2Resource _v2;
+  V2Resource get v2 => _v2;
   VotesResource _votes;
   VotesResource get votes => _votes;
 
@@ -310,6 +312,7 @@ class KitchSinkApi extends BrowserClient {
     _submissions = new SubmissionsResource(this);
     _tags = new TagsResource(this);
     _topics = new TopicsResource(this);
+    _v2 = new V2Resource(this);
     _votes = new VotesResource(this);
   }
 }
@@ -408,6 +411,48 @@ class FeaturedSeriesResourceResource extends Resource {
    * [optParams] - Additional query parameters.
    */
   async.Future<SeriesList> list({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/featured";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+class FeaturedV2ResourceResource extends Resource {
+
+  FeaturedV2ResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method FeaturedResource.FeaturedV2ResourceResource.ListSeries
+  /**
+   * Lists the featured series.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> listSeries({core.Map optParams}) {
     var completer = new async.Completer();
     var url = "series/featured";
     var urlParams = new core.Map();
@@ -1036,14 +1081,14 @@ class SeriesResponsesResourceResource extends Resource {
   }
 }
 
-class SeriesSubmissionsResourceResource extends Resource {
+class SeriesSubMissionsResourceResource extends Resource {
 
-  SeriesSubmissionsResourceResource(Client client) : super(client) {
+  SeriesSubMissionsResourceResource(Client client) : super(client) {
   }
 
 
 
-  // Method SeriesResource.SeriesSubmissionsResourceResource.List
+  // Method SeriesResource.SeriesSubMissionsResourceResource.LiSt
   /**
    * Searches the submissions for the specified series and returns the search results.
    *
@@ -1063,9 +1108,9 @@ class SeriesSubmissionsResourceResource extends Resource {
    *
    * [optParams] - Additional query parameters.
    */
-  async.Future<SubmissionList> list(core.int seriesId, {core.String author, core.bool hasAttachedVideo, core.String lang, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
+  async.Future<SubmissionList> liSt(core.int seriesId, {core.String author, core.bool hasAttachedVideo, core.String lang, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
     var completer = new async.Completer();
-    var url = "series/{seriesId}/submissions";
+    var url = "series/{seriesId}/sub-missions";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
@@ -1225,6 +1270,55 @@ class TagsResource extends Resource {
    * [optParams] - Additional query parameters.
    */
   async.Future delete(core.int seriesId, core.int submissionId, core.String tagId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/tags/{tagId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (tagId == null) paramErrors.add("tagId is required");
+    if (tagId != null) urlParams["tagId"] = tagId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(data))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TagsResource.Delete$purge
+  /**
+   * Deletes all versions of the specified tag from the specified submission within the specified
+   * series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [tagId] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future delete$purge(core.int seriesId, core.int submissionId, core.String tagId, {core.Map optParams}) {
     var completer = new async.Completer();
     var url = "series/{seriesId}/submissions/{submissionId}/tags/{tagId}";
     var urlParams = new core.Map();
@@ -1598,6 +1692,57 @@ class TopicsSubmissionsResourceResource extends Resource {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     response
       .then((data) => completer.complete(new SubmissionList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class V2Resource extends Resource {
+
+  V2Resource(Client client) : super(client) {
+  }
+
+
+
+  // Method V2Resource.GetTopics
+  /**
+   * Returns the specified topic from the specified series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [topicId] - The decimal ID of the Topic within the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Topic2> getTopics(core.int seriesId, core.int topicId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics/{topicId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (topicId == null) paramErrors.add("topicId is required");
+    if (topicId != null) urlParams["topicId"] = topicId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Topic2.fromJson(data)))
       .catchError((e) { completer.completeError(e); return true; });
     return completer.future;
   }
@@ -3724,6 +3869,8 @@ class KitchSinkApi extends ConsoleClient {
   TagsResource get tags => _tags;
   TopicsResource _topics;
   TopicsResource get topics => _topics;
+  V2Resource _v2;
+  V2Resource get v2 => _v2;
   VotesResource _votes;
   VotesResource get votes => _votes;
 
@@ -3800,6 +3947,7 @@ class KitchSinkApi extends ConsoleClient {
     _submissions = new SubmissionsResource(this);
     _tags = new TagsResource(this);
     _topics = new TopicsResource(this);
+    _v2 = new V2Resource(this);
     _votes = new VotesResource(this);
   }
 }

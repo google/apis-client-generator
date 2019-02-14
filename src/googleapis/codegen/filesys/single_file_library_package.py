@@ -67,7 +67,10 @@ class SingleFileLibraryPackage(LibraryPackage):
       # File contents may be utf-8
       if isinstance(data, unicode):
         data = data.encode('utf-8')
-      self._files[self._current_file_name] = data
+      # Replace CRLF with LF because in the C# .xml files, some have CRLF but
+      # others do not. This causes confusion because depending on how you do
+      # a diff on golden output, you get either a change or not.
+      self._files[self._current_file_name] = data.replace('\r\n', '\n')
 
   def DoneWritingArchive(self):
     """Signal that we are done writing the entire package.

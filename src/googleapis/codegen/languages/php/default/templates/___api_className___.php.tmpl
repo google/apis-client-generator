@@ -35,11 +35,16 @@ const {{ authscope.name }} =
    */
   public function __construct(Google_Client $client)
   {
-    parent::__construct($client);
-    $this->rootUrl = {% literal api.rootUrl %};
-    $this->servicePath = {% literal api.servicePath %};
-    $this->version = {% literal api.version %};
-    $this->serviceName = {% literal api.name %};
+{% filter noblanklines %}
+{% indent 2 %}
+parent::__construct($client);
+$this->rootUrl = {% literal api.rootUrl %};
+$this->servicePath = {% literal api.servicePath %};
+{% if api.batchPath %}$this->batchPath = {% literal api.batchPath %};{% endif %}
+$this->version = {% literal api.version %};
+$this->serviceName = {% literal api.name %};
+{% endindent %}
+{% endfilter %}
 
 {% filter noblanklines %}
 {% call_template _resource_decl resource=api %}

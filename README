@@ -15,7 +15,7 @@
 Google APIs Code Generator
 https://github.com/google/apis-client-generator/
 
-August 20, 2013
+January 29, 2019
 
 Introduction
 
@@ -32,6 +32,11 @@ Introduction
   head of the respective base client libraries.
 
 
+Warning:
+  This project is maintained as a volunteer effort. There is no full time
+  staffing.
+
+
 Installation
 
 Python 2.7 is required.  Python3 is not supported.
@@ -42,13 +47,13 @@ Everything can be installed quickly with easy_install or pip. E.g.:
 
 The following dependencies will be installed:
 
-  * django - http://www.djangoproject.com/
+  * django - https://www.djangoproject.com/
     - version 1.8
     - we only use the templating package, not the web serving features.
-  * google-apputils - http://github.com/google/google-apputils/
-  * google-api-python-client - http://github.com/google/google-api-python-client
-  * python-gflags - http://github.com/google/python-gflags/
-  * httplib2 - https://github.com/jcgregorio/httplib2
+  * google-apputils - https://github.com/google/google-apputils/
+  * google-api-python-client - https://github.com/google/google-api-python-client
+  * python-gflags - https://github.com/google/python-gflags/
+  * httplib2 - https://github.com/httplib2/httplib2/
 
 
 Usage

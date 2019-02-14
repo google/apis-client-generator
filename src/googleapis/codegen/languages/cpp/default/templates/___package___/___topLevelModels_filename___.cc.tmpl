@@ -3,7 +3,7 @@
 {% call_template _time_stamp %}
 
 // ----------------------------------------------------------------------------
-// NOTE: This file is generated from Google APIs Discovery Service.
+// NOTE: This file is generated from Google API Discovery Service.
 // Service:
 //   {{ api.title }} ({{ api.name }}/{{ api.version }})
 // Description:
@@ -14,14 +14,16 @@
 //   {{ api.documentationLink }}
 
 #include "{{ model.include_path }}"
+
+#include <string>
+
 {% imports model %}
 #include "{{ api.client_include_path }}/data/jsoncpp_data.h"
-#include "{{ api.strings_include_path }}/stringpiece.h"
 {% endimports %}
 {# TODO(ewiseblatt): 20121022 #}
 {# Add these into the above block when b/7399546 is fixed #}
-#include <string>
-#include "{{ api.strings_include_path }}/strcat.h"
+#include "{{ api.absl_include_path }}/strings/str_cat.h"
+#include "{{ api.absl_include_path }}/strings/string_view.h"
 
 namespace {{ api.module.name }} {
 {% if api.global_namespace %}using namespace {{ api.global_namespace }};

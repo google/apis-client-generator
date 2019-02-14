@@ -80,6 +80,9 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
                                r.values['className'])
       namespaced = '_'.join((resource.GetTemplateValue('phpPropName'),
                              r.values['wireName']))
+      namespaced = '_'.join(
+          (resource.GetTemplateValue('phpPropName'),
+           self.language_model.ToMemberName(r.values['wireName'], None)))
       r.SetTemplateValue('phpPropName', namespaced)
       self.AnnotateResource(the_api, r)
 
@@ -165,7 +168,9 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     s = method['wireName']
     if resource and (s.lower() in PhpLanguageModel.PHP_KEYWORDS):
       s += resource['className']
-    return s
+    # Ensure dashes don't show up in method names
+    words = s.split('-')
+    return ''.join(words[:1] + [w.capitalize() for w in words[1:]])
 
   def _SetTypeHint(self, prop):
     """Strip primitive types since PHP doesn't support primitive type hints."""

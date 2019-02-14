@@ -1,12 +1,16 @@
-{% noeol %}{% for p in parameters %}
-{% if p.required %},{% eol %}
-  {{ p.memberName }}({{ p.parameterName }}{% if p.parameterCodeType == 'StringPiece' %}.as_string(){% endif %})
-{% elif p.default %},{% eol %}
-  {{ p.memberName }}({% if p.data_type.json_type == 'string' and not p.isPrimitive %}"{{ p.default }}"{% else %}{{ p.default }}{% endif %})
-{% endif %}
+{% parameter_list ,\n\b\b append %}
+{% for p in parameters %}
+  {% if p.required %}
+    {% parameter %}{{ p.memberName }}({% if p.parameterCodeType == 'StringPiece' %}string({{ p.parameterName }}){% else %}{{ p.parameterName }}{% endif %})
+    {% end_parameter %}
+  {% elif p.default %}
+    {% parameter %}{{ p.memberName }}({% if p.data_type.json_type == 'string' and not p.isPrimitive %}"{{ p.default }}"{% else %}{{ p.default }}{% endif %})
+    {% end_parameter %}
+  {% endif %}
 {% endfor %}
 {% for p in parameters %}
-{% if not p.required %},{% eol %}
-  _have_{{ p.memberName }}(false)
-{% endif %}
-{% endfor %}{% endnoeol %}
+  {% if not p.required %}
+    {% parameter %}_have_{{ p.memberName }}(false){% end_parameter %}
+  {% endif %}
+{% endfor %}
+{% end_parameter_list %}
