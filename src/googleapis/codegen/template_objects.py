@@ -416,7 +416,7 @@ class Module(CodeObject):
           is intended for use inside documentation.
 
   These values are derived from elements defining the owner of the API or
-  shared data type as described in http://goto/apiarylibrarynamespacing
+  shared data type.
 
   Typically, a code generator will create a model (e.g. an Api) and assign a
   a Module to the top node. Other nodes in the model might be in different
