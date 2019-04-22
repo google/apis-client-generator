@@ -22,6 +22,7 @@ from googleapis.codegen import data_types
 from googleapis.codegen import data_value
 from googleapis.codegen import language_model
 from googleapis.codegen import schema
+from googleapis.codegen import template_helpers
 from django import template as django_template  # pylint: disable=g-bad-import-order
 
 
@@ -132,7 +133,7 @@ class DataValueRenderingTest(basetest.TestCase):
     dv = data_value.DataValue('four', prototype)
 
     source = '{% value_of data %}'
-    template = django_template.Template(source)
+    template = template_helpers.DjangoTemplate(source)
 
     context = self._GetContext({'data': dv})
     self.assertEquals('"four"', template.render(context))

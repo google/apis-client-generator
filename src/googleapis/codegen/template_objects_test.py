@@ -21,6 +21,7 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 from django import template as django_template  # pylint:disable=g-bad-import-order
 from google.apputils import basetest
 from googleapis.codegen import language_model
+from googleapis.codegen import template_helpers
 from googleapis.codegen import template_objects
 
 
@@ -76,7 +77,7 @@ class TemplateObjectsTest(basetest.TestCase):
     self.assertEquals(['Foo', 'Bar'], baz.parentPath)
 
   def _TestRender(self, source, ctxt, expected):
-    t = django_template.Template(source)
+    t = template_helpers.DjangoTemplate(source)
     rendered = t.render(django_template.Context(ctxt))
     self.assertEquals(expected, rendered)
 

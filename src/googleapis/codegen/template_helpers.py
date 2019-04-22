@@ -224,6 +224,20 @@ _language_defaults = {
 _TEMPLATE_GLOBALS = threading.local()
 _TEMPLATE_GLOBALS.current_context = None
 
+_ENGINE = django_template.engine.Engine(
+    builtins=['googleapis.codegen.template_helpers'])
+
+
+def DjangoTemplate(source):
+  """Returns a template configured for our default engine.
+
+  Args:
+    source: (str) Template source.
+  Returns:
+    (django.template.Template)
+  """
+  return django_template.Template(source, engine=_ENGINE)
+
 
 def GetCurrentContext():
   return _TEMPLATE_GLOBALS.current_context
@@ -289,7 +303,7 @@ class CachingTemplateLoader(object):
 
   def _LoadTemplate(self, template_path):
     source = files.GetFileContents(template_path).decode('utf-8')
-    return django_template.Template(source)
+    return DjangoTemplate(source)
 
 
 _TEMPLATE_LOADER = CachingTemplateLoader()
@@ -966,7 +980,7 @@ class CommentIfNode(DocCommentNode):
   def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     try:
-      text = django_template.resolve_variable(self._variable_name, context)
+      text = django_template.Variable(self._variable_name).resolve(context)
       if text:
         return self.RenderText(text, context)
     except django_template.base.VariableDoesNotExist:
@@ -1036,7 +1050,7 @@ class CamelCaseNode(django_template.Node):
 
   def render(self, context):  # pylint: disable=g-bad-name
     try:
-      text = django_template.resolve_variable(self._variable_name, context)
+      text = django_template.Variable(self._variable_name).resolve(context)
       if text:
         return utilities.CamelCase(text)
     except django_template.base.VariableDoesNotExist:
@@ -1066,7 +1080,7 @@ class ParameterGetterChainNode(django_template.Node):
   def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     try:
-      prop = django_template.resolve_variable(self._variable_name, context)
+      prop = django_template.Variable(self._variable_name).resolve(context)
     except django_template.base.VariableDoesNotExist:
       return ''
 
@@ -1114,8 +1128,8 @@ class ImportsNode(django_template.Node):
     # - get the complete import set
     import_lists = None
     try:
-      import_manager = django_template.resolve_variable(
-          '%s.importManager' % self._element, context)
+      import_manager = django_template.Variable(
+          '%s.importManager' % self._element).resolve(context)
       import_regex = _GetFromContext(context, _IMPORT_REGEX)
       for line in explicit_import_text.split('\n'):
         match_obj = re.match(import_regex, line)
@@ -1297,7 +1311,7 @@ class TemplateNode(django_template.Node):
     newvars = {}
     for target, source in self._bindings.iteritems():
       try:
-        newvars[target] = django_template.resolve_variable(source, context)
+        newvars[target] = django_template.Variable(source).resolve(context)
       except django_template.base.VariableDoesNotExist:
         raise django_template.TemplateSyntaxError(
             'can not resolve %s when calling template %s' % (
@@ -1438,11 +1452,10 @@ class LiteralStringNode(django_template.Node):
 
   def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
-    resolve = django_template.resolve_variable
     texts = []
     for v in self._variables:
       try:
-        texts.append(resolve(v, context))
+        texts.append(django_template.Variable(v).resolve(context))
       except django_template.base.VariableDoesNotExist:
         pass
     text = ''.join(texts)
@@ -1482,9 +1495,7 @@ class DataContextNode(django_template.Node):
 
   def render(self, context):  # pylint: disable=g-bad-name
     """Make sure this is actually a Node and render it."""
-    resolve = django_template.resolve_variable
-
-    data = resolve(self._variable, context)
+    data = django_template.Variable(self._variable).resolve(context)
     if hasattr(data, 'GetLanguageModel') and hasattr(data, 'value'):
       model = data.GetLanguageModel()
       # TODO(user): Fix the fact that Arrays don't know their language
@@ -1515,7 +1526,7 @@ class BoolNode(django_template.Node):
     self._variable = variable
 
   def render(self, context):  # pylint:disable=g-bad-name
-    data = bool(django_template.resolve_variable(self._variable, context))
+    data = bool(django_template.Variable(self._variable).resolve(context))
     return _GetFromContext(context, _BOOLEAN_LITERALS)[data]
 
 
@@ -1576,7 +1587,7 @@ class WriteNode(django_template.Node):
     Raises:
       ValueError: If the file writer method can not be found.
     """
-    path = django_template.resolve_variable(self._path_variable, context)
+    path = django_template.Variable(self._path_variable).resolve(context)
     content = self._nodelist.render(context)
     file_writer = _GetFromContext(context, FILE_WRITER)
     if not file_writer:

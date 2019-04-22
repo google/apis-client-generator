@@ -214,7 +214,7 @@ class TemplateHelpersTest(basetest.TestCase):
     """)
     for should_block in ('block', 'noblock'):
       source = source_tmpl.replace('XXX', should_block)
-      template = django_template.Template(source)
+      template = django_helpers.DjangoTemplate(source)
       context = self._GetContext({
           'p': {
               'deprecated': True,
@@ -292,7 +292,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
   def testCallTemplate(self):
     source = 'abc {% call_template _call_test foo bar qux api.xxx %} def'
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {
@@ -304,7 +304,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
   def testCallTemplateOutOfDirectory(self):
     source = 'abc {% call_template ../_out_of_dir %} def'
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext({
         'template_dir': os.path.join(self._TEST_DATA_DIR, 'languages'),
         }))
@@ -312,7 +312,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
   def testCallTemplateWithEqualsSyntax(self):
     source = 'abc {% call_template _call_test foo=bar qux=api.xxx %} def'
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {
@@ -325,7 +325,7 @@ class TemplateHelpersTest(basetest.TestCase):
   def testCallTemplateRestoreVar(self):
     """Make sure variable stacking happens correctly on call_template."""
     source = 'abc {% call_template _call_test foo bar qux api.xxx %} {{foo}}'
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {
@@ -346,7 +346,7 @@ class TemplateHelpersTest(basetest.TestCase):
           {% end_parameter %}
           {% parameter %}string b{% end_parameter %}
         {% end_parameter_list %})"""
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext())
     self.assertEquals('method(int a, string b)', rendered)
 
@@ -354,26 +354,26 @@ class TemplateHelpersTest(basetest.TestCase):
     source = """method({% parameter_list %}
         {% parameter %}JsonCppArray<string> a{% end_parameter %}
         {% end_parameter_list %})"""
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext({}))
     self.assertEquals('method(JsonCppArray<string> a)', rendered)
     source = """method({% parameter_list %}
         {% parameter %}{{ foo }} a{% end_parameter %}
         {% end_parameter_list %})"""
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext(
         {'foo': 'JsonCppArray<string>'}))
     # HTML escaping has not been turned off
     self.assertEquals('method(JsonCppArray&lt;string&gt; a)', rendered)
     source = '{% language cpp %}' + source
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext(
         {'foo': 'JsonCppArray<string>'}))
     self.assertEquals('method(JsonCppArray<string> a)', rendered)
     source = """{% language cpp %}
         {% call_template _escape_test foo foo %}
     """
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext(
         {'template_dir': self._TEST_DATA_DIR,
          'foo': 'JsonCppArray<string>'})).strip()
@@ -383,13 +383,13 @@ class TemplateHelpersTest(basetest.TestCase):
     expected = """import hello_world
                   import abc"""
     source = '{% imports x %}\n' + expected + '\n{% endimports %}'
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     rendered = template.render(self._GetContext({'x': {}}))
     self.assertEquals(expected, rendered)
 
   def testNoEol(self):
     def TryIt(source, expected, ctxt=None):
-      template = django_template.Template(source)
+      template = django_helpers.DjangoTemplate(source)
       rendered = template.render(self._GetContext(ctxt))
       self.assertEquals(expected, rendered)
 
@@ -419,7 +419,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
   def testNoBlank(self):
     def TryIt(source, expected, ctxt=None):
-      template = django_template.Template(source)
+      template = django_helpers.DjangoTemplate(source)
       rendered = template.render(self._GetContext(ctxt))
       self.assertEquals(expected, rendered)
 
@@ -471,7 +471,7 @@ class TemplateHelpersTest(basetest.TestCase):
     {% endnoblank %}X
     """)
     expected = 'Foo\nBar\n\nX\n'
-    template = django_template.Template(source)
+    template = django_helpers.DjangoTemplate(source)
     self.assertEquals(expected, template.render(self._GetContext({})))
 
   def testNoBlankRecurse(self):
@@ -480,7 +480,7 @@ class TemplateHelpersTest(basetest.TestCase):
       ctxt = self._GetContext({
           'template_dir': self._TEST_DATA_DIR
           })
-      template = django_template.Template(source)
+      template = django_helpers.DjangoTemplate(source)
       gotten = template.render(ctxt)
       self.assertEquals(expected, gotten)
 
@@ -544,7 +544,7 @@ class TemplateHelpersTest(basetest.TestCase):
   def testCopyright(self):
     copyright_text = 'MY COPYRIGHT TEXT'
     expected_license_preamble = 'Licensed under the Apache License'
-    template = django_template.Template(
+    template = django_helpers.DjangoTemplate(
         '{% language java %}{% copyright_block %}')
     context = self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
@@ -568,17 +568,16 @@ class TemplateHelpersTest(basetest.TestCase):
     # at a low level.
 
     # try a good one
-    template = django_template.Template('{% camel_case foo %}')
+    template = django_helpers.DjangoTemplate('{% camel_case foo %}')
     context = self._GetContext({'foo': 'hello_world'})
     self.assertEquals('HelloWorld', template.render(context))
 
     # Missing the arg
     for tag in ['language', 'comment_if', 'doc_comment_if']:
-      try:
-        template = django_template.Template('{%% %s %%}' % tag)
-        self.fail('TemplateSyntaxError not raised')
-      except django_template.TemplateSyntaxError as e:
-        self.assertEquals('tag requires a single argument: %s' % tag, str(e))
+      self.assertRaises(
+          django_template.TemplateSyntaxError,
+          django_helpers.DjangoTemplate,
+          '{%% %s %%}' % tag)
 
   def testCache(self):
     loader = template_helpers.CachingTemplateLoader()
@@ -592,12 +591,13 @@ class TemplateHelpersTest(basetest.TestCase):
 
   def testHalt(self):
     # See that it raises the error
-    template = django_template.Template('{% halt %}')
+    template = django_helpers.DjangoTemplate('{% halt %}')
     context = self._GetContext({})
     self.assertRaises(
         template_helpers.Halt, template.render, context)
     # But make sure it raises on execution, not parsing. :-)
-    template = django_template.Template('{% if false %}{% halt %}{% endif %}OK')
+    template = django_helpers.DjangoTemplate(
+        '{% if false %}{% halt %}{% endif %}OK')
     context = self._GetContext({})
     self.assertEquals('OK', template.render(context))
 
@@ -606,7 +606,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
     def Test(language, x):
       ctxt = self._GetContext({'_LANGUAGE': language, 'x': x, 'y': not x})
-      template = django_template.Template(source)
+      template = django_helpers.DjangoTemplate(source)
       key = template_helpers._BOOLEAN_LITERALS
       vals = template_helpers._language_defaults[language].get(
           key, template_helpers._defaults[key])
@@ -623,7 +623,7 @@ class TemplateHelpersTest(basetest.TestCase):
   def testDivChecksum(self):
     source = '<p>This is some test text.</p>'
     context = self._GetContext()
-    template = django_template.Template(
+    template = django_helpers.DjangoTemplate(
         '{% checksummed_div %}'
         'someId'
         '{% divbody %}' + source + '{% endchecksummed_div %}')
@@ -640,7 +640,7 @@ class TemplateHelpersTest(basetest.TestCase):
       """Capture the write event."""
       self.name_to_content[name] = content
 
-    template = django_template.Template(
+    template = django_helpers.DjangoTemplate(
         'a{% write file1 %}foo{% endwrite %}'
         'b{% write file2 %}bar{% endwrite %}')
     context = self._GetContext({
