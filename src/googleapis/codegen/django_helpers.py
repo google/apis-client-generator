@@ -46,9 +46,9 @@ from googleapis.codegen.filesys import files
 # support that use case.  Instead you are supposed to put a package of filters
 # in a specific place and the Django web server finds them for you. We are a
 # standalone app, not running in their context, so we have to go under the hood
-# a little.
-django_template.base.add_to_builtins(
-    'googleapis.codegen.template_helpers')
+# a little. We must create all templates with this engine.
+_ENGINE = django_template.engine.Engine(
+    builtins=['googleapis.codegen.template_helpers'])
 
 
 def DjangoRenderTemplate(template_path, context_dict):
@@ -65,6 +65,17 @@ def DjangoRenderTemplate(template_path, context_dict):
   return _DjangoRenderTemplateSource(source, context_dict)
 
 
+def DjangoTemplate(source):
+  """Returns a template configured for our default engine.
+
+  Args:
+    source: (str) Template source.
+  Returns:
+    (django.template.Template)
+  """
+  return django_template.Template(source, engine=_ENGINE)
+
+
 def _DjangoRenderTemplateSource(template_source, context_dict):
   """Renders the given template source with the given values dict.
 
@@ -74,7 +85,7 @@ def _DjangoRenderTemplateSource(template_source, context_dict):
   Returns:
     (str) The expanded template.
   """
-  t = django_template.Template(template_source)
+  t = DjangoTemplate(template_source)
   ctxt = django_template.Context(context_dict)
   with template_helpers.SetCurrentContext(ctxt):
     return t.render(ctxt)
