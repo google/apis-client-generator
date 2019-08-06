@@ -66,9 +66,9 @@ class TarLibraryPackage(LibraryPackage):
     if self._current_file_data:
       info = tarfile.TarInfo(self._current_file_name)
       info.mtime = time.time()
-      info.mode = 0644
+      info.mode = 0o644
       data = self._current_file_data.getvalue()
-      if isinstance(data, unicode):
+      if not isinstance(data, bytes):
         data = data.encode('utf-8')
       info.size = len(data)
       self._tar.addfile(info, BytesIO(data))

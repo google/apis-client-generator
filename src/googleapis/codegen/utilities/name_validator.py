@@ -22,6 +22,7 @@ appear in discovery documents
 __author__ = 'wclarkso@google.com (Will Clarkson)'
 
 import re
+import sys
 
 
 # The first character must alpha (a-zA-Z), a slash (/), a '@', or an
@@ -120,7 +121,9 @@ def ValidateAndSanitizeComment(comment_string):
                      u'\\*',   # Escaped Multiline begin
                     ]
 
-  if isinstance(comment_string, str):
+  # Hacky python 2 vs. 3 portability
+  if ((sys.version_info[0] == 2 and isinstance(comment_string, str))
+      or (sys.version_info[0] == 3 and isinstance(comment_string, bytes))):
     comment_string = comment_string.decode('utf-8')
   change_made = True
   while change_made:

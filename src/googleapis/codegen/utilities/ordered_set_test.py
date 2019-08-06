@@ -10,22 +10,22 @@ class OrderedSetTest(basetest.TestCase):
 
   def testFrozenSet(self):
     s = ordered_set.FrozenOrderedSet(range(5))
-    self.assertEquals(5, len(s))
+    self.assertLen(s, 5)
     self.assertTrue(4 in s)
-    self.assertEquals(range(5), list(s))
+    self.assertEqual([x for x in range(5)], list(s))
 
   def testMutableSet(self):
     s = ordered_set.MutableOrderedSet()
     for i in range(5):
       s.add(i)
-    self.assertEquals(5, len(s))
+    self.assertLen(s, 5)
     self.assertTrue(4 in s)
-    self.assertEquals(range(5), list(s))
+    self.assertEqual([x for x in range(5)], list(s))
 
     s.remove(3)
-    self.assertEquals([0, 1, 2, 4], list(s))
+    self.assertEqual([0, 1, 2, 4], list(s))
     s.clear()
-    self.assertEquals(0, len(s))
+    self.assertEmpty(s)
 
 
 if __name__ == '__main__':

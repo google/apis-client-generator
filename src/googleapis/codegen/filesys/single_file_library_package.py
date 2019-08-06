@@ -65,7 +65,7 @@ class SingleFileLibraryPackage(LibraryPackage):
       self._current_file_data.close()
       self._current_file_data = None
       # File contents may be utf-8
-      if isinstance(data, unicode):
+      if not isinstance(data, bytes):
         data = data.encode('utf-8')
       # Replace CRLF with LF because in the C# .xml files, some have CRLF but
       # others do not. This causes confusion because depending on how you do

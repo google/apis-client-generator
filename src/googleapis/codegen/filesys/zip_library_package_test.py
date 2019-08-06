@@ -161,7 +161,7 @@ class ZipLibraryPackageTest(basetest.TestCase):
     # read it back and verify
     archive = zipfile.ZipFile(io.BytesIO(self._output_stream.getvalue()), 'r')
     info_list = archive.infolist()
-    dir_bits = (040755 << 16) | 0x10
+    dir_bits = (0o40755 << 16) | 0x10
 
     index = 0
     self.assertEquals('d1/', info_list[index].filename)

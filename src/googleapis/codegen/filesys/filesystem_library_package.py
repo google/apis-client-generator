@@ -79,4 +79,4 @@ class FilesystemLibraryPackage(LibraryPackage):
     if not os.access(path, os.W_OK):
       if os.access(path, os.F_OK):
         raise ValueError('%s exists, but is not writable' % path)
-      os.makedirs(path, 0755)
+      os.makedirs(path, 0o755)

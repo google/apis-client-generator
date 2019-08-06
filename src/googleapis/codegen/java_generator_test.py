@@ -15,7 +15,9 @@
 
 """Tests for java_generator."""
 
-__author__ = 'aiuto@google.com (Tony Aiuto)'
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 from google.apputils import basetest
 from googleapis.codegen import data_types
@@ -163,7 +165,7 @@ class JavaGeneratorTest(basetest.TestCase):
       import_manager = schema.values.get('importManager')
       for import_list in import_manager.ImportLists():
         for import_def in import_list:
-          print import_def
+          print(import_def)
           if import_def.find('BigInteger'):
             found_big_integer = True
           if import_def.find('DateTime'):
