@@ -7,9 +7,9 @@
 public virtual
   {% if parameter.enumType %}
     {% if parameter.required %}
- {% camel_case parameter.memberName %}Enum
+ {{ parameter.memberName }}Enum
     {% else %}
- System.Nullable<{% camel_case parameter.memberName %}Enum>
+ System.Nullable<{{ parameter.memberName }}Enum>
     {% endif %}
   {% else %}
     {% if parameter.repeated %}
@@ -23,15 +23,11 @@ public virtual
     {% endif %}
   {% endif %}
 
-{% sp %} {% camel_case parameter.memberName %} { get;
- {% if parameter.required %}
- private
- {% endif %}
- set; }
-{% endnoeol %}
+{% sp %} {{ parameter.memberName }} { get;
+{% if parameter.required %} private{% endif %} set; }{% endnoeol %}
 {% if parameter.enumType %}
 {% doc_comment_if parameter.description %}
-public enum {% camel_case parameter.memberName %}Enum
+public enum {{ parameter.memberName }}Enum
 {
 {% noblank %}{% for element in parameter.enumType.elements %}
 {% indent %}

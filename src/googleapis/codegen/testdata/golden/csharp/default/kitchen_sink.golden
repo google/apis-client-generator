@@ -1126,7 +1126,7 @@ namespace Google.Apis.KitchSink.v1
 
                 /// <summary>Enum</summary>
                 [Google.Apis.Util.RequestParameterAttribute("enum", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object Enum { get; set; }
+                public virtual object Enum__ { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3035,7 +3035,7 @@ namespace Google.Apis.KitchSink.v1
                 : base(service)
             {
                 Id = id;
-                Else = kitch_sinkElse;
+                Else__ = kitch_sinkElse;
                 InitParameters();
             }
 
@@ -3046,7 +3046,7 @@ namespace Google.Apis.KitchSink.v1
 
             /// <summary>A parameter name 'else'.</summary>
             [Google.Apis.Util.RequestParameterAttribute("else", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Else { get; private set; }
+            public virtual string Else__ { get; private set; }
 
 
             ///<summary>Gets the method name.</summary>

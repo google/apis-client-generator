@@ -148,7 +148,7 @@ contentType
 {% indent %}
 
 {% for p in method.requiredParameters %}
-{% camel_case p.codeName %} = {{ p.codeName }};
+{{ p.memberName }} = {{ p.codeName }};
 {% endfor %}
 
 {% if method.requestType %}
