@@ -6,7 +6,7 @@ import setuptools
 
 setuptools.setup(
     name='google-apis-client-generator',
-    version='1.6.1',
+    version='1.7.0',
     description='Google Apis Client Generator',
     long_description=open('README').read(),
     author='Google Inc.',
