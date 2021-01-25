@@ -48,7 +48,7 @@ class ConfigurationTest(basetest.TestCase):
       path: (str) path to file.
       expand: (bool, default False) whether to expand as a Json template.
     Returns:
-      (dict) or None if the file is in a white list of known broken files.
+      (dict) or None if the file is in an allow list of known broken files.
     """
     json_file = open(path)
     content = json_file.read()
